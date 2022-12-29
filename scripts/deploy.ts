@@ -1,23 +1,23 @@
 import { ethers } from 'hardhat';
-import {Storage} from '../contracts/storage.sol'
+import {HeadOrTails} from '../contracts/HeadOrTails.sol'
 
 async function main(){
 
 
     const [admin,secondPLayer] = await ethers.getSigners();
     
-    const Storage = await ethers.getContractFactory("Storage");
-    const greeter = await Storage.deploy();
-    await greeter.deployed();
+    const Contract = await ethers.getContractFactory("HeadOrTails");
+    const contractHead = await Contract.deploy();
+    await contractHead.deployed();
 
-    console.log("greeter deploye dto:", greeter.address);
+    console.log("HeadOrTails deployed to:", contractHead.address);
 
 
 
   const contract = (await ethers.getContractAt(
-    "Storage",
-    greeter.address
-  )) as Storage;
+    "HeadOrTails",
+    contractHead.address
+  )) as HeadOrTails;
 
 
   await contract.createAccount("Gilles");
