@@ -19,9 +19,7 @@ contract Characters {
     Champs private Deathwing = Champs(12,12,5,5);
 
     
-    function hehexd() external pure  returns (uint)  {
-        return 5;
-    }
+ 
 
 
     function getCharacter(uint id) external view returns (uint[4] memory){
@@ -43,6 +41,7 @@ contract Characters {
          if (id == 5 ){
             return ([Deathwing.attack,Deathwing.attack,Deathwing.manaCost,Deathwing.id]);
         }
+
         
         else return ([defender.health,defender.attack,defender.manaCost,defender.id]);
 

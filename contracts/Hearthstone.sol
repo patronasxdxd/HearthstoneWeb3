@@ -17,6 +17,7 @@ contract Hearthstone {
 
     Characters public charC;
 
+    uint nonce = 0;
 
 constructor (address _address) {
     charC = Characters(_address);
@@ -32,6 +33,7 @@ constructor (address _address) {
         uint health;
         uint mana;
         Champs[7] minions;
+        Champs[10] hand;
     }
 
     struct Champs {
@@ -68,14 +70,47 @@ constructor (address _address) {
         player1.username = "patronasXd";
         player1.health = 30;
         player1.mana = 1;
+        player1.hand[0] = drawCard();
+        player1.hand[1] = drawCard();
+        player1.hand[2] = drawCard();
 
 
         player2.username = "Bot";
         player2.health = 30;
         player2.mana = 1;
+        player2.hand[0] = drawCard();
+        player2.hand[1] = drawCard();
+        player2.hand[2] = drawCard();
+
+        //draw hand
+
+
+
+        
+
+
         
     }
 
+
+function drawCard() internal returns (Champs memory){
+
+       uint[4] memory xc = charC.getCharacter(_createRandomNum());
+         Champs memory cp = Champs(xc[0],xc[1],xc[2],xc[3]);
+        return cp;
+}
+
+function _createRandomNum( ) internal returns (uint256 randomValue) {
+    uint256 randomNum = uint256(keccak256(abi.encodePacked(block.timestamp, msg.sender,nonce)));
+
+    nonce++;
+    randomValue = randomNum % 5;
+    if(randomValue == 0) {
+      randomValue = 1;
+    }
+
+    return randomValue;
+  }
 
     function playMinion(uint minionId) external {
         Game storage game = games[msg.sender];
@@ -94,15 +129,33 @@ constructor (address _address) {
     function getAttack(uint id) external view returns (uint ) {
 
         uint[4] memory xc = charC.getCharacter(id);
-        // return xc;
-
          Champs memory cp = Champs(xc[0],xc[1],xc[2],xc[3]);
         return cp.attack;
     }
 
-    function getXd() public view returns (uint) {
-        return charC.hehexd();
+    function showHand() external view  returns (uint[] memory){
+
+        uint[] memory hand;
+
+        for (uint i = 0;i < games[msg.sender].player[0].hand.length;i++){
+            hand[i] = games[msg.sender].player[0].hand[i].id;
+        }
+
+
+        return hand;
     }
+
+
+    function showcard(uint id) external view returns (uint[4] memory) {
+        Champs memory minion = games[msg.sender].player[0].hand[id];
+        return [minion.health,minion.attack,minion.manaCost,minion.id];
+    }
+    
+
+    function handSize() external view returns (uint) {
+       return games[msg.sender].player[0].hand.length;
+    }
+  
 
 
 

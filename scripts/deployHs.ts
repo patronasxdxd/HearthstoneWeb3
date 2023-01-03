@@ -38,16 +38,9 @@ async function main(){
 
 
 //   console.log(await contract.getXd());
-  console.log(await contract.getAttack(5));
+  console.log(await contract.showcard(0));
+  console.log(await contract.handSize())
 
-
-//   await contract.createAccount("Gilles");
-//   await contract.bet(1,5);
-//   console.log(await contract.viewAccount());
-//   await contract.bet(1,20);
-//   console.log(await contract.viewAccount());
-//   await contract.bet(2,50);
-//   console.log(await contract.viewAccount());
 
 
 
