@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: GPL-3.0
-
 pragma solidity >=0.7.0 <0.9.0;
 
 /**
@@ -9,8 +8,24 @@ pragma solidity >=0.7.0 <0.9.0;
  */
 
 
+import  "contracts/Characters.sol";
+
+
 
 contract Hearthstone {
+
+
+    Characters public charC;
+
+
+constructor (address _address) {
+    charC = Characters(_address);
+}
+     
+
+
+
+
 
     struct Player {
         string username;
@@ -75,6 +90,21 @@ contract Hearthstone {
 
         return games[msg.sender].player[0].minions[0].id;
     }
+
+    function getAttack(uint id) external view returns (uint ) {
+
+        uint[4] memory xc = charC.getCharacter(id);
+        // return xc;
+
+         Champs memory cp = Champs(xc[0],xc[1],xc[2],xc[3]);
+        return cp.attack;
+    }
+
+    function getXd() public view returns (uint) {
+        return charC.hehexd();
+    }
+
+
 
     
     
