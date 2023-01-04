@@ -12,6 +12,8 @@ import  "contracts/Characters.sol";
 
 
 
+//attack 1,2,3,4,5,6,7 attacks enemy board 8 attacks face
+
 contract Hearthstone {
 
 
@@ -153,8 +155,21 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
        return games[msg.sender].player[0].hand.length;
     }
 
+   function getHealthBot() external view returns (uint) {
+       return games[msg.sender].player[1].health;
+    }
+
+    function getHealthPlayer() external view returns (uint) {
+       return games[msg.sender].player[0].health;
+    }
+
+
+    function attack(uint minion, uint target) external{
+       uint _attack = games[msg.sender].player[0].hand[minion].attack;
+       games[msg.sender].player[1].health = games[msg.sender].player[1].health - _attack;
+    }
     
-  
+   
 
 
 

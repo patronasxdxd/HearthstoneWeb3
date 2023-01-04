@@ -42,9 +42,14 @@ async function main(){
   console.log("card 2: " + await contract.showcard(1));
   console.log("card 3: " + await contract.showcard(2));
 
-  console.log(await contract.handSize())
+  console.log("hand size" + await contract.handSize());
+  
+  console.log("player health: "+  await contract.getHealthPlayer());
 
+  // first param is your minion second target 
+  await contract.attack(0,8);
 
+  console.log("player health: "+  await contract.getHealthBot());
 
 
 
