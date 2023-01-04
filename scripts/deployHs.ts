@@ -34,6 +34,10 @@ async function main(){
   await contract.createGame()
 
   await contract.playMinion(1);
+  await contract.playMinion(2);
+  await contract.playMinion(3);
+
+
   console.log(await contract.getBoard());
 
 
@@ -50,6 +54,14 @@ async function main(){
   await contract.attack(0,8);
 
   console.log("player health: "+  await contract.getHealthBot());
+  console.log("minions size: " + await contract.boardSize());
+
+
+  console.log("place 1: " + await contract.showboardplace(0));
+  console.log("place 2: " + await contract.showboardplace(1));
+  console.log("place 3: " + await contract.showboardplace(2));
+
+
 
 
 

@@ -19,6 +19,8 @@ contract Characters {
 
 
 
+
+
     Champs private Defender = Champs(1,2,1,1,"defender","Give adjusted minions +1/+1 and taunt");
     Champs private Fletchling = Champs(3,3,3,2,"fletchling","After this minon attacks a hero, Adapt");
     Champs private Yeti = Champs(5,3,4,3,"Yeti","");
@@ -45,6 +47,8 @@ contract Characters {
         Champs memory x = camps[_x];
         return (x.health,x.attack,x.manaCost,x.id,x.name);
     }
+
+    
 
 
     

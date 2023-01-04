@@ -34,7 +34,7 @@ constructor (address _address) {
         string username;
         uint health;
         uint mana;
-        Champs[7] minions;
+        Champs[] minions;
         Champs[] hand;
     }
 
@@ -115,7 +115,7 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
     function playMinion(uint minionId) external {
         Game storage game = games[msg.sender];
 
-        game.player[0].minions[0] = Champs(5,5,1,1,"Yeto"); 
+        game.player[0].minions.push( drawCard()); 
 
         
 
@@ -150,9 +150,20 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
         Champs memory minion = games[msg.sender].player[0].hand[id];
         return [minion.health,minion.attack,minion.manaCost,minion.id];
     }
+
+    function showboardplace(uint id) external view returns (uint[4] memory) {
+        Champs memory minion = games[msg.sender].player[0].minions[id];
+        return [minion.health,minion.attack,minion.manaCost,minion.id];
+    }
+
+    
     
     function handSize() external view returns (uint) {
        return games[msg.sender].player[0].hand.length;
+    }
+
+     function boardSize() external view returns (uint) {
+       return games[msg.sender].player[0].minions.length;
     }
 
    function getHealthBot() external view returns (uint) {
@@ -169,8 +180,24 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
        games[msg.sender].player[1].health = games[msg.sender].player[1].health - _attack;
     }
     
-   
 
+    //call this method when you play a minion
+    function ability(uint _handCardChosen ) external {
+        uint position = games[msg.sender].player[0].hand.length;
+        uint handsize = games[msg.sender].player[0].minions.length;
+        Champs memory currentChar = games[msg.sender].player[0].hand[_handCardChosen];
+        
+
+        if (currentChar.id == 1) {
+            
+            if ( _handCardChosen <= position && _handCardChosen >= 1) {
+
+            }
+                    
+        }
+    }
+   
+    
 
 
     
