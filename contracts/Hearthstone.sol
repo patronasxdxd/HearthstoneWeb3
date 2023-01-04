@@ -41,6 +41,7 @@ constructor (address _address) {
         uint attack;
         uint manaCost;
         uint id;
+        string name;
     }
 
     struct Board {
@@ -92,8 +93,8 @@ constructor (address _address) {
 
 function drawCard() internal returns (Champs memory){
 
-       uint[4] memory xc = charC.getCharacter(_createRandomNum());
-         Champs memory cp = Champs(xc[0],xc[1],xc[2],xc[3]);
+    (uint a,uint b ,uint c,uint d,string memory e) = charC.getCharacter(_createRandomNum());
+         Champs memory cp = Champs(a,b,c,d,e);
         return cp;
 }
 
@@ -112,7 +113,7 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
     function playMinion(uint minionId) external {
         Game storage game = games[msg.sender];
 
-        game.player[0].minions[0] = Champs(5,5,1,1); 
+        game.player[0].minions[0] = Champs(5,5,1,1,"Yeto"); 
 
         
 
@@ -125,8 +126,8 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
 
     function getAttack(uint id) external view returns (uint ) {
 
-        uint[4] memory xc = charC.getCharacter(id);
-         Champs memory cp = Champs(xc[0],xc[1],xc[2],xc[3]);
+        (uint a,uint b ,uint c,uint d,string memory e) = charC.getCharacter(id);
+         Champs memory cp = Champs(a,b,c,d,e);
         return cp.attack;
     }
 

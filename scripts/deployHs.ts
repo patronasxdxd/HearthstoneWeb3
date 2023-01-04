@@ -38,7 +38,10 @@ async function main(){
 
 
 //   console.log(await contract.getXd());
-  console.log(await contract.showcard(0));
+  console.log("card 1: "  + await contract.showcard(0));
+  console.log("card 2: " + await contract.showcard(1));
+  console.log("card 3: " + await contract.showcard(2));
+
   console.log(await contract.handSize())
 
 

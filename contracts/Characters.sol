@@ -10,40 +10,41 @@ contract Characters {
         uint attack;
         uint manaCost;
         uint id;
+        string name;
     }
     
-    Champs private defender = Champs(1,2,1,1);
-    Champs private Fletchling = Champs(3,3,3,2);
-    Champs private Yeti = Champs(5,3,4,3);
-    Champs private Scrab = Champs(3,2,2,4);
-    Champs private Deathwing = Champs(12,12,5,5);
+    Champs private defender = Champs(1,2,1,1,"defender");
+    Champs private Fletchling = Champs(3,3,3,2,"fletchling");
+    Champs private Yeti = Champs(5,3,4,3,"Yeti");
+    Champs private Scrab = Champs(3,2,2,4,"Scrab");
+    Champs private Deathwing = Champs(12,12,5,5,"Deathwing");
 
     
  
 
 
-    function getCharacter(uint id) external view returns (uint[4] memory){
+    function getCharacter(uint id) external view returns (uint,uint,uint,uint,string memory){
 
        
 
         if (id == 1 ){
-            return ([defender.attack,defender.attack,defender.manaCost,defender.id]);
+            return (defender.attack,defender.attack,defender.manaCost,defender.id,defender.name);
         }
          if (id == 2 ){
-            return ([Fletchling.attack,Fletchling.attack,Fletchling.manaCost,Fletchling.id]);
+            return (Fletchling.attack,Fletchling.attack,Fletchling.manaCost,Fletchling.id,Fletchling.name);
         }
          if (id == 3 ){
-            return ([Yeti.attack,Yeti.attack,Yeti.manaCost,Yeti.id]);
+            return (Yeti.attack,Yeti.attack,Yeti.manaCost,Yeti.id,Yeti.name);
         }
          if (id == 4 ){
-            return ([Scrab.attack,Scrab.attack,Scrab.manaCost,Scrab.id]);
+            return (Scrab.attack,Scrab.attack,Scrab.manaCost,Scrab.id,Scrab.name);
         }
          if (id == 5 ){
-            return ([Deathwing.attack,Deathwing.attack,Deathwing.manaCost,Deathwing.id]);
+            return (Deathwing.attack,Deathwing.attack,Deathwing.manaCost,Deathwing.id,Deathwing.name);
         }
 
         
-        else return ([defender.health,defender.attack,defender.manaCost,defender.id]);
+        else return (defender.health,defender.attack,defender.manaCost,defender.id,defender.name);
 
     }
 
