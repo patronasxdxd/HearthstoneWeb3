@@ -149,10 +149,11 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
         return [minion.health,minion.attack,minion.manaCost,minion.id];
     }
     
-
     function handSize() external view returns (uint) {
        return games[msg.sender].player[0].hand.length;
     }
+
+    
   
 
 

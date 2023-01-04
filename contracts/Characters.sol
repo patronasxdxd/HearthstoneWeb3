@@ -12,40 +12,39 @@ contract Characters {
         uint id;
         string name;
     }
-    
-    Champs private defender = Champs(1,2,1,1,"defender");
+
+    Champs[] camps;
+
+
+
+    Champs private Defender = Champs(1,2,1,1,"defender");
     Champs private Fletchling = Champs(3,3,3,2,"fletchling");
     Champs private Yeti = Champs(5,3,4,3,"Yeti");
     Champs private Scrab = Champs(3,2,2,4,"Scrab");
     Champs private Deathwing = Champs(12,12,5,5,"Deathwing");
-
-    
- 
-
+    Champs public Invincible = Champs(8,4,7,6,"invincible");
+    Champs public Brian = Champs(4,2,3,7,"Brian BronzeBeard");
+  
+    constructor(){
+          camps.push(Defender);
+             camps.push(Fletchling);
+                camps.push(Yeti);
+                   camps.push(Scrab);
+                      camps.push(Deathwing);
+                         camps.push(Invincible);
+                          camps.push(Brian);
+    }
 
     function getCharacter(uint id) external view returns (uint,uint,uint,uint,string memory){
-
-       
-
-        if (id == 1 ){
-            return (defender.attack,defender.attack,defender.manaCost,defender.id,defender.name);
-        }
-         if (id == 2 ){
-            return (Fletchling.attack,Fletchling.attack,Fletchling.manaCost,Fletchling.id,Fletchling.name);
-        }
-         if (id == 3 ){
-            return (Yeti.attack,Yeti.attack,Yeti.manaCost,Yeti.id,Yeti.name);
-        }
-         if (id == 4 ){
-            return (Scrab.attack,Scrab.attack,Scrab.manaCost,Scrab.id,Scrab.name);
-        }
-         if (id == 5 ){
-            return (Deathwing.attack,Deathwing.attack,Deathwing.manaCost,Deathwing.id,Deathwing.name);
-        }
-
-        
-        else return (defender.health,defender.attack,defender.manaCost,defender.id,defender.name);
-
+        return seperateValues(id);
     }
+
+    function seperateValues(uint _x) internal view  returns (uint,uint,uint,uint,string memory) {
+        Champs memory x = camps[_x];
+        return (x.health,x.attack,x.manaCost,x.id,x.name);
+    }
+
+
+    
 
 }
