@@ -33,7 +33,7 @@ constructor (address _address) {
         uint health;
         uint mana;
         Champs[7] minions;
-        Champs[10] hand;
+        Champs[] hand;
     }
 
     struct Champs {
@@ -70,19 +70,16 @@ constructor (address _address) {
         player1.username = "patronasXd";
         player1.health = 30;
         player1.mana = 1;
-        player1.hand[0] = drawCard();
-        player1.hand[1] = drawCard();
-        player1.hand[2] = drawCard();
-
+        player1.hand.push( drawCard());
+        player1.hand.push( drawCard());
+        player1.hand.push( drawCard());
 
         player2.username = "Bot";
         player2.health = 30;
         player2.mana = 1;
-        player2.hand[0] = drawCard();
-        player2.hand[1] = drawCard();
-        player2.hand[2] = drawCard();
-
-        //draw hand
+        player2.hand.push( drawCard());
+        player2.hand.push( drawCard());
+        player2.hand.push( drawCard());
 
 
 
@@ -133,17 +130,17 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
         return cp.attack;
     }
 
-    function showHand() external view  returns (uint[] memory){
+    // function showHand() external view  returns (uint[] memory){
 
-        uint[] memory hand;
+    //     uint[] memory hand;
 
-        for (uint i = 0;i < games[msg.sender].player[0].hand.length;i++){
-            hand[i] = games[msg.sender].player[0].hand[i].id;
-        }
+    //     for (uint i = 0;i < games[msg.sender].player[0].hand.length;i++){
+    //         hand[i] = games[msg.sender].player[0].hand[i].id;
+    //     }
 
 
-        return hand;
-    }
+    //     return hand;
+    // }
 
 
     function showcard(uint id) external view returns (uint[4] memory) {
