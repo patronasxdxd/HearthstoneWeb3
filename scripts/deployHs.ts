@@ -65,13 +65,20 @@ async function main(){
   console.log("place 2: " + await contract.showboardplace(1));
   console.log("place 3: " + await contract.showboardplace(2));
 
-  await contract.ability(0,0);
+  // await contract.ability(0,0);
 
 
-  console.log("place 1: " + await contract.showboardplace(0));
-  console.log("place 2: " + await contract.showboardplace(1));
-  console.log("place 3: " + await contract.showboardplace(2));
+  // console.log("place 1: " + await contract.showboardplace(0));
+  // console.log("place 2: " + await contract.showboardplace(1));
+  // console.log("place 3: " + await contract.showboardplace(2));
 
+
+
+
+  await contract.playMinionById(2);
+  console.log("minions size: " + await contract.boardSize());
+
+  
 
 
 
