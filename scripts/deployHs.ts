@@ -33,6 +33,10 @@ async function main(){
 
   await contract.createGame()
 
+//   await contract.playMinion(1);
+//   await contract.playMinion(2);
+//   await contract.playMinion(3);
+
   await contract.playMinion(1);
   await contract.playMinion(2);
   await contract.playMinion(3);
@@ -60,6 +64,14 @@ async function main(){
   console.log("place 1: " + await contract.showboardplace(0));
   console.log("place 2: " + await contract.showboardplace(1));
   console.log("place 3: " + await contract.showboardplace(2));
+
+  await contract.ability(0,0);
+
+
+  console.log("place 1: " + await contract.showboardplace(0));
+  console.log("place 2: " + await contract.showboardplace(1));
+  console.log("place 3: " + await contract.showboardplace(2));
+
 
 
 

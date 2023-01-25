@@ -12,6 +12,9 @@ contract Characters {
         uint id;
         string name;
         string description;
+        bool taunt;
+        bool windfury;
+        bool divineshield;
     }
 
     Champs[] camps;
@@ -21,13 +24,13 @@ contract Characters {
 
 
 
-    Champs private Defender = Champs(1,2,1,1,"defender","Give adjusted minions +1/+1 and taunt");
-    Champs private Fletchling = Champs(3,3,3,2,"fletchling","After this minon attacks a hero, Adapt");
-    Champs private Yeti = Champs(5,3,4,3,"Yeti","");
-    Champs private Scrab = Champs(3,2,2,4,"Scrab","Deathrattle: gain 2 armor");
-    Champs private Deathwing = Champs(12,12,5,5,"Deathwing","Battlecry: Destroy all other minions and discard your hand");
-    Champs public Invincible = Champs(8,4,7,6,"invincible","Reborn,Battlecry and Deathrattle: Give a random friendly minion +5/+5 and Taunt");
-    Champs public Brian = Champs(4,2,3,7,"Brian BronzeBeard","Your battlecry trigger twice");
+    Champs private Defender = Champs(1,2,1,1,"defender","Give adjusted minions +1/+1 and taunt",false,false,false);
+    Champs private Fletchling = Champs(3,3,3,2,"fletchling","After this minon attacks a hero, Adapt",false,false,false);
+    Champs private Yeti = Champs(5,3,4,3,"Yeti","",false,false,false);
+    Champs private Scrab = Champs(3,2,2,4,"Scrab","Deathrattle: gain 2 armor",false,false,false);
+    Champs private Deathwing = Champs(12,12,5,5,"Deathwing","Battlecry: Destroy all other minions and discard your hand",false,false,false);
+    Champs public Invincible = Champs(8,4,7,6,"invincible","Reborn,Battlecry and Deathrattle: Give a random friendly minion +5/+5 and Taunt",false,false,false);
+    Champs public Brian = Champs(4,2,3,7,"Brian BronzeBeard","Your battlecry trigger twice",false,false,false);
   
     constructor(){
           camps.push(Defender);
@@ -39,13 +42,13 @@ contract Characters {
                           camps.push(Brian);
     }
 
-    function getCharacter(uint id) external view returns (uint,uint,uint,uint,string memory){
+    function getCharacter(uint id) external view returns (uint,uint,uint,uint,string memory,string memory, bool,bool,bool){
         return seperateValues(id);
     }
 
-    function seperateValues(uint _x) internal view  returns (uint,uint,uint,uint,string memory) {
+    function seperateValues(uint _x) internal view  returns (uint,uint,uint,uint,string memory,string memory,bool,bool,bool) {
         Champs memory x = camps[_x];
-        return (x.health,x.attack,x.manaCost,x.id,x.name);
+        return (x.health,x.attack,x.manaCost,x.id,x.name,x.description,x.taunt,x.windfury,x.divineshield);
     }
 
     

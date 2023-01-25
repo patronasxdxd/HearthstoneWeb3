@@ -44,6 +44,10 @@ constructor (address _address) {
         uint manaCost;
         uint id;
         string name;
+        string description;
+        bool taunt;
+        bool windfury;
+        bool divineshield;
     }
 
     struct Board {
@@ -73,7 +77,8 @@ constructor (address _address) {
         player1.username = "patronasXd";
         player1.health = 30;
         player1.mana = 1;
-        player1.hand.push( drawCard());
+        // player1.hand.push( drawCard());
+        player1.hand.push(Champs(1,2,1,1,"defender","Give adjusted minions +1/+1 and taunt",false,false,false));
         player1.hand.push( drawCard());
         player1.hand.push( drawCard());
 
@@ -95,8 +100,8 @@ constructor (address _address) {
 
 function drawCard() internal returns (Champs memory){
 
-    (uint a,uint b ,uint c,uint d,string memory e) = charC.getCharacter(_createRandomNum());
-         Champs memory cp = Champs(a,b,c,d,e);
+    (uint a,uint b ,uint c,uint d,string memory e, string memory f, bool g,bool h, bool i) = charC.getCharacter(_createRandomNum());
+         Champs memory cp = Champs(a,b,c,d,e,f,g,h,i);
         return cp;
 }
 
@@ -114,12 +119,10 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
 
     function playMinion(uint minionId) external {
         Game storage game = games[msg.sender];
-
         game.player[0].minions.push( drawCard()); 
-
-        
-
     }
+
+   
 
     function getBoard() external view returns (uint)  {
 
@@ -128,22 +131,10 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
 
     function getAttack(uint id) external view returns (uint ) {
 
-        (uint a,uint b ,uint c,uint d,string memory e) = charC.getCharacter(id);
-         Champs memory cp = Champs(a,b,c,d,e);
+        (uint a,uint b ,uint c,uint d,string memory e, string memory f, bool g,bool h, bool i) = charC.getCharacter(id);
+         Champs memory cp = Champs(a,b,c,d,e,f,g,h,i);
         return cp.attack;
     }
-
-    // function showHand() external view  returns (uint[] memory){
-
-    //     uint[] memory hand;
-
-    //     for (uint i = 0;i < games[msg.sender].player[0].hand.length;i++){
-    //         hand[i] = games[msg.sender].player[0].hand[i].id;
-    //     }
-
-
-    //     return hand;
-    // }
 
 
     function showcard(uint id) external view returns (uint[4] memory) {
@@ -182,20 +173,63 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
     
 
     //call this method when you play a minion
-    function ability(uint _handCardChosen ) external {
-        uint position = games[msg.sender].player[0].hand.length;
-        uint handsize = games[msg.sender].player[0].minions.length;
-        Champs memory currentChar = games[msg.sender].player[0].hand[_handCardChosen];
-        
+    function ability(uint _handCardChosen, uint _posistion ) external {
+        //uint position = games[msg.sender].player[0].hand.length;
+        uint minionOnBoard = games[msg.sender].player[0].minions.length;
+        Champs storage currentChar = games[msg.sender].player[0].hand[_handCardChosen];
+        Champs[] storage myBoard = games[msg.sender].player[0].minions;
+        //Champs[] memory enemyBoard = games[msg.sender].player[1].minions;
+
 
         if (currentChar.id == 1) {
             
-            if ( _handCardChosen <= position && _handCardChosen >= 1) {
-
+        
+            if ( minionOnBoard == 0) {} 
+            if (minionOnBoard == 1 && _posistion == 1) { 
+                myBoard[_posistion-1].attack += 1;
+                myBoard[_posistion-1].health += 1;
+                myBoard[_posistion-1].taunt = true;       
             }
-                    
+            if (minionOnBoard == 1 && _posistion == 0) { 
+                myBoard[_posistion+1].attack += 1;
+                myBoard[_posistion+1].health += 1;
+                myBoard[_posistion+1].taunt = true;       
+            }
+            if (minionOnBoard > 1 && _posistion < minionOnBoard && _posistion != 0) { 
+                myBoard[_posistion-1].attack += 1;
+                myBoard[_posistion-1].health += 1;
+                myBoard[_posistion-1].taunt = true;
+
+                myBoard[_posistion+1].attack += 1;
+                myBoard[_posistion+1].health += 1;
+                myBoard[_posistion+1].taunt = true;          
+            }
+            
+             if (_posistion == minionOnBoard && _posistion > minionOnBoard) { 
+                myBoard[_posistion-1].attack += 1;
+                myBoard[_posistion-1].health += 1;
+                myBoard[_posistion-1].taunt = true;       
+            }  
+             if (_posistion == minionOnBoard && _posistion < minionOnBoard) { 
+                myBoard[_posistion+1].attack += 1;
+                myBoard[_posistion+1].health += 1;
+                myBoard[_posistion+1].taunt = true;       
+            }     
         }
     }
+
+
+     // function showHand() external view  returns (uint[] memory){
+
+    //     uint[] memory hand;
+
+    //     for (uint i = 0;i < games[msg.sender].player[0].hand.length;i++){
+    //         hand[i] = games[msg.sender].player[0].hand[i].id;
+    //     }
+
+
+    //     return hand;
+    // }
    
     
 
