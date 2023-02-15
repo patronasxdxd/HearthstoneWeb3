@@ -195,6 +195,16 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
        return games[msg.sender].player[0].health;
     }
 
+    // function deleteMinion(uint index, uint _player) internal {
+
+
+    //     for (uint i = index; i< data.length - 1; i++) {
+    //         data[i] = data[i + 1];
+    //     }
+    //     data.pop();
+
+    // }
+
 
     function attack(uint minion, uint target, uint _player) external{
 
@@ -217,8 +227,14 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
 
            if ( games[msg.sender].player[enemy].minions[target].health <= _attack){
 
-               delete games[msg.sender].player[enemy].minions[target];
+            //    delete games[msg.sender].player[enemy].minions[target];
 
+     
+
+                 for (uint i = target; i < games[msg.sender].player[enemy].minions.length -1; i++) {
+                     games[msg.sender].player[enemy].minions[i] = games[msg.sender].player[enemy].minions[i + 1];
+                 }
+                games[msg.sender].player[enemy].minions.pop();
            }else{
                 games[msg.sender].player[enemy].minions[target].health = games[msg.sender].player[enemy].minions[target].health- _attack;
            }

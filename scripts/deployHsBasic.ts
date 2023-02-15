@@ -98,17 +98,17 @@ async function main(){
 
 console.log("opponent health: "+  await contract.getHealthBot());
 
-await contract.attack(0,666,0);
-await contract.attack(0,666,0);
+// await contract.attack(0,666,0);
+// await contract.attack(0,666,0);
 
-await contract.attack(0,0,0);
+await contract.attack(0,1,0);
 
 console.log("opponent health: "+  await contract.getHealthBot());
 
 
 console.log("Bot: board minion 1: " + await contract.showboardplace(0,1));
 console.log("Bot: board minion 2: " + await contract.showboardplace(1,1));
-console.log("Bot: board minion 3: " + await contract.showboardplace(2,1));
+// console.log("Bot: board minion 3: " + await contract.showboardplace(2,1));
 
 
 
