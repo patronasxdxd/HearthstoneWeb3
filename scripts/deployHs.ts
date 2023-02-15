@@ -78,13 +78,6 @@ async function main(){
   await contract.playMinionById(2);
   console.log("minions size: " + await contract.boardSize());
 
-  
-
-
-
-
-
-
 
 }
 

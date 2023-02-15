@@ -10,8 +10,6 @@ pragma solidity >=0.7.0 <0.9.0;
 
 import  "contracts/Characters.sol";
 
-
-
 //attack 1,2,3,4,5,6,7 attacks enemy board 8 attacks face
 
 contract Hearthstone {
@@ -120,14 +118,14 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
   }
 
 
-    function playMinion(uint minionId) external {
+    function playMinion( uint _player) external {
         Game storage game = games[msg.sender];
-        game.player[0].minions.push( drawCard()); 
+        game.player[_player].minions.push( drawCard()); 
     }
 
-    function playMinionById(uint minionId) external {
+    function playMinionById(uint minionId,uint _player) external {
         Game storage game = games[msg.sender];
-        game.player[0].minions.push(getMinionById(minionId) ); 
+        game.player[_player].minions.push(getMinionById(minionId) ); 
     }
 
 
@@ -152,14 +150,17 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
     }
 
 
-    function showcard(uint id) external view returns (uint[4] memory) {
+    function showcard(uint id) external view returns (uint[4] memory,string memory) {
         Champs memory minion = games[msg.sender].player[0].hand[id];
-        return [minion.health,minion.attack,minion.manaCost,minion.id];
+        return ([minion.health,minion.attack,minion.manaCost,minion.id],minion.name );
     }
 
-    function showboardplace(uint id) external view returns (uint[4] memory) {
-        Champs memory minion = games[msg.sender].player[0].minions[id];
-        return [minion.health,minion.attack,minion.manaCost,minion.id];
+    
+
+
+    function showboardplace(uint id, uint _player) external view returns (uint[4] memory,string memory) {
+        Champs memory minion = games[msg.sender].player[_player].minions[id];
+        return ([minion.health,minion.attack,minion.manaCost,minion.id],minion.name);
     }
 
     
@@ -201,10 +202,10 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
 
         //check fletchling
 
-        if (games[msg.sender].player[1].minions[minion].id == 2) {
-            trigger(minion,chosen);
+        // if (games[msg.sender].player[1].minions[minion].id == 2) {
+        //     trigger(minion,chosen);
 
-        }
+        // }
     }
 
     function battleCryWithChooseOption(uint minion, uint target,uint chosen) external{
@@ -214,11 +215,12 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
 
     
 
-    function trigger(uint  minion, uint chosen ) internal {
+//chosen means what position
+    function trigger(uint  minion, uint chosen ) external {
 
-        Champs storage champ = games[msg.sender].player[1].minions[minion];
+        Champs storage champ = games[msg.sender].player[0].minions[minion];
         //fletching 3 things shown and has to pick 1 every time he attacks;
-        if (games[msg.sender].player[1].minions[minion].id == 2) {
+        if (games[msg.sender].player[0].minions[minion].id == 2) {
 
 
 
