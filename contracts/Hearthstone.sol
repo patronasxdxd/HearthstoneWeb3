@@ -64,6 +64,20 @@ constructor (address _address) {
     mapping (address => Game) public games;
     mapping (address => string ) public usernames;
     uint private gameCount = 0;
+    uint8 private currentPlayerTurn = 0; 
+
+
+
+    function getTurn() external view returns (uint8)  {
+        return currentPlayerTurn;
+    }
+
+    function endTurn(uint _player) external {
+        require(currentPlayerTurn ==  _player,"its not your turn");
+        if (currentPlayerTurn == 0) {
+            currentPlayerTurn = 1;
+        }else currentPlayerTurn = 0;
+    }
 
 
 
@@ -182,9 +196,35 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
     }
 
 
-    function attack(uint minion, uint target) external{
-       uint _attack = games[msg.sender].player[0].hand[minion].attack;
-       games[msg.sender].player[1].health = games[msg.sender].player[1].health - _attack;
+    function attack(uint minion, uint target, uint _player) external{
+
+        uint enemy;
+        if (_player == 0 ){
+              enemy = 1;
+        } else{
+             enemy = 0;
+        }
+
+        
+    
+    
+        uint _attack = games[msg.sender].player[_player].minions[minion].attack;
+
+        //hit enemy face
+       if (target == 666) { games[msg.sender].player[enemy].health = games[msg.sender].player[enemy].health - _attack;}
+        //else hit minion
+       else {
+
+           if ( games[msg.sender].player[enemy].minions[target].health <= _attack){
+
+               delete games[msg.sender].player[enemy].minions[target];
+
+           }else{
+                games[msg.sender].player[enemy].minions[target].health = games[msg.sender].player[enemy].minions[target].health- _attack;
+           }
+
+           
+           }
 
         //check fletchling
 

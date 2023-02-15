@@ -46,8 +46,8 @@ async function main(){
   
   console.log("player health: "+  await contract.getHealthPlayer());
 
-  // first param is your minion second target 
-  await contract.attack(0,8);
+  // // first param is your minion second target 
+  // await contract.attack(0,8);
 
   console.log("opponent health: "+  await contract.getHealthBot());
   console.log("minions size: " + await contract.boardSize());
@@ -55,9 +55,9 @@ async function main(){
   console.log("  ");
 
 
-  console.log("board minion 1: " + await contract.showboardplace(0,0));
-  console.log("board minion 2: " + await contract.showboardplace(1,0));
-  console.log("board minion 3: " + await contract.showboardplace(2,0));
+  console.log("Player: board minion 1: " + await contract.showboardplace(0,0));
+  console.log("Player: board minion 2: " + await contract.showboardplace(1,0));
+  console.log("Player: board minion 3: " + await contract.showboardplace(2,0));
 
   // await contract.ability(0,0);
 
@@ -84,9 +84,33 @@ async function main(){
   await contract.playMinionById(0,1);
 
 
-  console.log("board minion 1: " + await contract.showboardplace(0,1));
-  console.log("board minion 2: " + await contract.showboardplace(1,1));
-  console.log("board minion 3: " + await contract.showboardplace(2,1));
+  console.log("Bot: board minion 1: " + await contract.showboardplace(0,1));
+  console.log("Bot: board minion 2: " + await contract.showboardplace(1,1));
+  console.log("Bot: board minion 3: " + await contract.showboardplace(2,1));
+
+//   console.log(await contract.getTurn())
+// await contract.endTurn(0)
+//   console.log(await contract.getTurn())
+// await contract.endTurn(1)
+//   console.log(await contract.getTurn())
+//   await contract.endTurn(0)
+//   console.log(await contract.getTurn())
+
+console.log("opponent health: "+  await contract.getHealthBot());
+
+await contract.attack(0,666,0);
+await contract.attack(0,666,0);
+
+await contract.attack(0,0,0);
+
+console.log("opponent health: "+  await contract.getHealthBot());
+
+
+console.log("Bot: board minion 1: " + await contract.showboardplace(0,1));
+console.log("Bot: board minion 2: " + await contract.showboardplace(1,1));
+console.log("Bot: board minion 3: " + await contract.showboardplace(2,1));
+
+
 
 
 
