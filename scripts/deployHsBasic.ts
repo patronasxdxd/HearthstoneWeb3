@@ -119,6 +119,14 @@ console.log("Bot: board minion 2: " + await contract.showboardplace(1,1));
 
 
 
+
+
+
+
+
+
+
+
 }
 
 main()

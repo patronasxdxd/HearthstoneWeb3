@@ -65,6 +65,9 @@ constructor (address _address) {
     mapping (address => string ) public usernames;
     uint private gameCount = 0;
     uint8 private currentPlayerTurn = 0; 
+    //if true than game is running
+    bool private gameStatus = true;
+    bool private victory = false;
 
 
 
@@ -208,6 +211,10 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
 
     function attack(uint minion, uint target, uint _player) external{
 
+      
+
+        require(target < games[msg.sender].player[_player].minions.length-1,"targe doesnt exist");
+
         uint enemy;
         if (_player == 0 ){
               enemy = 1;
@@ -221,16 +228,14 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
         uint _attack = games[msg.sender].player[_player].minions[minion].attack;
 
         //hit enemy face
-       if (target == 666) { games[msg.sender].player[enemy].health = games[msg.sender].player[enemy].health - _attack;}
+       if (target == 666) {
+           if (games[msg.sender].player[enemy].health - _attack <= 0){ gameStatus = false; victory = true; }
+           else{    games[msg.sender].player[enemy].health = games[msg.sender].player[enemy].health - _attack;}
+        }
         //else hit minion
        else {
 
            if ( games[msg.sender].player[enemy].minions[target].health <= _attack){
-
-            //    delete games[msg.sender].player[enemy].minions[target];
-
-     
-
                  for (uint i = target; i < games[msg.sender].player[enemy].minions.length -1; i++) {
                      games[msg.sender].player[enemy].minions[i] = games[msg.sender].player[enemy].minions[i + 1];
                  }
