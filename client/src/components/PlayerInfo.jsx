@@ -23,13 +23,13 @@ const PlayerInfo = ({ player, playerIcon, mt }) => (
       ))}
     </div>
 
-    {/* <div
+    <div
       data-for={`Mana-${mt ? '1' : '2'}`}
       data-tip="Mana"
       className={`${styles.flexCenter} ${styles.glassEffect} ${styles.mana}`}
     >
       {player.mana || 0}
-    </div> */}
+    </div>
 
     <ReactTooltip id={`Player-${mt ? '1' : '2'}`} effect="solid" backgroundColor="#7f46f0">
       <p className={styles.playerInfo}>
@@ -40,7 +40,7 @@ const PlayerInfo = ({ player, playerIcon, mt }) => (
       </p>
     </ReactTooltip>
     <ReactTooltip id={`Health-${mt ? '1' : '2'}`} effect="solid" backgroundColor="#7f46f0" />
-    {/* <ReactTooltip id={`Mana-${mt ? '1' : '2'}`} effect="solid" backgroundColor="#7f46f0" /> */}
+    <ReactTooltip id={`Mana-${mt ? '1' : '2'}`} effect="solid" backgroundColor="#7f46f0" />
   </div>
 );
 

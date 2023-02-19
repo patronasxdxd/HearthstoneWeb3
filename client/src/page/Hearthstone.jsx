@@ -55,12 +55,14 @@ const Hearthstone = () => {
        
  
         const p1H = player01.health.toNumber();
+        const p1M = player01.mana.toNumber();
+        const p2M = player02.mana.toNumber();
   
         const p2H = player02.health.toNumber();
   
 
-        setPlayer1({ ...player01, health: p1H });
-        setPlayer2({ ...player02, health: p2H});
+        setPlayer1({ ...player01, health: p1H, mana: p1M });
+        setPlayer2({ ...player02, health: p2H, mana: p1M  });
       } catch (error) {
         setErrorMessage(error.message);
       }
