@@ -24,7 +24,7 @@ module.exports = {
       backgroundImage: {
         
         astral: "url('/src/assets/background/kha.webp')",
-        saiman: "url('/src/assets/background/wildy.webp')",
+        saiman: "url('/src/assets/background/boardShaman.webp')",
         eoaalien: "url('/src/assets/background/eoaalien.jpg')",
         panight: "url('/src/assets/background/panight.jpg')",
         heroImg: "url('/src/assets/background/hero-img.jpg')",

@@ -1,5 +1,5 @@
 // backgrounds
-import wildy from './background/wildy.webp';
+import wildy from './background/boardShaman.webp';
 import desert from './background/kha.webp';
 import eoaalien from './background/eoaalien.jpg';
 import panight from './background/panight.jpg';
@@ -114,10 +114,6 @@ export const outfits = [
 ];
 
 export const gameRules = [
-  'each players chooses one',
-  'attack style and than fight',
-  'Melee beats Range',
-  'Range beats Magic',
-  'Magic beats Melee',
+  'TODO'
 
 ];

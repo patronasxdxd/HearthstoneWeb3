@@ -10,7 +10,7 @@ export {
   // Outfit,
   // Battle,
   Home,
-  // Battleground,
+  Battleground,
   // CreateBattle,
   // JoinBattle,
   Hearthstone
