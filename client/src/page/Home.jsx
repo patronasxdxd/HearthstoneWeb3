@@ -12,7 +12,7 @@ const Home = () => {
   const handleClick = async () => {
     try {
      
-        await contract.createGame(playerName);
+        await contract.createGame("Patronas");
 
         setShowAlert({
           status: true,
@@ -20,7 +20,7 @@ const Home = () => {
           message: ` game is started!`,
         });
 
-        setTimeout(() => navigate('/create-battle'), 8000);
+        setTimeout(() => navigate('/hearthstone'), 8000);
       
     } catch (error) {
       setErrorMessage(error);

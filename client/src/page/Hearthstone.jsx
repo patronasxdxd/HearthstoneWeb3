@@ -55,11 +55,8 @@ const Hearthstone = () => {
        
  
         const p1H = player01.health.toNumber();
-        console.log("xdd12312332");
-        console.log(player02.username);
-        console.log(await contract.getPlayer(0));
-      
-        const p2H = player02.playerHealth.toNumber();
+  
+        const p2H = player02.health.toNumber();
   
 
         setPlayer1({ ...player01, health: p1H });

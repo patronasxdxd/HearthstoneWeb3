@@ -26,7 +26,7 @@ const PlayerInfo = ({ player, playerIcon, mt }) => (
     {/* <div
       data-for={`Mana-${mt ? '1' : '2'}`}
       data-tip="Mana"
-      className={`${styles.flexCenter} ${styles.glassEffect} ${styles.playerMana}`}
+      className={`${styles.flexCenter} ${styles.glassEffect} ${styles.mana}`}
     >
       {player.mana || 0}
     </div> */}

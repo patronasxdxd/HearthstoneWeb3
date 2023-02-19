@@ -8,7 +8,7 @@ pragma solidity >=0.7.0 <0.9.0;
  */
 
 
-import  "contracts/Characters.sol";
+import "contracts/Characters.sol";
 
 //attack 1,2,3,4,5,6,7 attacks enemy board 8 attacks face
 
@@ -30,13 +30,6 @@ constructor (address _address) {
 
 
 //   enum gameStatus{ PENDING, STARTED, ENDED }
-
-
-     
-
-
-
-
 
     struct Player {
         string username;
@@ -99,6 +92,8 @@ constructor (address _address) {
 
     function endTurn(uint _player) external {
         require(currentPlayerTurn ==  _player,"its not your turn");
+        games[msg.sender].player[_player].hand.push( drawCard());
+
 
         if (games[msg.sender].player[_player].mana < 10){
             games[msg.sender].player[_player].mana += 1;
@@ -113,32 +108,18 @@ constructor (address _address) {
 
     function createGame(string memory _username) external {
 
-
-        Game storage game = games[msg.sender];
         Player storage player1 = games[msg.sender].player[0];
         Player storage player2 = games[msg.sender].player[1];
-        game.gameId = gameCount++;
+
 
         player1.username = _username;
         player1.health = 30;
         player1.mana = 1;
-        // player1.hand.push( drawCard());
-        player1.hand.push(Champs(1,2,1,1,"defender","Give adjusted minions +1/+1 and taunt",false,false,false,false,false));
-        player1.hand.push( drawCard());
-        player1.hand.push( drawCard());
+
 
         player2.username = "Bot";
         player2.health = 30;
         player2.mana = 1;
-        player2.hand.push( drawCard());
-        player2.hand.push( drawCard());
-        player2.hand.push( drawCard());
-
-
-
-        
-
-
         
     }
 

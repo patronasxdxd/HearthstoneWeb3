@@ -25,15 +25,22 @@ async function main(){
   )) as Hearthstone;
 
 
-  await contract.createGame("Patronasxd")
-
-
+  // await contract.createGame("patronasxd")
 
 // //   await contract.playMinion(1);
 // //   await contract.playMinion(2);
 // //   await contract.playMinion(3);
 
 // // first parameter is the minionId second one is the player, "0" means the player and "1" for the bot
+
+//   await contract.playerDrawCard(0);
+//   await contract.playerDrawCard(0);
+//   await contract.playerDrawCard(0);
+
+//   await contract.playerDrawCard(1);
+//   await contract.playerDrawCard(1);
+//   await contract.playerDrawCard(1);
+
 
 //   await contract.playMinionById(1,0);
 //   await contract.playMinionById(1,0);
