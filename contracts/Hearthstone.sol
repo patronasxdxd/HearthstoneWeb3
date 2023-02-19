@@ -77,6 +77,10 @@ constructor (address _address) {
 
     function endTurn(uint _player) external {
         require(currentPlayerTurn ==  _player,"its not your turn");
+        if (games[msg.sender].player[_player].mana < 10){
+            games[msg.sender].player[_player].mana += 1;
+        }
+        
         if (currentPlayerTurn == 0) {
             currentPlayerTurn = 1;
         }else currentPlayerTurn = 0;
@@ -141,13 +145,25 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
     }
 
     function playMinion( uint _player, uint _handIndex) external {
+        
+
         Game storage game = games[msg.sender];
+
+
+        require(games[msg.sender].player[_player].mana >= game.player[_player].hand[_handIndex].manaCost, "not enough mana");
+
+        games[msg.sender].player[_player].mana -= game.player[_player].hand[_handIndex].manaCost;
+
+
         game.player[_player].minions.push(game.player[_player].hand[_handIndex]);
 
          for (uint i = 0; i <  games[msg.sender].player[_player].hand.length -1; i++) {
                      games[msg.sender].player[_player].hand[i] = games[msg.sender].player[_player].hand[i + 1];
                  }
                 games[msg.sender].player[_player].hand.pop();
+
+
+        emit playMinionEvent(game.player[_player].hand[_handIndex]);
   
         // game.player[_player].minions.push( drawCard()); 
         // game.player[_player].
@@ -430,6 +446,7 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
 
 
 event drawn(Champs str);
+event playMinionEvent(Champs str);
     
     
 
