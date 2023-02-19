@@ -11,23 +11,41 @@ const Home = () => {
 
   const handleClick = async () => {
     try {
-      const playerExists = await contract.isPlayer(walletAddress);
-
-      if (!playerExists) {
-        await contract.registerPlayer(playerName, playerName, { gasLimit: 500000 });
+     
+        await contract.createGame();
 
         setShowAlert({
           status: true,
           type: 'info',
-          message: `${playerName} is being summoned!`,
+          message: ` game is started!`,
         });
 
         setTimeout(() => navigate('/create-battle'), 8000);
-      }
+      
     } catch (error) {
       setErrorMessage(error);
     }
   };
+
+
+  const handleClick2 = async () => {
+    try {
+      // const playerExists = await contract.isPlayer(walletAddress);
+
+      // if (!playerExists) {
+        setShowAlert({
+          status: true,
+          type: 'info',
+          message: `Loading the board!`,
+        });
+
+        setTimeout(() => navigate('/hearthstone'), 2000);
+      // }
+    } catch (error) {
+      setErrorMessage(error);
+    }
+  };
+
 
   useEffect(() => {
     const createPlayerToken = async () => {
@@ -57,8 +75,14 @@ const Home = () => {
         />
 
         <CustomButton
-          title="Register"
+          title="start"
           handleClick={handleClick}
+          restStyles="mt-6"
+        />
+  
+<CustomButton
+          title="load"
+          handleClick={handleClick2}
           restStyles="mt-6"
         />
       </div>
@@ -69,9 +93,9 @@ const Home = () => {
 export default PageHOC(
   Home,
   <>
-    Welcome to 0xRunescape,  <br /> a Web3 Game
+    0xHearhstone,  <br /> 
   </>,
   <>
-    Connect your wallet to start playing <br /> this version of runescape
+    Connect your wallet to start playing <br /> this version of hearhstone
   </>,
 );

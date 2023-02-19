@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { GetParams } from '../utils/onboard.js';
 import { ABI, ADDRESS } from '../contract';
 import { createEventListeners } from './createEventListeners';
+// import { count } from 'console';
 
 const GlobalContext = createContext();
 
@@ -22,6 +23,9 @@ export const GlobalContextProvider = ({ children }) => {
   const [updateGameData, setUpdateGameData] = useState(0);
   const [outfit, setOutfit] = useState('bg-1')
   const [played, setPlayed] = useState(false);
+
+//round
+  const [count,setCount] = useState(0);
 
   const player1Ref = useRef();
   const player2Ref = useRef();
@@ -123,50 +127,44 @@ export const GlobalContextProvider = ({ children }) => {
         const signer = provider.getSigner();
         const contract = new ethers.Contract(ADDRESS, ABI, signer);
 
+        setGameData(count);
+        setCount(count +1)
 
        
       
-        const fetchedBattles = await contract.getAllBattles();
+        // const fetchedBattles = await contract.getAllBattles();
         
-        fetchedBattles.forEach((battle) => {
+        // fetchedBattles.forEach((battle) => {
 
 
         
 
-          if (battle.players.find((player) => player.toLowerCase() === walletAddress.toLowerCase())) {
+        //   if (battle.players.find((player) => player.toLowerCase() === walletAddress.toLowerCase())) {
 
            
            
-           if(battle.battleStatus === 1){
-            if (battle.moves[0] === 0 && battle.moves[1] === 0) {
+        //    if(battle.battleStatus === 1){
+        //     if (battle.moves[0] === 0 && battle.moves[1] === 0) {
           
-              setPlayed(false);
-              console.log("new round!");
-            }
+        //       setPlayed(false);
+        //       console.log("new round!");
+        //     }
             
-          }
-        }
-        });
+        //   }
+        // }
+        // });
 
+        // const pendingBattles = fetchedBattles.filter((battle) => battle.battleStatus === 0);
+        // let activeBattle = null;
 
-        const pendingBattles = fetchedBattles.filter((battle) => battle.battleStatus === 0);
-        let activeBattle = null;
-
-
-
-        fetchedBattles.forEach((battle) => {
-          if (battle.players.find((player) => player.toLowerCase() === walletAddress.toLowerCase())) {
-            if (battle.winner.startsWith('0x00')) {
-              activeBattle = battle;
-            }
-          }
-        });
-
-        
-
-        
-
-        setGameData({ pendingBattles: pendingBattles.slice(1), activeBattle });
+        // fetchedBattles.forEach((battle) => {
+        //   if (battle.players.find((player) => player.toLowerCase() === walletAddress.toLowerCase())) {
+        //     if (battle.winner.startsWith('0x00')) {
+        //       activeBattle = battle;
+        //     }
+        //   }
+        // });
+        // setGameData({ pendingBattles: pendingBattles.slice(1), activeBattle });
       }
     };
 

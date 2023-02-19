@@ -19,9 +19,19 @@ contract Hearthstone {
 
     uint nonce = 0;
 
+    address owner;
+
+
 constructor (address _address) {
+    owner = msg.sender;
+
     charC = Characters(_address);
 }
+
+
+  enum gameStatus{ PENDING, STARTED, ENDED }
+
+
      
 
 
@@ -59,6 +69,7 @@ constructor (address _address) {
         uint gameId;
         Board board;
         Player[2] player;
+        gameStatus gamestatus;
     }   
 
     mapping (address => Game) public games;
@@ -89,6 +100,7 @@ constructor (address _address) {
 
 
     function createGame() external {
+
 
         Game storage game = games[msg.sender];
         Player storage player1 = games[msg.sender].player[0];

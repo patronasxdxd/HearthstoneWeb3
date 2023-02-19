@@ -5,6 +5,9 @@ import { playAudio, sparcle } from '../utils/animation.js';
 import { defenseSound } from '../assets';
 import { GlobalContextProvider } from '.';
 
+
+
+
 const AddNewEvent = (eventFilter, provider, cb) => {
   provider.removeListener(eventFilter);
 
@@ -29,18 +32,31 @@ const emptyAccount = '0x0000000000000000000000000000000000000000';
 
 export const createEventListeners = ({ navigate, contract, provider, walletAddress, setShowAlert, player1Ref, player2Ref, setUpdateGameData,setPlayed }) => {
 
-  const NewPlayerEventFilter = contract.filters.NewPlayer();
-  AddNewEvent(NewPlayerEventFilter, provider, ({ args }) => {
-    console.log('New player created!', args);
+  // const NewPlayerEventFilter = contract.filters.NewPlayer();
+  // AddNewEvent(NewPlayerEventFilter, provider, ({ args }) => {
+  //   console.log('New player created!', args);
 
-    if (walletAddress === args.owner) {
-      setShowAlert({
-        status: true,
-        type: 'success',
-        message: 'Player has been successfully registered',
-      });
-    }
-  });
+  //   if (walletAddress === args.owner) {
+  //     setShowAlert({
+  //       status: true,
+  //       type: 'success',
+  //       message: 'Player has been successfully registered',
+  //     });
+  //   }
+  // });
+
+
+  const drawCard = contract.filters.drawCard();
+AddNewEvent(drawCard, provider, ({ args }) => {
+  console.log('card drawm', args);
+  // localStorage.setItem('player',0);
+    setShowAlert({
+      status: true,
+      type: 'success',
+      message: 'succesfully drawn a card' + args,
+    });
+  
+});
 
   const NewBattleEventFilter = contract.filters.NewBattle();
   AddNewEvent(NewBattleEventFilter, provider, ({ args }) => {

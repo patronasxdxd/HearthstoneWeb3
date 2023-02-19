@@ -4,8 +4,8 @@ import desert from './background/kha.webp';
 import eoaalien from './background/eoaalien.jpg';
 import panight from './background/panight.jpg';
 import heroImg from './background/hero-img.jpg';
-import runescapeLogin from './background/runescapeLogin.jpg'
-import logoo from './background/runescapeLogo.webp'
+import runescapeLogin from './background/hearthstoneLogin.jpg'
+import logoo from './background/cutebg.png'
 
 // cards
 import Dharock from './Dharock.png'

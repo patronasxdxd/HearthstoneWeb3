@@ -4,12 +4,14 @@ import Battleground from './Battleground';
 import CreateBattle from './CreateBattle';
 import JoinBattle from './JoinBattle';
 import Outfit from './Outfit';
+import Hearthstone from './Hearthstone';
 
 export {
-  Outfit,
-  Battle,
+  // Outfit,
+  // Battle,
   Home,
-  Battleground,
-  CreateBattle,
-  JoinBattle,
+  // Battleground,
+  // CreateBattle,
+  // JoinBattle,
+  Hearthstone
 };
