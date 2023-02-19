@@ -119,12 +119,7 @@ console.log("Bot: board minion 2: " + await contract.showboardplace(1,1));
 // console.log("hand size is: " + await contract.handSize());
 // console.log("minions size: " + await contract.boardSize());
 
-
-
-
-
-
-}
+} 
 
 main()
   .then(() => process.exit(0))
