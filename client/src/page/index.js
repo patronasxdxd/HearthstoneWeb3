@@ -7,7 +7,7 @@ import Outfit from './Outfit';
 import Hearthstone from './Hearthstone';
 
 export {
-  // Outfit,
+  Outfit,
   // Battle,
   Home,
   Battleground,

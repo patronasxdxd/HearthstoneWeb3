@@ -19,6 +19,14 @@ import ahrim from './ahrim.webp'
 import wom from './Wise_old_Man.webp'
 import virtus from './virtus.webp'
 
+
+// heros
+
+import Druid1 from './board/druidHero.png'
+import Druid2 from './board/druidHero2.png'
+import Druid3 from './board/druidHero3.png'
+import Druid4 from './board/druidHero4.png'
+
 // logo
 import logo from './logo.svg';
 
@@ -52,16 +60,14 @@ import adventure from './sounds/adventure.mp3'
 
 export const allCards = [
  
-  Dharock,
-  Bronze,Bandos,
-  Dragon, Graandor,
-  Mage,noobranger,ahrim,wom,virtus
+  Druid1,Druid2,Druid3,Druid4
   
 ];
 
 export {
   rsattack,rsmagic,rsstrenght,rsrange,
 
+  Druid1,Druid2,Druid3,Druid4,
 
 
   Zero,
@@ -101,16 +107,16 @@ export const battlegrounds = [
 
 
 export const outfits = [
-  { id: '1', image: Dharock, name: 'Dharock' },
-  { id: '2', image: Bronze, name: 'Bronze' },
-  { id: '3', image: Bandos, name: 'Bandos' },
-  { id: '4', image: Dragon, name: 'Dragon' },
-  { id: '5', image: Graandor, name: 'Graandor' },
-  { id: '6', image: Mage, name: 'Mage' },
-  { id: '7', image: noobranger, name: 'ranger' },
-  { id: '8', image: ahrim, name: 'Ahrim' },
-  { id: '9', image: wom, name: 'Old Wise Man' },
-  { id: '10', image: virtus, name: 'Virtus' }
+  { id: '1', image: Druid1, name: 'Malfurion Hurlorage' },
+  { id: '2', image: Druid2, name: 'Lunara' },
+  { id: '3', image: Druid3, name: 'Storm Rage Lunara' },
+  { id: '4', image: Druid4, name: 'Dame HazelBark' },
+  // { id: '5', image: Graandor, name: 'Graandor' },
+  // { id: '6', image: Mage, name: 'Mage' },
+  // { id: '7', image: noobranger, name: 'ranger' },
+  // { id: '8', image: ahrim, name: 'Ahrim' },
+  // { id: '9', image: wom, name: 'Old Wise Man' },
+  // { id: '10', image: virtus, name: 'Virtus' }
 ];
 
 export const gameRules = [

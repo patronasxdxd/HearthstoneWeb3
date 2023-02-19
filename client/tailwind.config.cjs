@@ -23,7 +23,7 @@ module.exports = {
 // import virtus from './virtus.webp'
       backgroundImage: {
         
-        astral: "url('/src/assets/background/kha.webp')",
+        astral: "url('/src/assets/background/boardShaman.webp')",
         saiman: "url('/src/assets/background/boardShaman.webp')",
         eoaalien: "url('/src/assets/background/eoaalien.jpg')",
         panight: "url('/src/assets/background/panight.jpg')",

@@ -30,7 +30,7 @@ const Outfit = () => {
 
       <h1 className={`${styles.headText} text-center`}>
         Choose your
-        <span className="text-siteViolet"> Outift </span>
+        <span className="text-siteViolet"> Character </span>
         
       </h1>
 
