@@ -134,10 +134,23 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
     return randomValue;
   }
 
+    function playerDrawCard ( uint _player) external {
+        games[msg.sender].player[_player].hand.push( drawCard());
+        emit drawn(drawCard());
 
-    function playMinion( uint _player) external {
+    }
+
+    function playMinion( uint _player, uint _handIndex) external {
         Game storage game = games[msg.sender];
-        game.player[_player].minions.push( drawCard()); 
+        game.player[_player].minions.push(game.player[_player].hand[_handIndex]);
+
+         for (uint i = 0; i <  games[msg.sender].player[_player].hand.length -1; i++) {
+                     games[msg.sender].player[_player].hand[i] = games[msg.sender].player[_player].hand[i + 1];
+                 }
+                games[msg.sender].player[_player].hand.pop();
+  
+        // game.player[_player].minions.push( drawCard()); 
+        // game.player[_player].
     }
 
     function playMinionById(uint minionId,uint _player) external {
@@ -416,6 +429,7 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
     
 
 
+event drawn(Champs str);
     
     
 
