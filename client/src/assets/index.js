@@ -34,8 +34,8 @@ import logo from './logo.svg';
 //icons
 import rsattack from './icons/attack.png'
 import rsstrenght from './icons/strenght.png'
-import rsrange from './icons/range.png'
-import rsmagic from './icons/magic.png'
+import rsrange from './board/druidheropower.png'
+import rsmagic from './board/end.webp'
 
 
 

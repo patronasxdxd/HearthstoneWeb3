@@ -74,17 +74,17 @@ const Hearthstone = () => {
 
 
   const handleBattleChoice = (ground) => {
-    // // setBattleGround(ground.id);
-    // setOutfit(ground.id);
+    // setBattleGround(ground.id);
+    setOutfit(ground.id);
 
-    // // localStorage.setItem('battleground', ground.id);
-    // localStorage.setItem('outfit', ground.id);
+    // localStorage.setItem('battleground', ground.id);
+    localStorage.setItem('outfit', ground.id);
 
-    // setShowAlert({ status: true, type: 'info', message: `${ground.name} is battle ready!` });
+    setShowAlert({ status: true, type: 'info', message: `${ground.name} is battle ready!` });
 
-    // setTimeout(() => {
-    //   navigate(-1);
-    // }, 1000);
+    setTimeout(() => {
+      navigate(-1);
+    }, 1000);
   };
 
   return (
@@ -132,11 +132,7 @@ const Hearthstone = () => {
   
   <div className="flex items-center flex-row">
    
-        <ActionButton
-          imgUrl={rsattack}
-          handleClick={() => makeAMove(1)}
-          restStyles="ml-6 hover:border-red-600"
-        />
+        
           <ActionButton
           imgUrl={rsrange}
           handleClick={() => makeAMove(2)}
