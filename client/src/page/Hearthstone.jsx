@@ -33,32 +33,23 @@ const Hearthstone = () => {
         
         let player01Address = null;
         let player02Address = null;
-
-        // if (gameData.activeBattle.players[0].toLowerCase() === walletAddress.toLowerCase()) {
-        //   console.log("xdd123");
-        //   player01Address = gameData.activeBattle.players[0];
-        //   player02Address = gameData.activeBattle.players[1];
-        // } else {
-        //   console.log("xdd123");
-        //   player01Address = gameData.activeBattle.players[1];
-        //   player02Address = gameData.activeBattle.players[0];
-        // }
-
         
-     
-
-        // const p1TokenData = await contract.getPlayerToken(player01Address);
         const player01 = await contract.getPlayer(0);
         const player02 = await contract.getPlayer(1);
 
-
-       
  
         const p1H = player01.health.toNumber();
         const p1M = player01.mana.toNumber();
         const p2M = player02.mana.toNumber();
   
         const p2H = player02.health.toNumber();
+
+
+        const handsize = player01.hand.length;
+
+
+        console.log(player01);
+        console.log(handsize);
   
 
         setPlayer1({ ...player01, health: p1H, mana: p1M });
@@ -85,6 +76,28 @@ const Hearthstone = () => {
     setTimeout(() => {
       navigate(-1);
     }, 1000);
+  };
+
+
+
+  const endTurn = async () => {
+  
+    try {
+      await contract.endTurn(0);
+
+      // setPlayed(true);
+
+
+      setShowAlert({
+        status: true,
+        type: 'info',
+        message: `ended turn`,
+      });
+    } catch (error) {
+      setErrorMessage(error);
+    }
+
+
   };
 
   return (
@@ -114,10 +127,14 @@ const Hearthstone = () => {
           
         />
 
+        
+
 
 
 
   <div className="flex items-center flex-col">
+
+    
 
 
 
@@ -140,7 +157,7 @@ const Hearthstone = () => {
         />
          <ActionButton
           imgUrl={rsmagic}
-          handleClick={() => makeAMove(3)}
+          handleClick={() => endTurn()}
           restStyles="ml-6 hover:border-yellow-400"
         />
 

@@ -46,7 +46,10 @@ export const createEventListeners = ({ navigate, contract, provider, walletAddre
   // });
 
 
-  const drawCard = contract.filters.drawCard();
+
+
+
+  const drawCard = contract.filters.drawn();
 AddNewEvent(drawCard, provider, ({ args }) => {
   console.log('card drawm', args);
   // localStorage.setItem('player',0);
@@ -55,6 +58,8 @@ AddNewEvent(drawCard, provider, ({ args }) => {
       type: 'success',
       message: 'succesfully drawn a card' + args,
     });
+
+    console.log(args)
   
 });
 
