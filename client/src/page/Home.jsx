@@ -12,7 +12,7 @@ const Home = () => {
   const handleClick = async () => {
     try {
      
-        await contract.createGame();
+        await contract.createGame(playerName);
 
         setShowAlert({
           status: true,

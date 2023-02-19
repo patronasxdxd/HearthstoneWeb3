@@ -19,13 +19,15 @@ async function main(){
 
     console.log("Hearthstone deployed to:", contractHead.address);
 
-//   const contract = (await ethers.getContractAt(
-//     "Hearthstone",
-//     contractHead.address
-//   )) as Hearthstone;
+  const contract = (await ethers.getContractAt(
+    "Hearthstone",
+    contractHead.address
+  )) as Hearthstone;
 
 
-//   await contract.createGame()
+  await contract.createGame("Patronasxd")
+
+
 
 // //   await contract.playMinion(1);
 // //   await contract.playMinion(2);

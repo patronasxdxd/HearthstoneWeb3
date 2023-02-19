@@ -18,32 +18,46 @@ const Hearthstone = () => {
   const [player1, setPlayer1] = useState({});
   const { battleName } = useParams();
 
+
+  console.log("xd");
+
   useEffect(() => {
+   
+    
 
 
     const getPlayerInfo = async () => {
       try {
+
+        console.log("xdd");
         
         let player01Address = null;
         let player02Address = null;
 
-        if (gameData.activeBattle.players[0].toLowerCase() === walletAddress.toLowerCase()) {
-          player01Address = gameData.activeBattle.players[0];
-          player02Address = gameData.activeBattle.players[1];
-        } else {
-          player01Address = gameData.activeBattle.players[1];
-          player02Address = gameData.activeBattle.players[0];
-        }
+        // if (gameData.activeBattle.players[0].toLowerCase() === walletAddress.toLowerCase()) {
+        //   console.log("xdd123");
+        //   player01Address = gameData.activeBattle.players[0];
+        //   player02Address = gameData.activeBattle.players[1];
+        // } else {
+        //   console.log("xdd123");
+        //   player01Address = gameData.activeBattle.players[1];
+        //   player02Address = gameData.activeBattle.players[0];
+        // }
 
         
      
 
-        const p1TokenData = await contract.getPlayerToken(player01Address);
-        const player01 = await contract.getPlayer(player01Address);
-        const player02 = await contract.getPlayer(player02Address);
+        // const p1TokenData = await contract.getPlayerToken(player01Address);
+        const player01 = await contract.getPlayer(0);
+        const player02 = await contract.getPlayer(1);
 
+
+       
  
-        const p1H = player01.playerHealth.toNumber();
+        const p1H = player01.health.toNumber();
+        console.log("xdd12312332");
+        console.log(player02.username);
+        console.log(await contract.getPlayer(0));
       
         const p2H = player02.playerHealth.toNumber();
   
@@ -55,7 +69,7 @@ const Hearthstone = () => {
       }
     };
 
-    if (contract && gameData.activeBattle) getPlayerInfo();
+    if (contract ) getPlayerInfo();
   }, [contract, gameData, battleName]);
 
 

@@ -29,7 +29,7 @@ constructor (address _address) {
 }
 
 
-  enum gameStatus{ PENDING, STARTED, ENDED }
+//   enum gameStatus{ PENDING, STARTED, ENDED }
 
 
      
@@ -69,7 +69,7 @@ constructor (address _address) {
         uint gameId;
         Board board;
         Player[2] player;
-        gameStatus gamestatus;
+        // gameStatus gamestatus;
     }   
 
     mapping (address => Game) public games;
@@ -81,6 +81,17 @@ constructor (address _address) {
     bool private victory = false;
 
 
+    
+
+    function getPlayer(uint _player) external view returns (Player memory) {
+          return games[msg.sender].player[_player];
+    }
+
+     function getGame(uint _player) external view returns (Game memory) {
+          return games[msg.sender];
+    }
+
+
 
     function getTurn() external view returns (uint8)  {
         return currentPlayerTurn;
@@ -88,6 +99,7 @@ constructor (address _address) {
 
     function endTurn(uint _player) external {
         require(currentPlayerTurn ==  _player,"its not your turn");
+
         if (games[msg.sender].player[_player].mana < 10){
             games[msg.sender].player[_player].mana += 1;
         }
@@ -99,7 +111,7 @@ constructor (address _address) {
 
 
 
-    function createGame() external {
+    function createGame(string memory _username) external {
 
 
         Game storage game = games[msg.sender];
@@ -107,7 +119,7 @@ constructor (address _address) {
         Player storage player2 = games[msg.sender].player[1];
         game.gameId = gameCount++;
 
-        player1.username = "patronasXd";
+        player1.username = _username;
         player1.health = 30;
         player1.mana = 1;
         // player1.hand.push( drawCard());
@@ -195,10 +207,18 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
 
    
 
-    function getBoard() external view returns (uint)  {
+    function getBoard(uint _player) external view returns (Champs[] memory)  {
 
-        return games[msg.sender].player[0].minions[0].id;
+        return games[msg.sender].player[_player].minions;
     }
+
+
+    function getHand(uint _player) external view returns (Champs[] memory)  {
+
+        return games[msg.sender].player[_player].hand;
+    }
+
+
 
     function getAttack(uint id) external view returns (uint ) {
 
@@ -439,27 +459,9 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
     }
 
 
- 
-
-
-     // function showHand() external view  returns (uint[] memory){
-
-    //     uint[] memory hand;
-
-    //     for (uint i = 0;i < games[msg.sender].player[0].hand.length;i++){
-    //         hand[i] = games[msg.sender].player[0].hand[i].id;
-    //     }
-
-
-    //     return hand;
-    // }
-   
-    
-
-
 event drawn(Champs str);
 event playMinionEvent(Champs str);
     
-    
+
 
 }
