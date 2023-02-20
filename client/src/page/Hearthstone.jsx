@@ -162,21 +162,33 @@ const Hearthstone = () => {
 
 
     <div className={`${styles.flexCenter} flex-col my-10`}>
+
+    <div className="flex items-center flex-row">
       <Card
         card={player2}
         title={player2?.playerName}
         cardRef={player2Ref}
         playerTwo
       />
+     
+   
+        
+   <ActionButton
+   imgUrl={rsrange}
+   handleClick={() => makeAMove(2)}
+   restStyles="ml-6 hover:border-red-600"
+ />
+ </div>
+      
 
       <div className="flex items-center flex-row">
        
         <Card
           card={player1}
           
-          // title={player1?.playerName}
+          // title={"Gilles"}
           cardRef={player1Ref}
-          restStyles="mt-3 "
+          // restStyles="mt-3 " 
           img1={allCards[localStorage.getItem('outfit')-1]}
           
         />
@@ -208,7 +220,7 @@ const Hearthstone = () => {
           handleClick={() => makeAMove(2)}
           restStyles="ml-6 hover:border-red-600"
         />
-         <ActionButton
+         {/* <ActionButton
           imgUrl={rsmagic}
           handleClick={() => endTurn()}
           restStyles="ml-6 hover:border-yellow-400"
@@ -217,14 +229,16 @@ const Hearthstone = () => {
           imgUrl={rsmagic}
           handleClick={() => endTurn2()}
           restStyles="ml-6 hover:border-yellow-400"
-        />
+        /> */}
 
 {/* <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" onClick={endTurn()}>
   End Turn
 </button> */}
 
       </div>
+      
     </div>
+    
     </div>
     </div>
 

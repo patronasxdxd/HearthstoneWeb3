@@ -11,8 +11,8 @@ const PlayerInfo = ({ player, playerIcon, mt }) => (
     <img data-for={`Player-${mt ? '1' : '2'}`} data-tip src={playerIcon} alt="player02" className="w-0 h-0 object-contain rounded-full" />
 
     <div
-      data-for={`Health-${mt ? '1' : '2'}`}
-      data-tip={`Health: ${player.health}`}
+      data-for={`Mana-${mt ? '1' : '2'}`}
+      data-tip={`Mana: ${player.mana}`}
       className={styles.playerHealth}
     >
       {[...Array(player.health).keys()].map((item, index) => (

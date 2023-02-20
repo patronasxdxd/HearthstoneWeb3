@@ -29,13 +29,16 @@ const HearthstoneCard = ({ card, title, restStyles, cardRef, playerTwo,img1 }) =
     <div className={`card-face`}>
       <img src={playerTwo? hscard2[Number(card.id)-1] :legendCardBack} alt="ace_card"  />
 
-      <div className={``}>
+
+      {/* TODO Add these to the cards */}
+
+      {/* <div className={``}>
         <p className={` text-yellow-400`}>{playerTwo? Number(card.attack) : ""}</p>
       </div>
 
       <div className={``}>
         <p className={` text-yellow-400`}>{playerTwo? Number(card.health) : ""}</p>
-      </div>
+      </div> */}
    
 
       <div className={` `}>
