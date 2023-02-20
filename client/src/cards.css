@@ -20,6 +20,24 @@ body {
   
 }
 
+.bloodtext{
+    font-size: 1.5em; /* 40px/16=2.5em */
+   position: absolute;
+   /* font-weight: bold; */
+   font-weight: 900;
+   top: 65%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   -webkit-text-fill-color: red;
+  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-width: 1.70px; 
+}
+
+.bloodImage{
+    width: 200%;
+    height: auto;
+}
+
 .card {
   height: 150px;
   margin: 0 -25px;

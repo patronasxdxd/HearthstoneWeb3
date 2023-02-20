@@ -5,6 +5,8 @@ import styles from '../styles';
 import { allCards } from '../assets';
 import { useGlobalContext } from '../context';
 import { blood } from '../assets';
+import '../index.css';
+
 
 
 
@@ -27,9 +29,9 @@ const Card = ({ card, title, restStyles, cardRef, playerTwo,img1 }) => (
      
   
 
-      <div className={`${styles.cardPointContainer} sm:left-[10.2%] left-[10%] top-[63%] bg-white border-solid border-2 border-black	 ${styles.flexCenter}`}>
-      {/* <img src={blood} ></img> */}
-        <p className={`${styles.cardPoint} text-red-600 drop-shadow	`}>{card.health}</p>
+      <div className={`${styles.cardPointContainer} sm:left-[10.2%] left-[10%] top-[63%] 	 ${styles.flexCenter}`}>
+      <img className= "bloodImage" src={blood} ></img>
+        <p className={`bloodtext text-white	`}>{card.health}</p>
       </div>
       
       {/* <div className={`${styles.cardPointContainer} sm:right-[20.2%] right-[15%] ${styles.flexCenter}`}>
