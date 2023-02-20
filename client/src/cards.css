@@ -74,7 +74,7 @@ body {
  
   background-size: 100px 150px;
   background-repeat: no-repeat;
-  box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(255, 153, 153, 0.75);
+  /* box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(255, 153, 153, 0.75); */
   transform: translateY(45px) rotate(-28.125deg);
 }
 .card:nth-child(1) .card-face .card-label {
@@ -82,7 +82,7 @@ body {
   text-shadow: -0.025em 0.025em 0 #ff8080;
 }
 .card:nth-child(1):hover .card-face {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(255, 153, 153, 0.75);
+  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(255, 153, 153, 0.75); */
   transform: translateY(-100px) rotate(0deg) scale(2);
   transition-duration: 0ms;
   z-index: 5;
@@ -99,7 +99,7 @@ body {
   /* background: linear-gradient(-135deg, #ff99d6, #da0b87); */
   background-size: 100px 150px;
   background-repeat: no-repeat;
-  box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(255, 153, 214, 0.75);
+  /* box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(255, 153, 214, 0.75); */
   transform: translateY(35px) rotate(-21.875deg);
 }
 .card:nth-child(2) .card-face .card-label {
@@ -107,7 +107,7 @@ body {
   text-shadow: -0.025em 0.025em 0 #ff80cc;
 }
 .card:nth-child(2):hover .card-face {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(255, 153, 214, 0.75);
+  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(255, 153, 214, 0.75); */
   transform: translateY(-100px) rotate(0deg) scale(2);
   transition-duration: 0ms;
   z-index: 5;
@@ -124,7 +124,7 @@ body {
   /* background: linear-gradient(-135deg, #eb99ff, #b10bda); */
   background-size: 100px 150px;
   background-repeat: no-repeat;
-  box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(235, 153, 255, 0.75);
+  /* box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(235, 153, 255, 0.75); */
   transform: translateY(25px) rotate(-15.625deg);
 }
 .card:nth-child(3) .card-face .card-label {
@@ -132,7 +132,7 @@ body {
   text-shadow: -0.025em 0.025em 0 #e680ff;
 }
 .card:nth-child(3):hover .card-face {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(235, 153, 255, 0.75);
+  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(235, 153, 255, 0.75); */
   transform: translateY(-100px) rotate(0deg) scale(2);
   transition-duration: 0ms;
   z-index: 5;
@@ -151,7 +151,7 @@ body {
   
   background-size: 100px 150px;
   background-repeat: no-repeat;
-  box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(173, 153, 255, 0.75);
+  /* box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(173, 153, 255, 0.75); */
   transform: translateY(15px) rotate(-9.375deg);
 }
 .card:nth-child(4) .card-face .card-label {
@@ -159,7 +159,7 @@ body {
   text-shadow: -0.025em 0.025em 0 #9980ff;
 }
 .card:nth-child(4):hover .card-face {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(173, 153, 255, 0.75);
+  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(173, 153, 255, 0.75); */
   transform: translateY(-100px) rotate(0deg) scale(2);
   transition-duration: 0ms;
   z-index: 5;
@@ -176,7 +176,7 @@ body {
   /* background: linear-gradient(-135deg, #99c2ff, #0b5eda); */
   background-size: 100px 150px;
   background-repeat: no-repeat;
-  box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(153, 194, 255, 0.75);
+  /* box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(153, 194, 255, 0.75); */
   transform: translateY(5px) rotate(-3.125deg);
 }
 .card:nth-child(5) .card-face .card-label {
@@ -184,7 +184,7 @@ body {
   text-shadow: -0.025em 0.025em 0 #80b3ff;
 }
 .card:nth-child(5):hover .card-face {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(153, 194, 255, 0.75);
+  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(153, 194, 255, 0.75); */
   transform: translateY(-100px) rotate(0deg) scale(2);
   transition-duration: 0ms;
   z-index: 5;
@@ -198,8 +198,8 @@ body {
 }
 
 .card:nth-child(6) .card-face {
-  background: linear-gradient(-135deg, #99ffff, #0bdada);
-  box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(153, 255, 255, 0.75);
+  /* background: linear-gradient(-135deg, #99ffff, #0bdada); */
+  /* box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(153, 255, 255, 0.75); */
   transform: translateY(5px) rotate(3.125deg);
 }
 .card:nth-child(6) .card-face .card-label {
@@ -207,7 +207,7 @@ body {
   text-shadow: -0.025em 0.025em 0 #80ffff;
 }
 .card:nth-child(6):hover .card-face {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(153, 255, 255, 0.75);
+  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(153, 255, 255, 0.75); */
   transform: translateY(-100px) rotate(0deg) scale(2);
   transition-duration: 0ms;
   z-index: 5;
@@ -221,8 +221,8 @@ body {
 }
 
 .card:nth-child(7) .card-face {
-  background: linear-gradient(-135deg, #99ffc2, #0bda5e);
-  box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(153, 255, 194, 0.75);
+  /* background: linear-gradient(-135deg, #99ffc2, #0bda5e); */
+  /* box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(153, 255, 194, 0.75); */
   transform: translateY(15px) rotate(9.375deg);
 }
 .card:nth-child(7) .card-face .card-label {
@@ -230,7 +230,7 @@ body {
   text-shadow: -0.025em 0.025em 0 #80ffb3;
 }
 .card:nth-child(7):hover .card-face {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(153, 255, 194, 0.75);
+  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(153, 255, 194, 0.75); */
   transform: translateY(-100px) rotate(0deg) scale(2);
   transition-duration: 0ms;
   z-index: 5;
@@ -244,8 +244,8 @@ body {
 }
 
 .card:nth-child(8) .card-face {
-  background: linear-gradient(-135deg, #adff99, #35da0b);
-  box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(173, 255, 153, 0.75);
+  /* background: linear-gradient(-135deg, #adff99, #35da0b); */
+  /* box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(173, 255, 153, 0.75); */
   transform: translateY(25px) rotate(15.625deg);
 }
 .card:nth-child(8) .card-face .card-label {
@@ -253,7 +253,7 @@ body {
   text-shadow: -0.025em 0.025em 0 #99ff80;
 }
 .card:nth-child(8):hover .card-face {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(173, 255, 153, 0.75);
+  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(173, 255, 153, 0.75); */
   transform: translateY(-100px) rotate(0deg) scale(2);
   transition-duration: 0ms;
   z-index: 5;
@@ -267,8 +267,8 @@ body {
 }
 
 .card:nth-child(9) .card-face {
-  background: linear-gradient(-135deg, #ebff99, #b1da0b);
-  box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(235, 255, 153, 0.75);
+  /* background: linear-gradient(-135deg, #ebff99, #b1da0b); */
+  /* box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(235, 255, 153, 0.75); */
   transform: translateY(35px) rotate(21.875deg);
 }
 .card:nth-child(9) .card-face .card-label {
@@ -276,7 +276,7 @@ body {
   text-shadow: -0.025em 0.025em 0 #e6ff80;
 }
 .card:nth-child(9):hover .card-face {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(235, 255, 153, 0.75);
+  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(235, 255, 153, 0.75); */
   transform: translateY(-100px) rotate(0deg) scale(2);
   transition-duration: 0ms;
   z-index: 5;
@@ -290,8 +290,8 @@ body {
 }
 
 .card:nth-child(10) .card-face {
-  background: linear-gradient(-135deg, #ffd699, #da870b);
-  box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(255, 214, 153, 0.75);
+  /* background: linear-gradient(-135deg, #ffd699, #da870b); */
+  /* box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(255, 214, 153, 0.75); */
   transform: translateY(45px) rotate(28.125deg);
 }
 .card:nth-child(10) .card-face .card-label {
@@ -299,7 +299,7 @@ body {
   text-shadow: -0.025em 0.025em 0 #ffcc80;
 }
 .card:nth-child(10):hover .card-face {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(255, 214, 153, 0.75);
+  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(255, 214, 153, 0.75); */
   transform: translateY(-100px) rotate(0deg) scale(2);
   transition-duration: 0ms;
   z-index: 5;
