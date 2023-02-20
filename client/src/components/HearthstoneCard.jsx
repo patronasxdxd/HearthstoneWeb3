@@ -25,6 +25,7 @@ const HearthstoneCard = ({ card, title, restStyles, cardRef, playerTwo,img1 }) =
   <Tilt>
       {/* <img src={playerTwo ? img2 : img1} alt="ace_card" className={styles.cardImg} /> */}
 
+    
       
     <div ref={cardRef} className={`${styles.cardContainer} ${restStyles} card-face`}>
       <img src={playerTwo? hscard2[Number(card.id)-1] :legendCardBack} alt="ace_card" className={styles.cardImg} />
@@ -39,8 +40,6 @@ const HearthstoneCard = ({ card, title, restStyles, cardRef, playerTwo,img1 }) =
         <p className={`${styles.cardPoint} text-yellow-400`}>{playerTwo? Number(card.health) : ""}</p>
       </div>
    
-
-      
 
       <div className={`${styles.cardTextContainer} ${styles.flexCenter}`}>
         <p className={styles.cardText}>{title}</p>
