@@ -21,15 +21,23 @@ const img2 = generateRandomCardImage();
 const HearthstoneCard = ({ card, title, restStyles, cardRef, playerTwo,img1 }) => (
 
   <Tilt>
+
+      
     <div ref={cardRef} className={`${styles.cardContainer} ${restStyles}`}>
       <img src={hscard2[Number(card.id)-1]} alt="ace_card" className={styles.cardImg} />
+
+
+
+      <div className={`${styles.cardPointContainer} sm:right-[20.2%] right-[15%] ${styles.flexCenter}`}>
+        <p className={`${styles.cardPoint} text-yellow-400`}>{Number(card.attack)}</p>
+      </div>
 
       <div className={`${styles.cardPointContainer} sm:left-[21.2%] left-[22%] ${styles.flexCenter}`}>
         <p className={`${styles.cardPoint} text-yellow-400`}>{Number(card.health)}</p>
       </div>
-      <div className={`${styles.cardPointContainer} sm:right-[20.2%] right-[15%] ${styles.flexCenter}`}>
-        <p className={`${styles.cardPoint} text-red-700`}>{Number(card.mana)}</p>
-      </div>
+   
+
+      
 
       <div className={`${styles.cardTextContainer} ${styles.flexCenter}`}>
         <p className={styles.cardText}>{title}</p>

@@ -115,6 +115,26 @@ const Hearthstone = () => {
 
   };
 
+  const endTurn2 = async () => {
+  
+    try {
+      await contract.endTurn(1);
+
+      // setPlayed(true);
+
+
+      setShowAlert({
+        status: true,
+        type: 'info',
+        message: `ended turn FOR THE BOT`,
+      });
+    } catch (error) {
+      setErrorMessage(error);
+    }
+
+
+  };
+
 
 
   // const cards = [];
@@ -195,6 +215,11 @@ const Hearthstone = () => {
           handleClick={() => endTurn()}
           restStyles="ml-6 hover:border-yellow-400"
         />
+         <ActionButton
+          imgUrl={rsmagic}
+          handleClick={() => endTurn2()}
+          restStyles="ml-6 hover:border-yellow-400"
+        />
 
       </div>
     </div>
@@ -207,7 +232,7 @@ const Hearthstone = () => {
 
 
     <div className="flex flex-wrap justify-center items-center mt-10">
-          {[...dummyData, ...player01hand].reverse().map((player01hand, i) => (
+          {[...player01hand].map((player01hand, i) => (
             <HearthstoneCard card={player01hand} key={i} {...player01hand} />
           ))}
         </div>
