@@ -5,10 +5,11 @@ import { allCards } from '../assets';
 
 import dummyData from "../utils/dummyData";
 import styles from '../styles';
-import { ActionButton, Alert, Card, GameInfo, PlayerInfo,HearthstoneCard} from '../components';
+import { ActionButton, Alert, Card, GameInfo, PlayerInfo,HearthstoneCard,HiddenHearthstoneCard} from '../components';
 import { rsattack,rsstrenght, attackSound, rsmagic,rsrange, defenseSound,main,adventure, player01 as player01Icon, player02 as player02Icon } from '../assets';
 import { playAudio } from '../utils/animation.js';
 import '../cards.css';
+// import '../hiddencards.css'
 // import { outfits } from '../assets';
 import { useGlobalContext } from '../context';
 
@@ -154,7 +155,7 @@ const Hearthstone = () => {
 
     <div className="flex flex-wrap justify-center items-center mt-10">
           {[...player02hand].map((player02hand, i) => (
-            <HearthstoneCard card={player02hand} key={i} {...player02hand} />
+            <HiddenHearthstoneCard card={player02hand} key={i} {...player02hand} />
           ))}
         </div>
 

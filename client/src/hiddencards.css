@@ -1,0 +1,197 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: radial-gradi  ent(#333, #111);
+  overflow: hidden;
+}
+
+.cards {
+  bottom: 0;
+  display: flex;
+  height: 150px;
+  padding: 0 50px;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+
+}
+
+.cardhidden {
+  height: 150px;
+  margin: 0 -25px;
+  position: relative;
+  width: 100px;
+  transform: scaleX(-1);
+
+}
+
+
+.card-face {
+  bottom: 0;
+  content: "";
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 800ms cubic-bezier(0.19, 1, 0.22, 1) transform;
+}
+
+
+.card-label {
+  font-family: "helvetica neue", helvetica, arial, sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: -0.025em;
+  padding: 15px 0 0 15px;
+}
+
+.cardhidden:nth-child(1) .card-face { 
+  background-size: 100px 150px;
+  background-repeat: no-repeat;
+  transform: translateY(45px) rotate(-28.125deg);
+}
+.cardhidden:nth-child(1) .card-face .card-label {
+  color: #db0000;
+  text-shadow: -0.025em 0.025em 0 #ff8080;
+}
+
+
+
+.cardhidden:nth-child(2) .card-face {
+  /* background: linear-gradient(-135deg, #ff99d6, #da0b87); */
+  background-size: 100px 150px;
+  background-repeat: no-repeat;
+  /* box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(255, 153, 214, 0.75); */
+  transform: translateY(35px) rotate(-21.875deg);
+}
+.cardhidden:nth-child(2) .card-face .card-label {
+  color: #db0084;
+  text-shadow: -0.025em 0.025em 0 #ff80cc;
+}
+
+
+
+.cardhidden:nth-child(3) .card-face {
+  /* background: linear-gradient(-135deg, #eb99ff, #b10bda); */
+  background-size: 100px 150px;
+  background-repeat: no-repeat;
+  /* box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(235, 153, 255, 0.75); */
+  transform: translateY(25px) rotate(-15.625deg);
+}
+.cardhidden:nth-child(3) .card-face .card-label {
+  color: #af00db;
+  text-shadow: -0.025em 0.025em 0 #e680ff;
+}
+
+
+
+.cardhidden:nth-child(4) .card-face {
+  /*background: linear-gradient(-135deg, #ad99ff, #350bda);*/
+  /* background-image: url("https://www.esportstalk.com/wp-content/uploads/2019/08/Hearthstone-Raid-the-Sky-Temple-Card-Transparent.png"); */
+  
+  background-size: 100px 150px;
+  background-repeat: no-repeat;
+  /* box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(173, 153, 255, 0.75); */
+  transform: translateY(15px) rotate(-9.375deg);
+}
+.cardhidden:nth-child(4) .card-face .card-label {
+  color: #2c00db;
+  text-shadow: -0.025em 0.025em 0 #9980ff;
+}
+
+
+
+.cardhidden:nth-child(5) .card-face {
+  /* background: linear-gradient(-135deg, #99c2ff, #0b5eda); */
+  background-size: 100px 150px;
+  background-repeat: no-repeat;
+  /* box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(153, 194, 255, 0.75); */
+  transform: translateY(5px) rotate(-3.125deg);
+}
+.cardhidden:nth-child(5) .card-face .card-label {
+  color: #0058db;
+  text-shadow: -0.025em 0.025em 0 #80b3ff;
+}
+
+
+.cardhidden:nth-child(6) .card-face {
+  /* background: linear-gradient(-135deg, #99ffff, #0bdada); */
+  /* box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(153, 255, 255, 0.75); */
+  transform: translateY(5px) rotate(3.125deg);
+}
+.cardhidden:nth-child(6) .card-face .card-label {
+  color: #00dbdb;
+  text-shadow: -0.025em 0.025em 0 #80ffff;
+}
+
+
+.cardhidden:nth-child(7) .card-face {
+  /* background: linear-gradient(-135deg, #99ffc2, #0bda5e); */
+  /* box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(153, 255, 194, 0.75); */
+  transform: translateY(15px) rotate(9.375deg);
+}
+.cardhidden:nth-child(7) .card-face .card-label {
+  color: #00db58;
+  text-shadow: -0.025em 0.025em 0 #80ffb3;
+}
+
+
+.cardhidden:nth-child(8) .card-face {
+  /* background: linear-gradient(-135deg, #adff99, #35da0b); */
+  /* box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(173, 255, 153, 0.75); */
+  transform: translateY(25px) rotate(15.625deg);
+}
+.cardhidden:nth-child(8) .card-face .card-label {
+  color: #2cdb00;
+  text-shadow: -0.025em 0.025em 0 #99ff80;
+}
+
+
+.cardhidden:nth-child(9) .card-face {
+  /* background: linear-gradient(-135deg, #ebff99, #b1da0b); */
+  /* box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(235, 255, 153, 0.75); */
+  transform: translateY(35px) rotate(21.875deg);
+}
+.cardhidden:nth-child(9) .card-face .card-label {
+  color: #afdb00;
+  text-shadow: -0.025em 0.025em 0 #e6ff80;
+}
+
+
+.cardhidden:nth-child(10) .card-face {
+  /* background: linear-gradient(-135deg, #ffd699, #da870b); */
+  /* box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(255, 214, 153, 0.75); */
+  transform: translateY(45px) rotate(28.125deg);
+}
+.cardhidden:nth-child(10) .card-face .card-label {
+  color: #db8400;
+  text-shadow: -0.025em 0.025em 0 #ffcc80;
+}
+
+
+@-webkit-keyframes fade {
+  0% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.15);
+  }
+}

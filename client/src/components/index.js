@@ -9,6 +9,7 @@ import CustomButton from './CustomButton';
 import ActionButton from './ActionButton';
 import OnboardModal from './OnboardModal';
 import HearthstoneCard from './HearthstoneCard';
+import HiddenHearthstoneCard from './HiddenHearthstoneCard';
 
 
 export {
@@ -22,5 +23,6 @@ export {
   CustomButton,
   ActionButton,
   OnboardModal,
-  HearthstoneCard
+  HearthstoneCard,
+  HiddenHearthstoneCard
 };
