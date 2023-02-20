@@ -160,7 +160,7 @@ const Hearthstone = () => {
   const endTurn3 = async () => {
   
     try {
-      await contract.playMinion(0,3);
+      await contract.playMinion(1,3);
 
       setShowAlert({
         status: true,
@@ -229,10 +229,10 @@ const Hearthstone = () => {
 <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
 
 
-<div class='boardcardsTop'>
-{[...player01board].map((player01board, i) => (
+<div class='boardcards'>
+{[...player02board].map((player02board, i) => (
        
-       <Board card={player01board} key={i} {...player01board} playerTwo />
+       <Board card={player02board} key={i} {...player02board} playerTwo />
      
 
      ))}
@@ -243,7 +243,7 @@ const Hearthstone = () => {
 
 
 
-<div class='boardcards'>
+<div class='boardcardsTop'>
 {[...player01board].map((player01board, i) => (
        
        <Board card={player01board} key={i} {...player01board} playerTwo />

@@ -64,7 +64,7 @@ AddNewEvent(drawCard, provider, ({ args }) => {
 });
 
 
-const minonplayed = contract.filters.playMinionEvent();
+const minonplayed = contract.filters.playMinion();
 AddNewEvent(minonplayed, provider, ({ args }) => {
   console.log('minion played', args);
   // localStorage.setItem('player',0);
