@@ -234,18 +234,19 @@ const Hearthstone = () => {
       
           {[...player01hand].map((player01hand, i) => (
             <div className='card'>
-            <div className="card-face">
+            {/* <div className="card-face"> */}
 
+            
               {/* <div className="card-face bg-[url('https://www.esportstalk.com/wp-content/uploads/2019/08/Hearthstone-Raid-the-Sky-Temple-Card-Transparent.png')]"> */}
             <HearthstoneCard card={player01hand} key={i} {...player01hand} playerTwo />
             </div>
-            </div>
+            // </div>
 
           ))}
        
         </div>
 
-
+{/* 
         <div class='cards'>
     <div class='card'>
         <div class='card-face'>
@@ -297,7 +298,7 @@ const Hearthstone = () => {
             <div class='card-label'>10</div>
         </div>
     </div>
-</div>
+</div> */}
 
    
 

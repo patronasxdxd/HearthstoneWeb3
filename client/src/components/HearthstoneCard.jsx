@@ -5,6 +5,8 @@ import styles from '../styles';
 import { allCards, hscard2,legendCardBack } from '../assets';
 import { hscards } from '../assets';
 import { useGlobalContext } from '../context';
+import '../cards.css';
+
 
 /* global BigInt */
 
@@ -24,7 +26,7 @@ const HearthstoneCard = ({ card, title, restStyles, cardRef, playerTwo,img1 }) =
       {/* <img src={playerTwo ? img2 : img1} alt="ace_card" className={styles.cardImg} /> */}
 
       
-    <div ref={cardRef} className={`${styles.cardContainer} ${restStyles}`}>
+    <div ref={cardRef} className={`${styles.cardContainer} ${restStyles} card-face`}>
       <img src={playerTwo? hscard2[Number(card.id)-1] :legendCardBack} alt="ace_card" className={styles.cardImg} />
 
 

@@ -143,7 +143,7 @@ body {
 
 .card:nth-child(4) .card-face {
   /*background: linear-gradient(-135deg, #ad99ff, #350bda);*/
-  background-image: url("https://www.esportstalk.com/wp-content/uploads/2019/08/Hearthstone-Raid-the-Sky-Temple-Card-Transparent.png");
+  /* background-image: url("https://www.esportstalk.com/wp-content/uploads/2019/08/Hearthstone-Raid-the-Sky-Temple-Card-Transparent.png"); */
   background-size: 100px 150px;
   background-repeat: no-repeat;
   box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(173, 153, 255, 0.75);
