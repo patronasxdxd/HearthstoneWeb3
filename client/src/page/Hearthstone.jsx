@@ -8,7 +8,7 @@ import styles from '../styles';
 import { ActionButton, Alert, Card, GameInfo, PlayerInfo,HearthstoneCard} from '../components';
 import { rsattack,rsstrenght, attackSound, rsmagic,rsrange, defenseSound,main,adventure, player01 as player01Icon, player02 as player02Icon } from '../assets';
 import { playAudio } from '../utils/animation.js';
-
+import '../cards.css';
 // import { outfits } from '../assets';
 import { useGlobalContext } from '../context';
 
@@ -189,7 +189,6 @@ const Hearthstone = () => {
     
 
 
-
 {played
           ? <h2 className='font-runescape  text-[26px] text-yellow-300'> Wait for your opponent ...</h2>
           : ""
@@ -236,6 +235,60 @@ const Hearthstone = () => {
             <HearthstoneCard card={player01hand} key={i} {...player01hand} playerTwo />
           ))}
         </div>
+
+
+        <div class='cards'>
+    <div class='card'>
+        <div class='card-face'>
+            <div class='card-label'></div>
+        </div>
+    </div>
+    <div class='card'>
+        <div class='card-face'>
+            <div class='card-label'></div>
+        </div>
+    </div>
+    <div class='card'>
+        <div class='card-face'>
+            <div class='card-label'>3</div>
+        </div>
+    </div>
+    <div class='card'>
+        <div class='card-face'>
+            <div class='card-label'>4</div>
+        </div>
+    </div>
+    <div class='card'>
+        <div class='card-face'>
+            <div class='card-label'>5</div>
+        </div>
+    </div>
+    <div class='card'>
+        <div class='card-face'>
+            <div class='card-label'>6</div>
+        </div>
+    </div>
+    <div class='card'>
+        <div class='card-face'>
+            <div class='card-label'>7</div>
+        </div>
+    </div>
+    <div class='card'>
+        <div class='card-face'>
+            <div class='card-label'>8</div>
+        </div>
+    </div>
+    <div class='card'>
+        <div class='card-face'>
+            <div class='card-label'>9</div>
+        </div>
+    </div>
+    <div class='card'>
+        <div class='card-face'>
+            <div class='card-label'>10</div>
+        </div>
+    </div>
+</div>
 
    
 
