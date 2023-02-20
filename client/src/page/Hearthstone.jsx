@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { allCards } from '../assets';
 
+import dummyData from "../utils/dummyData";
 import styles from '../styles';
 import { ActionButton, Alert, Card, GameInfo, PlayerInfo,HearthstoneCard} from '../components';
 import { rsattack,rsstrenght, attackSound, rsmagic,rsrange, defenseSound,main,adventure, player01 as player01Icon, player02 as player02Icon } from '../assets';
@@ -18,6 +19,7 @@ const Hearthstone = () => {
   const [player2, setPlayer2] = useState({});
   const [player1, setPlayer1] = useState({});
   const { battleName } = useParams();
+  const [player01hand, setPlayer01Hand] = useState([]);
 
 
   console.log("xd");
@@ -49,8 +51,20 @@ const Hearthstone = () => {
         const handsize = player01.hand.length;
 
 
+        
+
+
         console.log(player01);
+
+
+        let player01handd = player01.hand;
+        console.log(player01.hand);
         console.log(handsize);
+
+
+        console.log(player01handd[0].health.toNumber());
+
+        setPlayer01Hand(player01handd);
   
 
         setPlayer1({ ...player01, health: p1H, mana: p1M });
@@ -102,7 +116,18 @@ const Hearthstone = () => {
   };
 
 
-  // let hearthstoneCards = this.state.people.map(card =>  {
+
+  // const cards = [];
+
+  // for (let card of player01hand) {
+  //   cards.push(
+    
+  //     <HearthstoneCard card={card}/>
+  
+  //   )
+  // }
+
+  // let hearthstoneCards = player01hand.map(card =>  {
   //   return (
   //     <col sm="4">
   //       <HearthstoneCard card={card}/>
@@ -181,14 +206,19 @@ const Hearthstone = () => {
     </row> */}
 
 
+    <div className="flex flex-wrap justify-center items-center mt-10">
+          {[...dummyData, ...player01hand].reverse().map((player01hand, i) => (
+            <HearthstoneCard card={player01hand} key={i} {...player01hand} />
+          ))}
+        </div>
 
-    <HearthstoneCard
+    {/* <HearthstoneCard
           card={player1}
           cardRef={player1Ref}
           restStyles="mt-3 "
           img1={allCards[localStorage.getItem('outfit')-1]}
           
-    />
+    /> */}
 
     <PlayerInfo player={player1} playerIcon={player01Icon} />
 

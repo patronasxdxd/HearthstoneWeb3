@@ -4,6 +4,7 @@ import Tilt from 'react-parallax-tilt';
 import styles from '../styles';
 import { allCards } from '../assets';
 import { useGlobalContext } from '../context';
+/* global BigInt */
 
 
 
@@ -22,10 +23,10 @@ const HearthstoneCard = ({ card, title, restStyles, cardRef, playerTwo,img1 }) =
       <img src={playerTwo ? img2 : img1} alt="ace_card" className={styles.cardImg} />
 
       <div className={`${styles.cardPointContainer} sm:left-[21.2%] left-[22%] ${styles.flexCenter}`}>
-        <p className={`${styles.cardPoint} text-yellow-400`}>{card.health}</p>
+        <p className={`${styles.cardPoint} text-yellow-400`}>{Number(card.health)}</p>
       </div>
       <div className={`${styles.cardPointContainer} sm:right-[20.2%] right-[15%] ${styles.flexCenter}`}>
-        <p className={`${styles.cardPoint} text-red-700`}>{card.mana}</p>
+        <p className={`${styles.cardPoint} text-red-700`}>{Number(card.mana)}</p>
       </div>
 
       <div className={`${styles.cardTextContainer} ${styles.flexCenter}`}>
