@@ -10,6 +10,7 @@ import { rsattack,rsstrenght, attackSound, rsmagic,rsrange, defenseSound,main,ad
 import { playAudio } from '../utils/animation.js';
 import '../cards.css';
 // import '../hiddencards.css'
+import '../index.css'
 // import { outfits } from '../assets';
 import { useGlobalContext } from '../context';
 
@@ -237,69 +238,16 @@ const Hearthstone = () => {
           
 
           ))}
-       
-     </div>
+    
+    </div>
+
 
  
-         
+      <div className='healthbar'>
 
-{/* 
-        <div class='cards'>
-    <div class='card'>
-        <div class='card-face'>
-            <div class='card-label'></div>
-        </div>
-    </div>
-    <div class='card'>
-        <div class='card-face'>
-            <div class='card-label'></div>
-        </div>
-    </div>
-    <div class='card'>
-        <div class='card-face'>
-            <div class='card-label'>3</div>
-        </div>
-    </div>
-    <div class='card'>
-        <div class='card-face'>
-            <div class='card-label'>4</div>
-        </div>
-    </div>
-    <div class='card'>
-        <div class='card-face'>
-            <div class='card-label'>5</div>
-        </div>
-    </div>
-    <div class='card'>
-        <div class='card-face'>
-            <div class='card-label'>6</div>
-        </div>
-    </div>
-    <div class='card'>
-        <div class='card-face'>
-            <div class='card-label'>7</div>
-        </div>
-    </div>
-    <div class='card'>
-        <div class='card-face'>
-            <div class='card-label'>8</div>
-        </div>
-    </div>
-    <div class='card'>
-        <div class='card-face'>
-            <div class='card-label'>9</div>
-        </div>
-    </div>
-    <div class='card'>
-        <div class='card-face'>
-            <div class='card-label'>10</div>
-        </div>
-    </div>
-</div>  */}
+       <PlayerInfo player={player1} playerIcon={player01Icon} />
+       </div>
 
-   
-
-    <PlayerInfo player={player1} playerIcon={player01Icon} />
 
     <GameInfo />
 

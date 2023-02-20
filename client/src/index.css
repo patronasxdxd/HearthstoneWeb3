@@ -61,6 +61,14 @@
   transition: 0.5s;
 }
 
+.healthbar{
+  left:2000px;
+}
+
+.healthbar{
+  margin-left: 50%;
+}
+
 .gameload {
   background: rgba(127, 70, 240, 0.15);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -208,6 +216,9 @@ body {
   animation: explode 333ms;
   box-shadow: 0 0 0 0 #fde655;
 }
+
+
+
 
 @-webkit-keyframes explode {
   0% {
