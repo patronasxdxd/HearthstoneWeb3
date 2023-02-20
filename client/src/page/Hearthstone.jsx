@@ -144,25 +144,6 @@ const Hearthstone = () => {
   };
 
 
-
-  // const cards = [];
-
-  // for (let card of player01hand) {
-  //   cards.push(
-    
-  //     <HearthstoneCard card={card}/>
-  
-  //   )
-  // }
-
-  // let hearthstoneCards = player01hand.map(card =>  {
-  //   return (
-  //     <col sm="4">
-  //       <HearthstoneCard card={card}/>
-  //     </col>
-  //   )
-  // })
-
   return (
 
     <div className={`${styles.flexBetween} ${styles.gameContainer} ${battleGround}`}>
@@ -236,6 +217,10 @@ const Hearthstone = () => {
           handleClick={() => endTurn2()}
           restStyles="ml-6 hover:border-yellow-400"
         />
+
+{/* <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" onClick={endTurn()}>
+  End Turn
+</button> */}
 
       </div>
     </div>
