@@ -4,12 +4,13 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { allCards } from '../assets';
 
 import styles from '../styles';
-import { ActionButton, Alert, Card, GameInfo, PlayerInfo } from '../components';
+import { ActionButton, Alert, Card, GameInfo, PlayerInfo,HearthstoneCard} from '../components';
 import { rsattack,rsstrenght, attackSound, rsmagic,rsrange, defenseSound,main,adventure, player01 as player01Icon, player02 as player02Icon } from '../assets';
 import { playAudio } from '../utils/animation.js';
 
 // import { outfits } from '../assets';
 import { useGlobalContext } from '../context';
+
 
 const Hearthstone = () => {
   const navigate = useNavigate();
@@ -100,6 +101,15 @@ const Hearthstone = () => {
 
   };
 
+
+  // let hearthstoneCards = this.state.people.map(card =>  {
+  //   return (
+  //     <col sm="4">
+  //       <HearthstoneCard card={card}/>
+  //     </col>
+  //   )
+  // })
+
   return (
 
     <div className={`${styles.flexBetween} ${styles.gameContainer} ${battleGround}`}>
@@ -165,6 +175,21 @@ const Hearthstone = () => {
     </div>
     </div>
     </div>
+
+    {/* <row>
+      {hearthstoneCards}
+    </row> */}
+
+
+
+    <HearthstoneCard
+          card={player1}
+          cardRef={player1Ref}
+          restStyles="mt-3 "
+          img1={allCards[localStorage.getItem('outfit')-1]}
+          
+    />
+
     <PlayerInfo player={player1} playerIcon={player01Icon} />
 
     <GameInfo />

@@ -8,6 +8,7 @@ import CustomInput from './CustomInput';
 import CustomButton from './CustomButton';
 import ActionButton from './ActionButton';
 import OnboardModal from './OnboardModal';
+import HearthstoneCard from './HearthstoneCard';
 
 
 export {
@@ -21,4 +22,5 @@ export {
   CustomButton,
   ActionButton,
   OnboardModal,
+  HearthstoneCard
 };
