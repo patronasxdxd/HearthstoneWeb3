@@ -63,6 +63,22 @@ AddNewEvent(drawCard, provider, ({ args }) => {
   
 });
 
+
+const minonplayed = contract.filters.playMinionEvent();
+AddNewEvent(minonplayed, provider, ({ args }) => {
+  console.log('minion played', args);
+  // localStorage.setItem('player',0);
+    setShowAlert({
+      status: true,
+      type: 'success',
+      message: 'succesfully played a minon' + args,
+    });
+
+    console.log(args)
+  
+});
+
+
   const NewBattleEventFilter = contract.filters.NewBattle();
   AddNewEvent(NewBattleEventFilter, provider, ({ args }) => {
     console.log('New battle started!', args, walletAddress);

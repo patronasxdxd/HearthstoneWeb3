@@ -10,6 +10,7 @@ import ActionButton from './ActionButton';
 import OnboardModal from './OnboardModal';
 import HearthstoneCard from './HearthstoneCard';
 import HiddenHearthstoneCard from './HiddenHearthstoneCard';
+import Board from './Board';
 
 
 export {
@@ -24,5 +25,6 @@ export {
   ActionButton,
   OnboardModal,
   HearthstoneCard,
-  HiddenHearthstoneCard
+  HiddenHearthstoneCard,
+  Board
 };

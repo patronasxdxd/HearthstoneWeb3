@@ -5,7 +5,7 @@ import { allCards } from '../assets';
 
 import dummyData from "../utils/dummyData";
 import styles from '../styles';
-import { ActionButton, Alert, Card, GameInfo, PlayerInfo,HearthstoneCard,HiddenHearthstoneCard} from '../components';
+import { ActionButton, Alert, Card, GameInfo, PlayerInfo,HearthstoneCard,HiddenHearthstoneCard,Board} from '../components';
 import { rsattack,rsstrenght, attackSound, rsmagic,rsrange, defenseSound,main,adventure, player01 as player01Icon, player02 as player02Icon } from '../assets';
 import { playAudio } from '../utils/animation.js';
 import '../cards.css';
@@ -23,6 +23,8 @@ const Hearthstone = () => {
   const { battleName } = useParams();
   const [player01hand, setPlayer01Hand] = useState([]);
   const [player02hand, setPlayer02Hand] = useState([]);
+  const [player01board, setPlayer01board] = useState([]);
+  const [player02board, setPlayer02board] = useState([]);
 
   const [player02handsize,setplayer02handsize] = useState();
 
@@ -33,6 +35,7 @@ const Hearthstone = () => {
   useEffect(() => {
    
     
+
 
 
     const getPlayerInfo = async () => {
@@ -60,6 +63,8 @@ const Hearthstone = () => {
 
         
 
+        
+
 
         console.log(player01);
 
@@ -70,9 +75,15 @@ const Hearthstone = () => {
         console.log(handsize);
 
 
+        console.log("minions");
+         console.log(player01.minions)
+
+
 
         setPlayer01Hand(player01handd);
         setPlayer02Hand(player02.hand);
+        setPlayer01board(player01.minions);
+        setPlayer02board(player02.minions);
 
         setplayer02handsize(player02.hand.length)
   
@@ -146,6 +157,24 @@ const Hearthstone = () => {
   };
 
 
+  const endTurn3 = async () => {
+  
+    try {
+      await contract.playMinion(0,3);
+
+      setShowAlert({
+        status: true,
+        type: 'info',
+        message: `ended turn FOR THE BOT`,
+      });
+    } catch (error) {
+      setErrorMessage(error);
+    }
+
+
+  };
+
+
   return (
 
     <div className={`${styles.flexBetween} ${styles.gameContainer} ${battleGround}`}>
@@ -188,7 +217,7 @@ const Hearthstone = () => {
         
    <ActionButton
    imgUrl={rsrange}
-   handleClick={() => makeAMove(2)}
+   handleClick={() => makeAMove()}
    restStyles="ml-6 hover:border-red-600"
  />
  </div>
@@ -196,17 +225,48 @@ const Hearthstone = () => {
 
 {/* Temporary */}
 
- <br></br>
-<br></br>
-<br></br>
-<br></br><br></br>
-<br></br>
-<br></br>
-<br></br>
+
+<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+
+
+<div class='boardcardsTop'>
+{[...player01board].map((player01board, i) => (
+       
+       <Board card={player01board} key={i} {...player01board} playerTwo />
+     
+
+     ))}
+
+   </div>
       
 
-      <div className="flex items-center flex-row">
+
+
+
+<div class='boardcards'>
+{[...player01board].map((player01board, i) => (
        
+       <Board card={player01board} key={i} {...player01board} playerTwo />
+     
+
+     ))}
+
+   </div>
+      
+
+
+
+
+      <div className="flex items-center flex-row">
+
+     
+      
+
+
+      
+
+
+  
         <Card
           card={player1}
           
@@ -216,6 +276,8 @@ const Hearthstone = () => {
           img1={allCards[localStorage.getItem('outfit')-1]}
           
         />
+
+    
 
         
 
@@ -241,7 +303,7 @@ const Hearthstone = () => {
         
           <ActionButton
           imgUrl={rsrange}
-          handleClick={() => makeAMove(2)}
+          handleClick={() => endTurn3()}
           restStyles="ml-6 hover:border-red-600"
         />
          {/* <ActionButton
