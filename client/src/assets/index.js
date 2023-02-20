@@ -20,6 +20,18 @@ import wom from './Wise_old_Man.webp'
 import virtus from './virtus.webp'
 
 
+//hscards
+
+import defender from './board/defenderofargus.webp'
+import fletchling from './board/fletchling.webp'
+import yeti from './board/yeti.webp'
+import scrab from './board/scrab.webp'
+import deathwing from './board/deathwing.webp'
+import invincible from './board/invincible.webp'
+import brann from './board/brann.webp'
+
+
+
 // heros
 
 import Druid1 from './board/druidHero.png'
@@ -64,10 +76,18 @@ export const allCards = [
   
 ];
 
+export const hscard2 = [
+ 
+  defender,fletchling,yeti,scrab,deathwing,invincible,brann
+  
+];
+
 export {
   rsattack,rsmagic,rsstrenght,rsrange,
 
   Druid1,Druid2,Druid3,Druid4,
+
+  fletchling,deathwing,invincible,
 
 
   Zero,
@@ -97,6 +117,14 @@ export {
   explosion,
   
 };
+
+
+export const hscards = [
+  { id: '1', image: fletchling, name: 'Fletchling' },
+  { id: '2', image: deathwing, name: 'Deathwing' },
+  { id: '3', image: invincible, name: 'Invinclible' },
+
+];
 
 export const battlegrounds = [
   { id: 'bg-saiman', image: wildy, name: 'Wildernes' },
