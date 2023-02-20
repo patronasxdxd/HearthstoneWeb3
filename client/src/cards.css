@@ -67,7 +67,9 @@ body {
 }
 
 .card:nth-child(1) .card-face {
-  background: linear-gradient(-135deg, #ff9999, #da0b0b);
+  /* background: linear-gradient(-135deg, #ff9999, #da0b0b); */
+  background-size: 100px 150px;
+  background-repeat: no-repeat;
   box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(255, 153, 153, 0.75);
   transform: translateY(45px) rotate(-28.125deg);
 }
@@ -90,7 +92,9 @@ body {
 }
 
 .card:nth-child(2) .card-face {
-  background: linear-gradient(-135deg, #ff99d6, #da0b87);
+  /* background: linear-gradient(-135deg, #ff99d6, #da0b87); */
+  background-size: 100px 150px;
+  background-repeat: no-repeat;
   box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(255, 153, 214, 0.75);
   transform: translateY(35px) rotate(-21.875deg);
 }
@@ -113,7 +117,9 @@ body {
 }
 
 .card:nth-child(3) .card-face {
-  background: linear-gradient(-135deg, #eb99ff, #b10bda);
+  /* background: linear-gradient(-135deg, #eb99ff, #b10bda); */
+  background-size: 100px 150px;
+  background-repeat: no-repeat;
   box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(235, 153, 255, 0.75);
   transform: translateY(25px) rotate(-15.625deg);
 }
@@ -162,7 +168,9 @@ body {
 }
 
 .card:nth-child(5) .card-face {
-  background: linear-gradient(-135deg, #99c2ff, #0b5eda);
+  /* background: linear-gradient(-135deg, #99c2ff, #0b5eda); */
+  background-size: 100px 150px;
+  background-repeat: no-repeat;
   box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(153, 194, 255, 0.75);
   transform: translateY(5px) rotate(-3.125deg);
 }

@@ -231,9 +231,18 @@ const Hearthstone = () => {
    
 
     <div className="flex flex-wrap justify-center items-center mt-10">
+      
           {[...player01hand].map((player01hand, i) => (
+            <div className='card'>
+            <div className="card-face">
+
+              {/* <div className="card-face bg-[url('https://www.esportstalk.com/wp-content/uploads/2019/08/Hearthstone-Raid-the-Sky-Temple-Card-Transparent.png')]"> */}
             <HearthstoneCard card={player01hand} key={i} {...player01hand} playerTwo />
+            </div>
+            </div>
+
           ))}
+       
         </div>
 
 
