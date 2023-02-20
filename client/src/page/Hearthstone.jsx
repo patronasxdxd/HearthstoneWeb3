@@ -20,6 +20,10 @@ const Hearthstone = () => {
   const [player1, setPlayer1] = useState({});
   const { battleName } = useParams();
   const [player01hand, setPlayer01Hand] = useState([]);
+  const [player02hand, setPlayer02Hand] = useState([]);
+
+  const [player02handsize,setplayer02handsize] = useState();
+
 
 
   console.log("xd");
@@ -51,6 +55,7 @@ const Hearthstone = () => {
         const handsize = player01.hand.length;
 
 
+
         
 
 
@@ -58,13 +63,16 @@ const Hearthstone = () => {
 
 
         let player01handd = player01.hand;
+
         console.log(player01.hand);
         console.log(handsize);
 
 
-        console.log(player01handd[0].health.toNumber());
 
         setPlayer01Hand(player01handd);
+        setPlayer02Hand(player02.hand);
+
+        setplayer02handsize(player02.hand.length)
   
 
         setPlayer1({ ...player01, health: p1H, mana: p1M });
@@ -162,6 +170,14 @@ const Hearthstone = () => {
 
     <PlayerInfo player={player2} playerIcon={player02Icon} mt />
 
+
+    <div className="flex flex-wrap justify-center items-center mt-10">
+          {[...player02hand].map((player02hand, i) => (
+            <HearthstoneCard card={player02hand} key={i} {...player02hand} />
+          ))}
+        </div>
+
+
     <div className={`${styles.flexCenter} flex-col my-10`}>
       <Card
         card={player2}
@@ -226,24 +242,17 @@ const Hearthstone = () => {
     </div>
     </div>
 
-    {/* <row>
-      {hearthstoneCards}
-    </row> */}
+    
 
+   
 
     <div className="flex flex-wrap justify-center items-center mt-10">
           {[...player01hand].map((player01hand, i) => (
-            <HearthstoneCard card={player01hand} key={i} {...player01hand} />
+            <HearthstoneCard card={player01hand} key={i} {...player01hand} playerTwo />
           ))}
         </div>
 
-    {/* <HearthstoneCard
-          card={player1}
-          cardRef={player1Ref}
-          restStyles="mt-3 "
-          img1={allCards[localStorage.getItem('outfit')-1]}
-          
-    /> */}
+   
 
     <PlayerInfo player={player1} playerIcon={player01Icon} />
 

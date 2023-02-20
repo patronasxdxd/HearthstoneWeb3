@@ -30,6 +30,8 @@ import deathwing from './board/deathwing.webp'
 import invincible from './board/invincible.webp'
 import brann from './board/brann.webp'
 
+import legendCardBack from './board/legendcardback.webp'
+
 
 
 // heros
@@ -108,7 +110,7 @@ export {
   defense,
   alertIcon,
   AlertIcon,
-
+  legendCardBack,
   player01,
   player02,
 
