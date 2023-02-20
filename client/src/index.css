@@ -69,6 +69,12 @@
   margin-left: 63%;
 }
 
+.hiddenHealthBar {
+  margin-left: 63%;
+
+}
+
+
 .gameload {
   background: rgba(127, 70, 240, 0.15);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);

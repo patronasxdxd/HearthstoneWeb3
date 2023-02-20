@@ -9,7 +9,7 @@ import { ActionButton, Alert, Card, GameInfo, PlayerInfo,HearthstoneCard,HiddenH
 import { rsattack,rsstrenght, attackSound, rsmagic,rsrange, defenseSound,main,adventure, player01 as player01Icon, player02 as player02Icon } from '../assets';
 import { playAudio } from '../utils/animation.js';
 import '../cards.css';
-// import '../hiddencards.css'
+import '../hiddencards.css'
 import '../index.css'
 // import { outfits } from '../assets';
 import { useGlobalContext } from '../context';
@@ -151,14 +151,25 @@ const Hearthstone = () => {
     <div className={`${styles.flexBetween} ${styles.gameContainer} ${battleGround}`}>
     {showAlert?.status && <Alert type={showAlert.type} message={showAlert.message} />}
 
+
+
+
+    <div className='hiddenHealthBar'>
     <PlayerInfo player={player2} playerIcon={player02Icon} mt />
+   
+    </div>
 
-
-    <div className="flex flex-wrap justify-center items-center mt-10">
+    <div className="cardshidden">
           {[...player02hand].map((player02hand, i) => (
             <HiddenHearthstoneCard card={player02hand} key={i} {...player02hand} />
           ))}
-        </div>
+    </div>
+
+   
+
+    
+
+   
 
 
     <div className={`${styles.flexCenter} flex-col my-10`}>
