@@ -88,8 +88,8 @@ body {
   z-index: 5;
 }
 .card:nth-child(1):hover .card-face:after {
-  -webkit-animation: fade 250ms ease-out forwards;
-  animation: fade 250ms ease-out forwards;
+  /* -webkit-animation: fade 250ms ease-out forwards;
+  animation: fade 250ms ease-out forwards; */
 }
 .card:nth-child(1):hover:after {
   top: -175px;
@@ -113,8 +113,8 @@ body {
   z-index: 5;
 }
 .card:nth-child(2):hover .card-face:after {
-  -webkit-animation: fade 250ms ease-out forwards;
-  animation: fade 250ms ease-out forwards;
+  /* -webkit-animation: fade 250ms ease-out forwards;
+  animation: fade 250ms ease-out forwards; */
 }
 .card:nth-child(2):hover:after {
   top: -175px;
@@ -138,8 +138,8 @@ body {
   z-index: 5;
 }
 .card:nth-child(3):hover .card-face:after {
-  -webkit-animation: fade 250ms ease-out forwards;
-  animation: fade 250ms ease-out forwards;
+  /* -webkit-animation: fade 250ms ease-out forwards;
+  animation: fade 250ms ease-out forwards; */
 }
 .card:nth-child(3):hover:after {
   top: -175px;
@@ -165,8 +165,8 @@ body {
   z-index: 5;
 }
 .card:nth-child(4):hover .card-face:after {
-  -webkit-animation: fade 250ms ease-out forwards;
-  animation: fade 250ms ease-out forwards;
+  /* -webkit-animation: fade 250ms ease-out forwards;
+  animation: fade 250ms ease-out forwards; */
 }
 .card:nth-child(4):hover:after {
   top: -175px;
@@ -190,8 +190,8 @@ body {
   z-index: 5;
 }
 .card:nth-child(5):hover .card-face:after {
-  -webkit-animation: fade 250ms ease-out forwards;
-  animation: fade 250ms ease-out forwards;
+  /* -webkit-animation: fade 250ms ease-out forwards;
+  animation: fade 250ms ease-out forwards; */
 }
 .card:nth-child(5):hover:after {
   top: -175px;
@@ -213,8 +213,8 @@ body {
   z-index: 5;
 }
 .card:nth-child(6):hover .card-face:after {
-  -webkit-animation: fade 250ms ease-out forwards;
-  animation: fade 250ms ease-out forwards;
+  /* -webkit-animation: fade 250ms ease-out forwards;
+  animation: fade 250ms ease-out forwards; */
 }
 .card:nth-child(6):hover:after {
   top: -175px;
@@ -236,8 +236,8 @@ body {
   z-index: 5;
 }
 .card:nth-child(7):hover .card-face:after {
-  -webkit-animation: fade 250ms ease-out forwards;
-  animation: fade 250ms ease-out forwards;
+  /* -webkit-animation: fade 250ms ease-out forwards;
+  animation: fade 250ms ease-out forwards; */
 }
 .card:nth-child(7):hover:after {
   top: -175px;
@@ -259,8 +259,8 @@ body {
   z-index: 5;
 }
 .card:nth-child(8):hover .card-face:after {
-  -webkit-animation: fade 250ms ease-out forwards;
-  animation: fade 250ms ease-out forwards;
+  /* -webkit-animation: fade 250ms ease-out forwards; */
+  /* animation: fade 250ms ease-out forwards; */
 }
 .card:nth-child(8):hover:after {
   top: -175px;
@@ -282,8 +282,8 @@ body {
   z-index: 5;
 }
 .card:nth-child(9):hover .card-face:after {
-  -webkit-animation: fade 250ms ease-out forwards;
-  animation: fade 250ms ease-out forwards;
+  /* -webkit-animation: fade 250ms ease-out forwards;
+  animation: fade 250ms ease-out forwards; */
 }
 .card:nth-child(9):hover:after {
   top: -175px;
@@ -305,8 +305,8 @@ body {
   z-index: 5;
 }
 .card:nth-child(10):hover .card-face:after {
-  -webkit-animation: fade 250ms ease-out forwards;
-  animation: fade 250ms ease-out forwards;
+  /* -webkit-animation: fade 250ms ease-out forwards;
+  animation: fade 250ms ease-out forwards; */
 }
 .card:nth-child(10):hover:after {
   top: -175px;
