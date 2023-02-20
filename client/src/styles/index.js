@@ -40,7 +40,7 @@ const styles = {
   playerInfoSpan: 'font-extrabold text-white',
 
   // card component
-  cardContainer: 'relative sm:w-[260px] w-[220px] sm:h-[335px] h-[280px] z-0 transition-all',
+  cardContainer: 'relative sm:w-[130px] w-[100px] sm:h-[165px] h-[140px] z-0 transition-all',
   cardImg: 'w-full h-full object-contain',
   cardPointContainer: 'absolute sm:w-[40px] w-[32px] sm:h-[40px] h-[32px] rounded-[25px] bottom-[31.4%]',
   cardPoint: 'font-rajdhani text-[20px] font-bold',

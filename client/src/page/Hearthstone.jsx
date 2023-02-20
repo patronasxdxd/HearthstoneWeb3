@@ -167,6 +167,8 @@ const Hearthstone = () => {
 
    
 
+
+
     
 
    
@@ -190,6 +192,17 @@ const Hearthstone = () => {
    restStyles="ml-6 hover:border-red-600"
  />
  </div>
+
+
+{/* Temporary */}
+
+ <br></br>
+<br></br>
+<br></br>
+<br></br><br></br>
+<br></br>
+<br></br>
+<br></br>
       
 
       <div className="flex items-center flex-row">

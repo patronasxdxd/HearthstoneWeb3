@@ -31,6 +31,7 @@ import invincible from './board/invincible.webp'
 import brann from './board/brann.webp'
 
 import legendCardBack from './board/legendcardback.webp'
+import blood from './board/blood.png'
 
 
 
@@ -90,7 +91,7 @@ export {
   Druid1,Druid2,Druid3,Druid4,
 
   fletchling,deathwing,invincible,
-
+  blood,
 
   Zero,
   Hit,
