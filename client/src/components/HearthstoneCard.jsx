@@ -1,7 +1,7 @@
 import React from 'react';
 import Tilt from 'react-parallax-tilt';
 
-import styles from '../styles';
+// import styles from '../styles';
 import { allCards, hscard2,legendCardBack } from '../assets';
 import { hscards } from '../assets';
 import { useGlobalContext } from '../context';
@@ -20,32 +20,32 @@ const img2 = generateRandomCardImage();
 
 
 
-const HearthstoneCard = ({ card, title, restStyles, cardRef, playerTwo,img1 }) => (
-
-  <Tilt>
-      {/* <img src={playerTwo ? img2 : img1} alt="ace_card" className={styles.cardImg} /> */}
-
+const HearthstoneCard = ({ card, title, restStyles, cardRef, playerTwo,img1 }) => {
     
+      return (
       
-    <div ref={cardRef} className={`${styles.cardContainer} ${restStyles} card-face`}>
-      <img src={playerTwo? hscard2[Number(card.id)-1] :legendCardBack} alt="ace_card" className={styles.cardImg} />
+    <div className={'card'}>
+      
+    <div className={`card-face`}>
+      <img src={playerTwo? hscard2[Number(card.id)-1] :legendCardBack} alt="ace_card"  />
 
-
-
-      <div className={`${styles.cardPointContainer} sm:right-[20.2%] right-[15%] ${styles.flexCenter}`}>
-        <p className={`${styles.cardPoint} text-yellow-400`}>{playerTwo? Number(card.attack) : ""}</p>
+      <div className={``}>
+        <p className={` text-yellow-400`}>{playerTwo? Number(card.attack) : ""}</p>
       </div>
 
-      <div className={`${styles.cardPointContainer} sm:left-[21.2%] left-[22%] ${styles.flexCenter}`}>
-        <p className={`${styles.cardPoint} text-yellow-400`}>{playerTwo? Number(card.health) : ""}</p>
+      <div className={``}>
+        <p className={` text-yellow-400`}>{playerTwo? Number(card.health) : ""}</p>
       </div>
    
 
-      <div className={`${styles.cardTextContainer} ${styles.flexCenter}`}>
-        <p className={styles.cardText}>{title}</p>
+      <div className={` `}>
+        <p >{title}</p>
       </div>
     </div>
-  </Tilt>
+    </div>
+      
+
 );
+      }
 
 export default HearthstoneCard;

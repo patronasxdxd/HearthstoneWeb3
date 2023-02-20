@@ -4,7 +4,7 @@ body {
 }
 
 body {
-  background: radial-gradient(#333, #111);
+  background: radial-gradi  ent(#333, #111);
   overflow: hidden;
 }
 
@@ -17,6 +17,7 @@ body {
   position: fixed;
   left: 0;
   right: 0;
+  
 }
 
 .card {
@@ -24,6 +25,7 @@ body {
   margin: 0 -25px;
   position: relative;
   width: 100px;
+  
 
 }
 .card:after {
