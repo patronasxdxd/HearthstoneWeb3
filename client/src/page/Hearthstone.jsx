@@ -266,10 +266,7 @@ const Hearthstone = () => {
 
 <div class='boardcards'>
 {[...player02board].map((player02board, i) => (
-       
-       <Board card={player02board} key={i} {...player02board} playerTwo />
-     
-
+       <Board card={player02board} key={i} {...player02board} playerTwo index={i} />
      ))}
 
    </div>
@@ -289,7 +286,7 @@ const Hearthstone = () => {
 
   
        
-       <Board card={player01board} key={i} {...player01board} playerTwo />
+       <Board card={player01board} key={i} {...player01board} playerTwo index={i} />
        
 
 

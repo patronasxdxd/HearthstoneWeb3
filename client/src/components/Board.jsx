@@ -21,13 +21,26 @@ const img2 = generateRandomCardImage();
 
 
 
-const Board = ({ card, title, restStyles, cardRef, playerTwo,img1 }) => {
+const Board = ({ card, title, restStyles, cardRef, playerTwo,img1,index }) => {
+
+
+    const { setBattleGround, setShowAlert } = useGlobalContext();
+
+    const makeAMove = async (card) => {
+    
+        localStorage.setItem('battleCard',index);
+
+     
+      
+        setShowAlert({ status: true, type: 'info', message: `${card.name} selected for battle` });
+    
+    }
     
       return (
 
         
       
-    <div className={'board'}>
+    <div onClick={() =>makeAMove(card)} className={'board'}>
      
       <img src={playerTwo? hscard2[Number(card.id)-1] :legendCardBack} alt="ace_card"  />
 
