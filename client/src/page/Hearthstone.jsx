@@ -74,6 +74,7 @@ const Hearthstone = () => {
 
       
 
+        
     
 
         // localStorage.removeItem("currentCard")
@@ -99,8 +100,7 @@ const Hearthstone = () => {
 
 
         console.log("911");
-        console.log(player01hand[localStorage.getItem("currentCard")].manaCost.toNumber());
-        console.log(player1.mana.toNumber())
+        console.log(player2.minions.length-1)
 
       } catch (error) {
         setErrorMessage(error.message);
@@ -266,7 +266,7 @@ const Hearthstone = () => {
 
 <div class='boardcards'>
 {[...player02board].map((player02board, i) => (
-       <Board card={player02board} key={i} {...player02board} playerTwo index={i} />
+       <Board card={player02board} key={i} {...player02board} playerTwo bot index={i} />
      ))}
 
    </div>
