@@ -24,7 +24,7 @@ const HearthstoneCard = ({ card, title, restStyles, cardRef, playerTwo,img1 }) =
     
       return (
       
-    <div className={'card'} onClick={() => localStorage.setItem('currentCard', card)} >
+    <div className={'card '} onClick={() => localStorage.setItem('currentCard', card)} >
       
     <div className={`card-face`}>
       <img src={playerTwo? hscard2[Number(card.id)-1] :legendCardBack} alt="ace_card" />

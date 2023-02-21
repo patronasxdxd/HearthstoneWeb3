@@ -65,17 +65,9 @@ body {
   
 }
 
-
-
 .board:after {
-  bottom: 0;
-  content: "";
-  left: -60px;
-  position: absolute;
-  right: -60px;
-  top: 0px;
-  z-index: 10;
-}
+  
+} 
 
 .card-face {
   bottom: 0;
@@ -171,7 +163,7 @@ body {
   text-shadow: -0.025em 0.025em 0 #e680ff;
 }
 .board:nth-child(3):hover .card-face {
-  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(235, 153, 255, 0.75); */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(235, 153, 255, 0.75);
   transform: translateY(-100px) rotate(0deg) scale(2);
   transition-duration: 0ms;
   z-index: 5;

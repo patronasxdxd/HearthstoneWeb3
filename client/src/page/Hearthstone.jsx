@@ -59,26 +59,40 @@ const Hearthstone = () => {
 
         const handsize = player01.hand.length;
 
+      
 
+
+
+
+
+
+        
+
+        console.log("isytrue;")
+
+        if ( localStorage.getItem("currentCard") === null) {
+          console.log("nulleriono")
+
+        }
+        else{
+          console.log("not null")
+        
+        }
+
+
+        // localStorage.removeItem("currentCard")
 
         
 
         
 
+        
 
-        console.log(player01);
 
 
         let player01handd = player01.hand;
 
-        console.log(player01.hand);
-        console.log(handsize);
-
-
-        console.log("minions");
-         console.log(player01.minions)
-
-
+  
 
         setPlayer01Hand(player01handd);
         setPlayer02Hand(player02.hand);
@@ -247,10 +261,15 @@ const Hearthstone = () => {
 {[...player01board].map((player01board, i) => (
        
        <Board card={player01board} key={i} {...player01board} playerTwo />
-     
+       
+
 
      ))}
+     <div onClick={() =>console.log("xddddddddd")} className="border-2 shadow-transparent">
+     {localStorage.getItem("currentCard") === null? <H2 >EMPYU</H2> : <h2>not empyu</h2>
 
+     }
+    </div>
    </div>
       
 
