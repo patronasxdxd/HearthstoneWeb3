@@ -44,7 +44,7 @@ const styles = {
   cardImg: 'w-full h-full object-contain',
   cardPointContainer: 'absolute sm:w-[40px] w-[32px] sm:h-[40px] h-[32px] rounded-[25px] bottom-[31.4%]',
   cardPoint: 'font-rajdhani text-[20px] font-bold',
-  cardTextContainer: 'absolute w-full bottom-[13.5%] left-3',
+  // cardTextContainer: 'absolute w-full bottom-[13.5%] left-3',
   cardText: 'font-runescape  sm:h-[335px] text-[26px] text-yellow-300',
 
   // custom button component

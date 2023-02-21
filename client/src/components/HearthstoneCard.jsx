@@ -8,7 +8,9 @@ import { useGlobalContext } from '../context';
 import '../cards.css';
 
 
-/* global BigInt */
+
+
+
 
 
 
@@ -19,12 +21,26 @@ const img2 = generateRandomCardImage();
 
 
 
+// setShowAlert({ status: true, type: 'info', message: `minion played` });
+
+
 
 const HearthstoneCard = ({ card, title, restStyles, cardRef, playerTwo,img1 }) => {
+
+    const { setBattleGround, setShowAlert } = useGlobalContext();
+
+    const makeAMove = async (card) => {
+    
+        localStorage.setItem('currentCard',card);
+        // alert("Your file is being uploaded!")
+        setShowAlert({ status: true, type: 'info', message: `${card.name} selected` });
+    
+    }
     
       return (
       
-    <div className={'card '} onClick={() => localStorage.setItem('currentCard', card)} >
+    <div className={'card '} onClick={() => makeAMove( card)} >
+        
       
     <div className={`card-face`}>
       <img src={playerTwo? hscard2[Number(card.id)-1] :legendCardBack} alt="ace_card" />

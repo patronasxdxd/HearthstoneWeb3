@@ -17,7 +17,7 @@ import { useGlobalContext } from '../context';
 
 const Hearthstone = () => {
   const navigate = useNavigate();
-  const { contract, played,gameData,setPlayed,battleGround, walletAddress, setErrorMessage, showAlert, setShowAlert, player1Ref, player2Ref,outfit } = useGlobalContext();
+  const { contract, played,gameData,setPlayed,battleGround, walletAddress, setErrorMessage, showAlert, setShowAlert, player1Ref, player2Ref,outfit, } = useGlobalContext();
   const [player2, setPlayer2] = useState({});
   const [player1, setPlayer1] = useState({});
   const { battleName } = useParams();
@@ -25,6 +25,7 @@ const Hearthstone = () => {
   const [player02hand, setPlayer02Hand] = useState([]);
   const [player01board, setPlayer01board] = useState([]);
   const [player02board, setPlayer02board] = useState([]);
+  const Current = localStorage.getItem("currentCard");
 
   const [player02handsize,setplayer02handsize] = useState();
 
@@ -59,15 +60,7 @@ const Hearthstone = () => {
 
         const handsize = player01.hand.length;
 
-      
-
-
-
-
-
-
-        
-
+   
         console.log("isytrue;")
 
         if ( localStorage.getItem("currentCard") === null) {
@@ -81,13 +74,6 @@ const Hearthstone = () => {
 
 
         // localStorage.removeItem("currentCard")
-
-        
-
-        
-
-        
-
 
 
         let player01handd = player01.hand;
@@ -110,7 +96,13 @@ const Hearthstone = () => {
     };
 
     if (contract ) getPlayerInfo();
-  }, [contract, gameData, battleName]);
+  }, [contract, gameData, battleName,Current]);
+
+
+  useEffect(() => { 
+    console.log("dwadwa");
+
+  }, [Current]);
 
 
 
@@ -127,6 +119,19 @@ const Hearthstone = () => {
       navigate(-1);
     }, 1000);
   };
+
+
+  const boardChoice = (choice) => {
+    localStorage.removeItem("currentCard")
+    setShowAlert({ status: true, type: 'info', message: `minion played` });
+    // setTimeout(() => {
+    //   navigate(-1);
+    // }, 1000);
+  };
+
+
+
+  
 
 
 
@@ -209,14 +214,6 @@ const Hearthstone = () => {
     </div>
 
    
-
-
-
-    
-
-   
-
-
     <div className={`${styles.flexCenter} flex-col my-10`}>
 
     <div className="flex items-center flex-row">
@@ -238,8 +235,6 @@ const Hearthstone = () => {
 
 
 {/* Temporary */}
-
-
 <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
 
 
@@ -258,15 +253,24 @@ const Hearthstone = () => {
 
 
 <div class='boardcardsTop'>
+<div onClick={() =>boardChoice(1)} className={`${localStorage.getItem("currentCard") === null?"":styles.glassEffect} w-20 h-28`}>
+      <div className=''></div>
+     {localStorage.getItem("currentCard") === null? <h2 ></h2> : <h2>Place Here</h2>
+
+     }
+    </div>
 {[...player01board].map((player01board, i) => (
+
+  
        
        <Board card={player01board} key={i} {...player01board} playerTwo />
        
 
 
      ))}
-     <div onClick={() =>console.log("xddddddddd")} className="border-2 shadow-transparent">
-     {localStorage.getItem("currentCard") === null? <H2 >EMPYU</H2> : <h2>not empyu</h2>
+     <div onClick={() =>boardChoice(2)} className={`${localStorage.getItem("currentCard") === null?"":styles.glassEffect} w-20 h-28`}>
+      <div className=''></div>
+     {localStorage.getItem("currentCard") === null? <h2 ></h2> : <h2>Place Here</h2>
 
      }
     </div>
