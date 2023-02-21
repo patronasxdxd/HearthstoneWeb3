@@ -72,6 +72,8 @@ const Hearthstone = () => {
         
         }
 
+      
+
     
 
         // localStorage.removeItem("currentCard")
@@ -86,11 +88,20 @@ const Hearthstone = () => {
         setPlayer01board(player01.minions);
         setPlayer02board(player02.minions);
 
+    
+
+       
         setplayer02handsize(player02.hand.length)
   
 
         setPlayer1({ ...player01, health: p1H, mana: p1M });
         setPlayer2({ ...player02, health: p2H, mana: p1M  });
+
+
+        console.log("911");
+        console.log(player01hand[localStorage.getItem("currentCard")].manaCost.toNumber());
+        console.log(player1.mana.toNumber())
+
       } catch (error) {
         setErrorMessage(error.message);
       }
@@ -124,9 +135,18 @@ const Hearthstone = () => {
 
   const boardChoice = (choice) => {
     try{
-     contract.playMinion(0,localStorage.getItem("currentCard"));
-     localStorage.removeItem("currentCard")
-    setShowAlert({ status: true, type: 'info', message: `minion played` }); 
+
+      localStorage.removeItem("currentCard")
+      if (player01hand[localStorage.getItem("currentCard")].manaCost.toNumber() > player1.mana){
+        console.log("ERROR")
+        setShowAlert({ status: true, type: 'info', message: `not enough mana` });
+      }else{
+    
+      contract.playMinion(0,localStorage.getItem("currentCard"));
+        setShowAlert({ status: true, type: 'info', message: `minion played` }); 
+       }
+
+  
     }catch (error) {
       setErrorMessage(error.message);
     }
@@ -191,6 +211,8 @@ const Hearthstone = () => {
         message: `ended turn FOR THE BOT`,
       });
     } catch (error) {
+      
+
       setErrorMessage(error);
     }
 
