@@ -27,6 +27,7 @@ const Board = ({ card, title, restStyles, cardRef, playerTwo,img1,index ,bot}) =
     const { setBattleGround, setShowAlert ,contract} = useGlobalContext();
 
     const makeAMove = async (card) => {
+     
     
         localStorage.setItem('battleCard',index);
 
@@ -36,16 +37,14 @@ const Board = ({ card, title, restStyles, cardRef, playerTwo,img1,index ,bot}) =
     
     }
 
-    // // await contract.attack(0,666,0);
-// // await contract.attack(0,666,0);
-
-// await contract.attack(0,1,0);
+   
 
 
     const Attacked = async (card) => {
-    
-        // await contract.attack(3,0,0)
-        await contract.attack(localStorage.getItem("battleCard"),index,0)
+
+        console.log("attacked");
+      
+        await contract.attack(localStorage.getItem("battleCard"),666,0)
 
         localStorage.removeItem('battleCard');
         setShowAlert({ status: true, type: 'info', message: `${card.name} got attacked` });

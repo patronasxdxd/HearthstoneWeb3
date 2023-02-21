@@ -96,7 +96,7 @@ const Hearthstone = () => {
   
 
         setPlayer1({ ...player01, health: p1H, mana: p1M });
-        setPlayer2({ ...player02, health: p2H, mana: p1M  });
+        setPlayer2({ ...player02, health: p2H, mana: p2M  });
 
 
         console.log("911");
@@ -136,7 +136,8 @@ const Hearthstone = () => {
   const boardChoice = (choice) => {
     try{
 
-      localStorage.removeItem("currentCard")
+      console.log("123123213")
+      
       if (player01hand[localStorage.getItem("currentCard")].manaCost.toNumber() > player1.mana){
         console.log("ERROR")
         setShowAlert({ status: true, type: 'info', message: `not enough mana` });
@@ -145,6 +146,8 @@ const Hearthstone = () => {
       contract.playMinion(0,localStorage.getItem("currentCard"));
         setShowAlert({ status: true, type: 'info', message: `minion played` }); 
        }
+
+       localStorage.removeItem("currentCard")
 
   
     }catch (error) {
@@ -200,10 +203,10 @@ const Hearthstone = () => {
   };
 
 
-  const endTurn3 = async () => {
+  const endTurn3 = async (chouice) => {
   
     try {
-      await contract.playMinion(1,3);
+      await contract.playMinion(1,0);
 
       setShowAlert({
         status: true,
@@ -346,17 +349,21 @@ const Hearthstone = () => {
   
   <div className="flex items-center flex-row">
    
-        
+  <ActionButton
+          imgUrl={rsrange}
+          handleClick={() => endTurn()}
+          restStyles="ml-6 hover:border-red-600"
+        />
           <ActionButton
           imgUrl={rsrange}
-          handleClick={() => endTurn3()}
+          handleClick={() => endTurn2()}
           restStyles="ml-6 hover:border-red-600"
         />
 
 
     <ActionButton
           imgUrl={rsrange}
-          handleClick={() =>console.log("xddddddddd")}
+          handleClick={() =>endTurn3(3)}
           restStyles="ml-6 hover:border-red-600"
         />
          {/* <ActionButton
