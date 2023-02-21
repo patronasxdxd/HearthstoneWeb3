@@ -72,6 +72,7 @@ const Hearthstone = () => {
         
         }
 
+    
 
         // localStorage.removeItem("currentCard")
 
@@ -122,11 +123,14 @@ const Hearthstone = () => {
 
 
   const boardChoice = (choice) => {
-    localStorage.removeItem("currentCard")
-    setShowAlert({ status: true, type: 'info', message: `minion played` });
-    // setTimeout(() => {
-    //   navigate(-1);
-    // }, 1000);
+    try{
+     contract.playMinion(0,localStorage.getItem("currentCard"));
+     localStorage.removeItem("currentCard")
+    setShowAlert({ status: true, type: 'info', message: `minion played` }); 
+    }catch (error) {
+      setErrorMessage(error.message);
+    }
+
   };
 
 
@@ -366,7 +370,7 @@ const Hearthstone = () => {
 
             
            
-            <HearthstoneCard handleClick={() =>console.log("xddddddddd")} card={player01hand} key={i} {...player01hand} playerTwo />
+            <HearthstoneCard card={player01hand} key={i} {...player01hand} playerTwo index={i}/>
           
 
           ))}

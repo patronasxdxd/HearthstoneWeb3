@@ -25,13 +25,15 @@ const img2 = generateRandomCardImage();
 
 
 
-const HearthstoneCard = ({ card, title, restStyles, cardRef, playerTwo,img1 }) => {
+const HearthstoneCard = ({ card, title, key,restStyles, cardRef, playerTwo,img1,index }) => {
 
     const { setBattleGround, setShowAlert } = useGlobalContext();
 
     const makeAMove = async (card) => {
     
-        localStorage.setItem('currentCard',card);
+        localStorage.setItem('currentCard',index);
+
+        console.log(index);
         // alert("Your file is being uploaded!")
         setShowAlert({ status: true, type: 'info', message: `${card.name} selected` });
     

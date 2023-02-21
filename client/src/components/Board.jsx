@@ -6,6 +6,7 @@ import { allCards, hscard2,legendCardBack } from '../assets';
 import { hscards } from '../assets';
 import { useGlobalContext } from '../context';
 import '../Board.css';
+import styles from '../styles';
 
 
 /* global BigInt */
@@ -23,10 +24,11 @@ const img2 = generateRandomCardImage();
 const Board = ({ card, title, restStyles, cardRef, playerTwo,img1 }) => {
     
       return (
+
+        
       
     <div className={'board'}>
-      
-    
+     
       <img src={playerTwo? hscard2[Number(card.id)-1] :legendCardBack} alt="ace_card"  />
 
 
@@ -39,13 +41,16 @@ const Board = ({ card, title, restStyles, cardRef, playerTwo,img1 }) => {
       <div className={``}>
         <p className={` text-yellow-400`}>{playerTwo? Number(card.health) : ""}</p>
       </div> */}
+      
    
 
       <div className={` `}>
         <p >{title}</p>
       </div>
+      
     
     </div>
+    
       
 
 );
