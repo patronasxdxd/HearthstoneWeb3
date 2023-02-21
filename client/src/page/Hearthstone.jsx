@@ -306,6 +306,13 @@ const Hearthstone = () => {
           handleClick={() => endTurn3()}
           restStyles="ml-6 hover:border-red-600"
         />
+
+
+    <ActionButton
+          imgUrl={rsrange}
+          handleClick={() =>console.log("xddddddddd")}
+          restStyles="ml-6 hover:border-red-600"
+        />
          {/* <ActionButton
           imgUrl={rsmagic}
           handleClick={() => endTurn()}
@@ -330,11 +337,13 @@ const Hearthstone = () => {
 
     
 
-    <div class='cards'>
-      
+    <div class='cards' >
+       
           {[...player01hand].map((player01hand, i) => (
+
+            
            
-            <HearthstoneCard card={player01hand} key={i} {...player01hand} playerTwo />
+            <HearthstoneCard handleClick={() =>console.log("xddddddddd")} card={player01hand} key={i} {...player01hand} playerTwo />
           
 
           ))}
@@ -343,7 +352,7 @@ const Hearthstone = () => {
 
 
  
-      <div className='healthbar'>
+      <div className='healthbar' >
 
        <PlayerInfo player={player1} playerIcon={player01Icon} />
        </div>
