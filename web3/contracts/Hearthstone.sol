@@ -117,11 +117,13 @@ constructor (address _address) {
         player1.username = _username;
         player1.health = 30;
         player1.mana = 1;
+        player1.unspendMana = 1;
 
 
         player2.username = "Bot";
         player2.health = 30;
         player2.mana = 1;
+        player2.unspendMana = 1;
         
     }
 
@@ -168,9 +170,9 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
         Game storage game = games[msg.sender];
 
 
-        require(games[msg.sender].player[_player].mana >= game.player[_player].hand[_handIndex].manaCost, "not enough mana");
+        require(games[msg.sender].player[_player].unspendMana >= game.player[_player].hand[_handIndex].manaCost, "not enough mana");
 
-        games[msg.sender].player[_player].mana -= game.player[_player].hand[_handIndex].manaCost;
+        games[msg.sender].player[_player].unspendMana -= game.player[_player].hand[_handIndex].manaCost;
 
 
         game.player[_player].minions.push(game.player[_player].hand[_handIndex]);
