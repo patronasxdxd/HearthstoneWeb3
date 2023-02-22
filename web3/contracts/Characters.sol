@@ -42,7 +42,7 @@ contract Characters {
     Champs public LeperGnome = Champs(1,2,1,14,"Leper Gnome","Deathrattle: Deal 2 damage to the enemy hero",false,false,false,false,false);
     Champs public DerangedDocter = Champs(8,8,8,15,"Deranged Doctor","Deathrattle: Restore 8 health to your hero",false,false,false,false,false);
     Champs public Mistress = Champs(2,2,1,16,"Mistress of Mixtures","Deathrattle: Restore 4 healt to each hero",false,false,false,false,false);
-    Camps public Grizzly = CHamps(3,3,3,17,"Ironfur Grizzly","taunt",true,false,false,false,false);
+    Champs public Grizzly = Champs(3,3,3,17,"Ironfur Grizzly","taunt",true,false,false,false,false);
 
 
 
@@ -55,6 +55,15 @@ contract Characters {
                       camps.push(Deathwing);
                          camps.push(Invincible);
                           camps.push(Brian);
+                          camps.push(Shrinkmeister);
+                           camps.push(CrazedWretch);
+                            camps.push(CrazedAlchemist);
+                             camps.push(Gruul);
+                              camps.push(SpawnOfNzoth);
+                               camps.push(LeperGnome);
+                               camps.push(DerangedDocter);
+                               camps.push(Mistress);
+                               camps.push(Grizzly);
     }
 
     function getCharacter(uint id) external view returns (uint,uint,uint,uint,string memory,string memory, bool,bool,bool,bool,bool){

@@ -42,14 +42,18 @@ async function main(){
   await contract.playerDrawCard(1);
 
 
-  await contract.playMinionById(3,0);
-  await contract.playMinionById(3,0);
-  await contract.playMinionById(3,0);
+  
+
+  // console.log(await contract.getMinionById(1))
+
+  await contract.playMinionById(11,0);
+  await contract.playMinionById(11,0);
+  await contract.playMinionById(11,0);
 
 
-  await contract.playMinionById(3,1);
-  await contract.playMinionById(3,1);
-  await contract.playMinionById(3,1);
+  await contract.playMinionById(12,1);
+  await contract.playMinionById(12,1);
+  await contract.playMinionById(12,1);
 
   console.log("card in hand 1: "  + await contract.showcard(0));
   console.log("card in hand 2: " + await contract.showcard(1));
@@ -80,7 +84,7 @@ async function main(){
   // console.log("place 2: " + await contract.showboardplace(1));
   // console.log("place 3: " + await contract.showboardplace(2));
 
-  await contract.playMinionById(3,0);
+  await contract.playMinionById(12,0);
   console.log("minions size: " + await contract.boardSize(0));
 
   // console.log("place 4: " + await contract.showboardplace(3));
@@ -93,9 +97,9 @@ async function main(){
 
   //bot is gonna have minions
 
-  await contract.playMinionById(4,1);
-  await contract.playMinionById(4,1);
-  await contract.playMinionById(4,1);
+  await contract.playMinionById(12,1);
+  await contract.playMinionById(12,1);
+  await contract.playMinionById(12,1);
 
 
   console.log("Bot: board minion 1: " + await contract.showboardplace(0,1));
@@ -180,6 +184,7 @@ console.log("player health: "+  await contract.getHealthPlayer());
   // await contract.attack(0,8);
 
   console.log("opponent health: "+  await contract.getHealthBot());
+  console.log("player mana: "+  await contract.getPlayer(0).mana);
 
 
 

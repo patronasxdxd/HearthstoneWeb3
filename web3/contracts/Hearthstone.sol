@@ -193,7 +193,7 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
     }
 
 
-    function getMinionById(uint minionId) internal returns (Champs memory) {
+    function getMinionById(uint minionId) public returns (Champs memory) {
          (uint a,uint b ,uint c,uint d,string memory e, string memory f, bool g,bool h, bool i,bool j,bool k) = charC.getCharacter(minionId);
          Champs memory cp = Champs(a,b,c,d,e,f,g,h,i,j,k);
         return cp;
@@ -292,7 +292,7 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
                      games[msg.sender].player[enemy].minions[i] = games[msg.sender].player[enemy].minions[i + 1];
                  }
                 games[msg.sender].player[enemy].minions.pop();
-                deathRattle(enemy,target);
+                deathRattle(enemy,_player,target);
            }else{
                 games[msg.sender].player[enemy].minions[target].health = games[msg.sender].player[enemy].minions[target].health- _attack;
            }
@@ -303,7 +303,7 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
                      games[msg.sender].player[_player].minions[i] = games[msg.sender].player[_player].minions[i + 1];
                  }
                 games[msg.sender].player[_player].minions.pop();
-                deathRattle(_player,minion);
+                deathRattle(_player,enemy,minion);
 
                 }
                 else{
@@ -373,7 +373,7 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
 
  
 
-       function deathRattle(uint _player, uint minion) internal {
+       function deathRattle(uint _player, uint _enemy, uint minion) internal {
          Champs storage champ = games[msg.sender].player[_player].minions[minion];
         //fletching 3 things shown and has to pick 1 every time he attacks;
 
@@ -381,6 +381,42 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
             //gain 2 armor
             games[msg.sender].player[_player].health += 2;
         }
+
+        if (champ.id == 11) {
+            //gain heal enemy 5 health
+            games[msg.sender].player[_enemy].health += 5;
+        }
+
+        if (champ.id == 14) {
+            //deal 2 damage to enemy hero
+            if (games[msg.sender].player[_enemy].health - 2  <= 0){ gameStatus = false; victory = true; }
+            else{ games[msg.sender].player[_enemy].health -= 2;}
+        }
+
+         if (champ.id ==  13) {
+            //give your minions +1/+1
+
+              for (uint i = 0; i <  games[msg.sender].player[_player].minions.length -1; i++) {
+                     games[msg.sender].player[_player].minions[i].health += 1;
+                     games[msg.sender].player[_player].minions[i].attack += 1;
+
+            }
+        }
+
+         if (champ.id == 15) {
+             // Restore 8 health to your hero
+               games[msg.sender].player[_player].health += 8;
+         }
+
+           if (champ.id == 16) {
+             // Restore 4 health to both hero
+               games[msg.sender].player[_player].health += 4;
+                games[msg.sender].player[_player].health += 4;
+
+         }
+
+
+
 
 
        }
