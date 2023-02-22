@@ -381,60 +381,67 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
     // }
 
     //call this method when you play a minion
-    function ability(uint _handCardChosen, uint _posistion ) external {
-        //uint position = games[msg.sender].player[0].hand.length;
-        uint minionOnBoard = games[msg.sender].player[0].minions.length;
-        Champs storage currentChar = games[msg.sender].player[0].hand[_handCardChosen];
-        Champs[] storage myBoard = games[msg.sender].player[0].minions;
+    function ability(uint _handCardChosen, uint _posistion, uint _player ) external {
+
+        uint minionOnBoard = games[msg.sender].player[_player].minions.length;
+        Champs storage currentChar = games[msg.sender].player[_player].minions[_handCardChosen];
+        Champs[] storage myBoard = games[msg.sender].player[_player].minions;
         //Champs[] memory enemyBoard = games[msg.sender].player[1].minions;
 
 
-
+    //position 0 == left
+    // position 1 == right
+    
     //Defender
         if (currentChar.id == 1) {
             if ( minionOnBoard == 0) {
                 //nothing
             } 
-            if (minionOnBoard == 1 && _posistion == 1) { 
+            else{
+                 if ( _posistion == 1) { 
                 myBoard[_posistion-1].attack += 1;
                 myBoard[_posistion-1].health += 1;
                 myBoard[_posistion-1].taunt = true;       
             }
-            if (minionOnBoard == 1 && _posistion == 0) { 
+            if ( _posistion == 0) { 
                 myBoard[_posistion+1].attack += 1;
                 myBoard[_posistion+1].health += 1;
                 myBoard[_posistion+1].taunt = true;       
             }
-            if (minionOnBoard > 1 && _posistion < minionOnBoard && _posistion != 0) { 
-                myBoard[_posistion-1].attack += 1;
-                myBoard[_posistion-1].health += 1;
-                myBoard[_posistion-1].taunt = true;
-
-                myBoard[_posistion+1].attack += 1;
-                myBoard[_posistion+1].health += 1;
-                myBoard[_posistion+1].taunt = true;          
             }
-               if (minionOnBoard > 1 && _posistion < minionOnBoard) { 
-                myBoard[_posistion-1].attack += 1;
-                myBoard[_posistion-1].health += 1;
-                myBoard[_posistion-1].taunt = true;
+            // if (minionOnBoard > 1 && _posistion < minionOnBoard && _posistion != 0) { 
+            //     myBoard[_posistion-1].attack += 1;
+            //     myBoard[_posistion-1].health += 1;
+            //     myBoard[_posistion-1].taunt = true;
 
-                myBoard[_posistion+1].attack += 1;
-                myBoard[_posistion+1].health += 1;
-                myBoard[_posistion+1].taunt = true;          
-            }
+            //     myBoard[_posistion+1].attack += 1;
+            //     myBoard[_posistion+1].health += 1;
+            //     myBoard[_posistion+1].taunt = true;          
+            // }
+            //    if (minionOnBoard > 1 && _posistion < minionOnBoard) { 
+            //     myBoard[_posistion-1].attack += 1;
+            //     myBoard[_posistion-1].health += 1;
+            //     myBoard[_posistion-1].taunt = true;
+
+            //     myBoard[_posistion+1].attack += 1;
+            //     myBoard[_posistion+1].health += 1;
+            //     myBoard[_posistion+1].taunt = true;          
+            // }
             
-             if (_posistion == minionOnBoard && _posistion > minionOnBoard) { 
-                myBoard[_posistion-1].attack += 1;
-                myBoard[_posistion-1].health += 1;
-                myBoard[_posistion-1].taunt = true;       
-            }  
-             if (_posistion == minionOnBoard && _posistion < minionOnBoard) { 
-                myBoard[_posistion+1].attack += 1;
-                myBoard[_posistion+1].health += 1;
-                myBoard[_posistion+1].taunt = true;       
-            }     
+            //  if (_posistion == minionOnBoard && _posistion > minionOnBoard) { 
+            //     myBoard[_posistion-1].attack += 1;
+            //     myBoard[_posistion-1].health += 1;
+            //     myBoard[_posistion-1].taunt = true;       
+            // }  
+            //  if (_posistion == minionOnBoard && _posistion < minionOnBoard) { 
+            //     myBoard[_posistion+1].attack += 1;
+            //     myBoard[_posistion+1].health += 1;
+            //     myBoard[_posistion+1].taunt = true;       
+            // }     
         }
+
+
+        
 
 
        

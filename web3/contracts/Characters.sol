@@ -33,6 +33,15 @@ contract Characters {
     Champs private Deathwing = Champs(12,12,5,5,"Deathwing","Battlecry: Destroy all other minions and discard your hand",false,false,false,false,false);
     Champs public Invincible = Champs(8,4,7,6,"invincible","Reborn,Battlecry and Deathrattle: Give a random friendly minion +5/+5 and Taunt",false,false,false,false,false);
     Champs public Brian = Champs(4,2,3,7,"Brian BronzeBeard","Your battlecry trigger twice",false,false,false,false,false);
+    Champs public Shrinkmeister = Champs(2,3,2,8,"Shrinkmeister","Give a minion -2 Attack",false,false,false,false,false);
+    Champs public CrazedWretch = Champs(4,1,2,9,"Crazed Wretch","Has +2 Attack and Charge while damaged",false,false,false,false,false);
+    Champs public CrazedAlchemist = Champs(2,2,2,10,"Crazed Alchemist","Battlecry: Swap the Attack and Health of a minion",false,false,false,false,false);
+    Champs public ZombieChow = Champs(3,2,1,11,"Zombie Chow","Deathrattle: Restore 5 Health to the enemy Hero",false,false,false,false,false);
+    Champs public Gruul = Champs(7,7,8,12,"Gruul","at the end of each turn gain +1/+1",false,false,false,false,false);
+    Champs public SpawnOfNzoth = Champs(2,2,3,13,"Spawn of N'Zoth","Deathrattle: give your minions +1/+1",false,false,false,false,false);
+    
+
+
   
     constructor(){
           camps.push(Defender);
