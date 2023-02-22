@@ -292,6 +292,7 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
                      games[msg.sender].player[enemy].minions[i] = games[msg.sender].player[enemy].minions[i + 1];
                  }
                 games[msg.sender].player[enemy].minions.pop();
+                deathRattle(enemy,target);
            }else{
                 games[msg.sender].player[enemy].minions[target].health = games[msg.sender].player[enemy].minions[target].health- _attack;
            }
@@ -302,6 +303,7 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
                      games[msg.sender].player[_player].minions[i] = games[msg.sender].player[_player].minions[i + 1];
                  }
                 games[msg.sender].player[_player].minions.pop();
+                deathRattle(_player,minion);
 
                 }
                 else{
@@ -369,22 +371,26 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
 
     }
 
-   
-    // function attackWithChooseOption(uint _minion, uint _target,uint _chosen, uint _player) external{
-    //    attack(_minion,_target,_player);
-    //     //check fletchling
+ 
 
-    //     if (games[msg.sender].player[_player].minions[_minion].id == 2) {
-    //         trigger(_minion,_chosen,_player);
+       function deathRattle(uint _player, uint minion) internal {
+         Champs storage champ = games[msg.sender].player[_player].minions[minion];
+        //fletching 3 things shown and has to pick 1 every time he attacks;
 
-    //     }
-    // }
+        if (champ.id == 4) {
+            //gain 2 armor
+            games[msg.sender].player[_player].health += 2;
+        }
+
+
+       }
+
 
     //call this method when you play a minion
     function ability(uint _handCardChosen, uint _posistion, uint _player ) external {
 
         uint minionOnBoard = games[msg.sender].player[_player].minions.length;
-        Champs storage currentChar = games[msg.sender].player[_player].minions[_handCardChosen];
+        Champs storage currentChar = games[msg.sender].player[_player].hand[_handCardChosen];
         Champs[] storage myBoard = games[msg.sender].player[_player].minions;
         //Champs[] memory enemyBoard = games[msg.sender].player[1].minions;
 

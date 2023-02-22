@@ -39,7 +39,11 @@ contract Characters {
     Champs public ZombieChow = Champs(3,2,1,11,"Zombie Chow","Deathrattle: Restore 5 Health to the enemy Hero",false,false,false,false,false);
     Champs public Gruul = Champs(7,7,8,12,"Gruul","at the end of each turn gain +1/+1",false,false,false,false,false);
     Champs public SpawnOfNzoth = Champs(2,2,3,13,"Spawn of N'Zoth","Deathrattle: give your minions +1/+1",false,false,false,false,false);
-    
+    Champs public LeperGnome = Champs(1,2,1,14,"Leper Gnome","Deathrattle: Deal 2 damage to the enemy hero",false,false,false,false,false);
+    Champs public DerangedDocter = Champs(8,8,8,15,"Deranged Doctor","Deathrattle: Restore 8 health to your hero",false,false,false,false,false);
+    Champs public Mistress = Champs(2,2,1,16,"Mistress of Mixtures","Deathrattle: Restore 4 healt to each hero",false,false,false,false,false);
+    Camps public Grizzly = CHamps(3,3,3,17,"Ironfur Grizzly","taunt",true,false,false,false,false);
+
 
 
   
