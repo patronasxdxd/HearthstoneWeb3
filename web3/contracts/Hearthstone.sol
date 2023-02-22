@@ -264,7 +264,8 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
     // }
 
 
-    function attack(uint minion, uint target, uint _player) external{
+//if normal attack chosen is always 0
+    function attack(uint minion, uint target, uint _player, uint _chosen) public{
         // require(target < games[msg.sender].player[_player].minions.length-1,"targe doesnt exist");
 
 
@@ -305,6 +306,9 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
                 }
                 else{
                      games[msg.sender].player[_player].minions[minion].health = games[msg.sender].player[_player].minions[minion].health - _attackEnemy;
+                    
+                    if (games[msg.sender].player[_player].minions[minion].id == 2) {
+                     trigger(minion,_chosen,_player);}
                 }
 
            
@@ -320,17 +324,7 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
     }
 
 
-    function attackWithChooseOption(uint minion, uint target,uint chosen) external{
-          uint _attack = games[msg.sender].player[0].hand[minion].attack;
-       games[msg.sender].player[1].health = games[msg.sender].player[1].health - _attack;
-
-        //check fletchling
-
-        // if (games[msg.sender].player[1].minions[minion].id == 2) {
-        //     trigger(minion,chosen);
-
-        // }
-    }
+   
 
     function battleCryWithChooseOption(uint minion, uint target,uint chosen) external{
 
@@ -340,62 +334,51 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
     
 
 //chosen means what position
-    function trigger(uint  minion, uint chosen ) external {
+    function trigger(uint  minion, uint chosen, uint player ) public {
 
-        Champs storage champ = games[msg.sender].player[0].minions[minion];
+        Champs storage champ = games[msg.sender].player[player].minions[minion];
         //fletching 3 things shown and has to pick 1 every time he attacks;
-        if (games[msg.sender].player[0].minions[minion].id == 2) {
-
-
-
+        if (games[msg.sender].player[player].minions[minion].id == 2) {
             if (chosen == 1) {
                 //gain +3 attack
                 champ.attack += 3;
-
             }
              if (chosen == 2) {
                 //gain +3 health
                 champ.health += 3;
-
             }
 
             if (chosen == 3) {
                 //gain stealth
                 champ.stealth = true;
             }
-
                if (chosen == 4) {
                 //gain taunt
                 champ.taunt = true;
             }
-
                if (chosen == 5) {
                 //gain windfury
                 champ.windfury = true;
             }
-
-
-            
-           
-
-
             champ.attack += 3;
-
-
             //gain windfury
             champ.windfury = true;
-
-
             //gain devine shield
             champ.divineshield = true;
-
-
         }
 
     }
 
    
+    // function attackWithChooseOption(uint _minion, uint _target,uint _chosen, uint _player) external{
+    //    attack(_minion,_target,_player);
+    //     //check fletchling
 
+    //     if (games[msg.sender].player[_player].minions[_minion].id == 2) {
+    //         trigger(_minion,_chosen,_player);
+
+    //     }
+    // }
 
     //call this method when you play a minion
     function ability(uint _handCardChosen, uint _posistion ) external {
