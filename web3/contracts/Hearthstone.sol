@@ -35,6 +35,7 @@ constructor (address _address) {
         string username;
         uint health;
         uint mana;
+        uint unspendMana;
         Champs[] minions;
         Champs[] hand;
     }
@@ -97,6 +98,7 @@ constructor (address _address) {
 
         if (games[msg.sender].player[_player].mana < 10){
             games[msg.sender].player[_player].mana += 1;
+            games[msg.sender].player[_player].unspendMana = games[msg.sender].player[_player].mana;
         }
         
         if (currentPlayerTurn == 0) {
@@ -129,6 +131,17 @@ function drawCard() internal returns (Champs memory){
     (uint a,uint b ,uint c,uint d,string memory e, string memory f, bool g,bool h, bool i,bool j,bool k) = charC.getCharacter(_createRandomNum());
          Champs memory cp = Champs(a,b,c,d,e,f,g,h,i,j,k);
         return cp;
+}
+
+
+function drawCards(uint _player) external {
+
+     for (uint j = 0; j < 6; j++) { 
+             games[msg.sender].player[_player].hand.push( drawCard());
+      }
+
+  
+     
 }
 
 function _createRandomNum( ) internal returns (uint256 randomValue) {
@@ -228,8 +241,8 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
        return games[msg.sender].player[0].hand.length;
     }
 
-     function boardSize() external view returns (uint) {
-       return games[msg.sender].player[0].minions.length;
+     function boardSize(uint _player) external view returns (uint) {
+       return games[msg.sender].player[_player].minions.length;
     }
 
    function getHealthBot() external view returns (uint) {
@@ -252,10 +265,8 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
 
 
     function attack(uint minion, uint target, uint _player) external{
+        // require(target < games[msg.sender].player[_player].minions.length-1,"targe doesnt exist");
 
-      
-
-        require(target < games[msg.sender].player[_player].minions.length-1,"targe doesnt exist");
 
         uint enemy;
         if (_player == 0 ){
@@ -264,19 +275,17 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
              enemy = 0;
         }
 
-        
-    
     
         uint _attack = games[msg.sender].player[_player].minions[minion].attack;
+        uint _attackEnemy = games[msg.sender].player[enemy].minions[target].attack;
 
-        //hit enemy face
+        //hit enemy face/Hero
        if (target == 666) {
            if (games[msg.sender].player[enemy].health - _attack <= 0){ gameStatus = false; victory = true; }
            else{    games[msg.sender].player[enemy].health = games[msg.sender].player[enemy].health - _attack;}
         }
         //else hit minion
        else {
-
            if ( games[msg.sender].player[enemy].minions[target].health <= _attack){
                  for (uint i = target; i < games[msg.sender].player[enemy].minions.length -1; i++) {
                      games[msg.sender].player[enemy].minions[i] = games[msg.sender].player[enemy].minions[i + 1];
@@ -285,6 +294,18 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
            }else{
                 games[msg.sender].player[enemy].minions[target].health = games[msg.sender].player[enemy].minions[target].health- _attack;
            }
+
+             if ( games[msg.sender].player[_player].minions[minion].health <= _attackEnemy )
+               {
+                    for (uint i = minion; i < games[msg.sender].player[_player].minions.length -1; i++) {
+                     games[msg.sender].player[_player].minions[i] = games[msg.sender].player[_player].minions[i + 1];
+                 }
+                games[msg.sender].player[_player].minions.pop();
+
+                }
+                else{
+                     games[msg.sender].player[_player].minions[minion].health = games[msg.sender].player[_player].minions[minion].health - _attackEnemy;
+                }
 
            
            }

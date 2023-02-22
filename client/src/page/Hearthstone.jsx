@@ -99,8 +99,7 @@ const Hearthstone = () => {
         setPlayer2({ ...player02, health: p2H, mana: p2M  });
 
 
-        console.log("911");
-        console.log(player2.minions.length-1)
+        console.log(player1);
 
       } catch (error) {
         setErrorMessage(error.message);
