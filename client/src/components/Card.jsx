@@ -18,17 +18,37 @@ const img2 = generateRandomCardImage();
 
 
 
-const Card = ({ card, title, restStyles, cardRef, playerTwo,img1 }) => (
 
+
+
+
+const Card = ({ card, title, restStyles, cardRef, playerTwo,img1 }) => {
+
+
+   const { setBattleGround, setShowAlert ,contract} = useGlobalContext();
+   const Attacked = async (card) => {
+  
+
+    console.log("attacked");
+  
+    await contract.attack(localStorage.getItem("battleCard"),666,0,0)
+  
+    localStorage.removeItem('battleCard');
+    setShowAlert({ status: true, type: 'info', message: `${card.name} got attacked` });
+  
+  }
+
+
+
+  return (
  
   
 
   <Tilt>
-    <div ref={cardRef} className={`${styles.cardContainer} ${restStyles}`}>
+    <div onClick={() => playerTwo?Attacked(card):""} ref={cardRef} className={`${styles.cardContainer} ${restStyles}`}>
       <img src={playerTwo ? img2 : img1} alt="ace_card" className={styles.cardImg} />
      
   
-
       <div className={`${styles.cardPointContainer} sm:left-[10.2%] left-[10%] top-[63%] 	 ${styles.flexCenter}`}>
       <img className= "bloodImage" src={blood} ></img>
         <p className={`bloodtext text-white	`}>{card.health}</p>
@@ -43,6 +63,7 @@ const Card = ({ card, title, restStyles, cardRef, playerTwo,img1 }) => (
       </div>
     </div>
   </Tilt>
-);
+  )
+    };
 
 export default Card;

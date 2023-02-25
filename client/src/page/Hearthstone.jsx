@@ -261,7 +261,8 @@ const Hearthstone = () => {
         card={player2}
         title={player2?.playerName}
         cardRef={player2Ref}
-        playerTwo
+        playerTwo 
+    
       />
      
    
