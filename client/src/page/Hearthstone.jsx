@@ -205,7 +205,8 @@ const Hearthstone = () => {
   const endTurn3 = async (chouice) => {
   
     try {
-      await contract.playMinion(1,0);
+      // await contract.playMinion(1,0);
+      await contract.playminion(1,0);
 
       setShowAlert({
         status: true,

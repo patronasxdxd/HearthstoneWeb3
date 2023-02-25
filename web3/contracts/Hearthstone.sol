@@ -175,22 +175,40 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
         games[msg.sender].player[_player].unspendMana -= game.player[_player].hand[_handIndex].manaCost;
 
 
+    
+        if (game.player[_player].hand[_handIndex].id == 5) {    
+
+                     delete games[msg.sender].player[0].minions;
+                    delete games[msg.sender].player[1].minions;
+                 
+        }
+
+        //add minion from hand to board
         game.player[_player].minions.push(game.player[_player].hand[_handIndex]);
 
+
+        //remove card from hand
          for (uint i = 0; i <  games[msg.sender].player[_player].hand.length -1; i++) {
                      games[msg.sender].player[_player].hand[i] = games[msg.sender].player[_player].hand[i + 1];
                  }
                 games[msg.sender].player[_player].hand.pop();
 
 
+
+
         emit playMinionEvent(game.player[_player].hand[_handIndex]);
   
-        // game.player[_player].minions.push( drawCard()); 
-        // game.player[_player].
+    }
+
+    function clear() external {
+           delete games[msg.sender].player[0].minions;
+            delete games[msg.sender].player[1].minions;
     }
 
     function playMinionById(uint minionId,uint _player) external {
         Game storage game = games[msg.sender];
+
+       
         game.player[_player].minions.push(getMinionById(minionId) ); 
     }
 

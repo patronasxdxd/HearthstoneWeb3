@@ -58,6 +58,7 @@ contract Characters {
                           camps.push(Shrinkmeister);
                            camps.push(CrazedWretch);
                             camps.push(CrazedAlchemist);
+                                camps.push(ZombieChow);
                              camps.push(Gruul);
                               camps.push(SpawnOfNzoth);
                                camps.push(LeperGnome);
