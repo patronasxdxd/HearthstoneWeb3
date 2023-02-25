@@ -100,8 +100,9 @@ constructor (address _address) {
 
         if (games[msg.sender].player[_player].mana < 10){
             games[msg.sender].player[_player].mana += 1;
-            games[msg.sender].player[_player].unspendMana = games[msg.sender].player[_player].mana;
         }
+        games[msg.sender].player[_player].unspendMana = games[msg.sender].player[_player].mana;
+
         
         if (currentPlayerTurn == 0) {
             currentPlayerTurn = 1;

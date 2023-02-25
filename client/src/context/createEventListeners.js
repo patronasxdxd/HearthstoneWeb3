@@ -74,7 +74,7 @@ AddNewEvent(endTurnEvent, provider, ({ args }) => {
 
 const attackEvent = contract.filters.attackEvent();
 AddNewEvent(attackEvent, provider, ({ args }) => {
-  console.log('ended turn');
+  console.log('ended attack');
     setShowAlert({
       status: true,
       type: 'success',

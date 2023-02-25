@@ -29,7 +29,6 @@ const Board = ({ card, title, restStyles, cardRef, playerTwo,img1,index ,bot}) =
     const makeAMove = async (card) => {
      
 
-      console.log(index,"swag");
     
         localStorage.setItem('battleCard',index);
 

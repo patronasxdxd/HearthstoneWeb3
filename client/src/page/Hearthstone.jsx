@@ -140,7 +140,7 @@ const Hearthstone = () => {
 
       // console.log(index,"swag");
 
-      console.log(localStorage.getItem("currentCard"),"dwa")
+      console.log(localStorage.getItem("currentCard"),"dwa  ")
       
       if (player01hand[localStorage.getItem("currentCard")].manaCost.toNumber() > player1.mana){
         console.log("ERROR")
@@ -181,6 +181,7 @@ const Hearthstone = () => {
       });
     } catch (error) {
       setErrorMessage(error);
+      
     }
 
 
@@ -201,6 +202,7 @@ const Hearthstone = () => {
       });
     } catch (error) {
       setErrorMessage(error);
+     
     }
 
 
@@ -218,7 +220,7 @@ const Hearthstone = () => {
       // await contract.playMinionById(3,1);
       // await contract.playMinionById(10,1);
       await contract.drawCards(0);
-      await contract.drawCards(1);
+      // await contract.drawCards(1);
 
 
       setShowAlert({

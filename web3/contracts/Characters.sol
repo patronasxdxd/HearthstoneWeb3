@@ -31,7 +31,7 @@ contract Characters {
     Champs private Yeti = Champs(5,3,4,3,"Yeti","",false,false,false,false,false);
     Champs private Scrab = Champs(3,2,2,4,"Scrab","Deathrattle: gain 2 armor",false,false,false,false,false);
     Champs private Deathwing = Champs(12,12,5,5,"Deathwing","Battlecry: Destroy all other minions and discard your hand",false,false,false,false,false);
-    Champs public Invincible = Champs(8,4,7,6,"invincible","Reborn,Battlecry and Deathrattle: Give a random friendly minion +5/+5 and Taunt",false,false,false,false,false);
+    Champs public Invincible = Champs(4,5,7,6,"invincible","Reborn,Battlecry and Deathrattle: Give a random friendly minion +5/+5 and Taunt",false,false,false,false,false);
     Champs public Brian = Champs(4,2,3,7,"Brian BronzeBeard","Your battlecry trigger twice",false,false,false,false,false);
     Champs public Shrinkmeister = Champs(2,3,2,8,"Shrinkmeister","Give a minion -2 Attack",false,false,false,false,false);
     Champs public CrazedWretch = Champs(4,1,2,9,"Crazed Wretch","Has +2 Attack and Charge while damaged",false,false,false,false,false);
