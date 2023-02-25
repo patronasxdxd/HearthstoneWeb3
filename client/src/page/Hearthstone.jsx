@@ -52,8 +52,11 @@ const Hearthstone = () => {
 
  
         const p1H = player01.health.toNumber();
-        const p1M = player01.mana.toNumber();
+        const p1M = player01.unspendMana.toNumber();
+        const p1Ma = player01.unspendMana.toNumber();
         const p2M = player02.mana.toNumber();
+        const p2Ma = player02.unspendMana.toNumber();
+
   
         const p2H = player02.health.toNumber();
 
@@ -206,7 +209,7 @@ const Hearthstone = () => {
   
     try {
       // await contract.playMinion(1,0);
-      await contract.playminion(1,0);
+      await contract.playminion(1,1);
 
       setShowAlert({
         status: true,

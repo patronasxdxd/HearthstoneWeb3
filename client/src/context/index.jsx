@@ -14,6 +14,8 @@ export const GlobalContextProvider = ({ children }) => {
   const [walletAddress, setWalletAddress] = useState('');
   const [battleGround, setBattleGround] = useState('bg-astral');
   const [contract, setContract] = useState(null);
+  const [xdxd, setContracter] = useState(null);
+
   const [provider, setProvider] = useState(null);
   const [step, setStep] = useState(1);
   const [gameData, setGameData] = useState({ players: [], pendingBattles: [], activeBattle: null });
@@ -94,6 +96,10 @@ export const GlobalContextProvider = ({ children }) => {
 
       setProvider(newProvider);
       setContract(newContract);
+      setContracter(newContract);
+      console.log('here');
+      console.log(xdxd);
+
     };
 
     setSmartContractAndProvider();
@@ -104,6 +110,8 @@ export const GlobalContextProvider = ({ children }) => {
   //* Activate event listeners for the smart contract
   useEffect(() => {
     if ( contract) {
+      console.log("working")
+      console.log(contract)
       createEventListeners({
         navigate,
         contract,
@@ -116,7 +124,7 @@ export const GlobalContextProvider = ({ children }) => {
         setPlayed
       });
     }
-  }, []);
+  }, [contract]);
 
   //* Set the game data to the state
   useEffect(() => {
@@ -131,40 +139,6 @@ export const GlobalContextProvider = ({ children }) => {
         setCount(count +1)
 
        
-      
-        // const fetchedBattles = await contract.getAllBattles();
-        
-        // fetchedBattles.forEach((battle) => {
-
-
-        
-
-        //   if (battle.players.find((player) => player.toLowerCase() === walletAddress.toLowerCase())) {
-
-           
-           
-        //    if(battle.battleStatus === 1){
-        //     if (battle.moves[0] === 0 && battle.moves[1] === 0) {
-          
-        //       setPlayed(false);
-        //       console.log("new round!");
-        //     }
-            
-        //   }
-        // }
-        // });
-
-        // const pendingBattles = fetchedBattles.filter((battle) => battle.battleStatus === 0);
-        // let activeBattle = null;
-
-        // fetchedBattles.forEach((battle) => {
-        //   if (battle.players.find((player) => player.toLowerCase() === walletAddress.toLowerCase())) {
-        //     if (battle.winner.startsWith('0x00')) {
-        //       activeBattle = battle;
-        //     }
-        //   }
-        // });
-        // setGameData({ pendingBattles: pendingBattles.slice(1), activeBattle });
       }
     };
 
