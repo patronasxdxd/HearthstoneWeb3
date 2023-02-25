@@ -21,6 +21,7 @@ export const GlobalContextProvider = ({ children }) => {
   const [gameData, setGameData] = useState({ players: [], pendingBattles: [], activeBattle: null });
   const [showAlert, setShowAlert] = useState({ status: false, type: 'info', message: '' });
   const [battleName, setBattleName] = useState('');
+  const [Minionsplayed, setMinionsplayed] = useState(0);
   const [errorMessage, setErrorMessage] = useState('');
   const [updateGameData, setUpdateGameData] = useState(0);
   const [outfit, setOutfit] = useState('bg-1')
@@ -121,7 +122,8 @@ export const GlobalContextProvider = ({ children }) => {
         player1Ref,
         player2Ref,
         setUpdateGameData,
-        setPlayed
+        setPlayed,setMinionsplayed,
+        Minionsplayed
       });
     }
   }, [contract]);
@@ -175,6 +177,8 @@ export const GlobalContextProvider = ({ children }) => {
     <GlobalContext.Provider
       value={{
         player1Ref,
+        Minionsplayed,
+        setMinionsplayed,
         player2Ref,
         battleGround,
         setBattleGround,

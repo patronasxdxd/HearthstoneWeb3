@@ -22,7 +22,7 @@ const AddNewEvent = (eventFilter, provider, cb) => {
 
 // const emptyAccount = '0x0000000000000000000000000000000000000000';
 
-export const createEventListeners = ({ navigate, contract, provider, walletAddress, setShowAlert}) => {
+export const createEventListeners = ({ navigate,Minionsplayed,setMinionsplayed, contract, provider, walletAddress, setShowAlert}) => {
 
  
 
@@ -52,7 +52,7 @@ AddNewEvent(minonplayed, provider, ({ args }) => {
       message: 'succesfully played ' + args.name,
     });
 
-    // minionsplayed(false);
+    setMinionsplayed(Minionsplayed+1);
 
     console.log(args)
   

@@ -17,7 +17,7 @@ import { useGlobalContext } from '../context';
 
 const Hearthstone = () => {
   const navigate = useNavigate();
-  const { contract, played,gameData,setPlayed,battleGround, walletAddress, setErrorMessage, showAlert, setShowAlert, player1Ref, player2Ref,outfit, } = useGlobalContext();
+  const { contract, played,gameData,setPlayed,Minionsplayed,setMinionsplayed,battleGround, walletAddress, setErrorMessage, showAlert, setShowAlert, player1Ref, player2Ref,outfit, } = useGlobalContext();
   const [player2, setPlayer2] = useState({});
   const [player1, setPlayer1] = useState({});
   const { battleName } = useParams();
@@ -110,7 +110,7 @@ const Hearthstone = () => {
     };
 
     if (contract ) getPlayerInfo();
-  }, [contract, gameData, battleName,Current]);
+  }, [contract, gameData, battleName,Current,Minionsplayed]);
 
 
   useEffect(() => { 
