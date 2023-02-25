@@ -29,6 +29,25 @@ import scrab from './board/scrab.webp'
 import deathwing from './board/deathwing.webp'
 import invincible from './board/invincible.webp'
 import brann from './board/brann.webp'
+import shrinkmeister from './board/shrinkmeister.webp'
+import crazedWretch from './board/crazedWretch.png'
+import crazedAlchemist from './board/CrazyAlchemist.webp'
+import zombieChow from './board/zombieChow.webp'
+import gruul from './board/Gruul.webp'
+import spawnOfNzoth from './board/spawnnzoth.webp'
+import leperGnome from './board/leperGnome.webp'
+import DerangedDocter from './board/DerangedDoctor.png'
+import Mistress from './board/misstress.webp'
+import Grizzly from './board/grizzly.webp'
+
+
+
+
+
+
+
+
+
 
 import legendCardBack from './board/legendcardback.webp'
 import blood from './board/blood.png'
@@ -81,7 +100,8 @@ export const allCards = [
 
 export const hscard2 = [
  
-  defender,fletchling,yeti,scrab,deathwing,invincible,brann
+  defender,fletchling,yeti,scrab,deathwing,invincible,brann,shrinkmeister,crazedWretch,crazedAlchemist,zombieChow,
+  gruul,spawnOfNzoth,leperGnome,DerangedDocter,Mistress,Grizzly
   
 ];
 
@@ -91,7 +111,8 @@ export {
   Druid1,Druid2,Druid3,Druid4,
 
   fletchling,deathwing,invincible,
-  blood,
+  blood,shrinkmeister,crazedWretch,crazedAlchemist,zombieChow,
+  gruul,spawnOfNzoth,leperGnome,DerangedDocter,Mistress,Grizzly,
 
   Zero,
   Hit,
@@ -125,7 +146,8 @@ export {
 export const hscards = [
   { id: '1', image: fletchling, name: 'Fletchling' },
   { id: '2', image: deathwing, name: 'Deathwing' },
-  { id: '3', image: invincible, name: 'Invinclible' },
+  { id: '3', image: yeti, name: 'yeti' },
+  { id: '4', image: scrab, name: 'Scrab'}
 
 ];
 
