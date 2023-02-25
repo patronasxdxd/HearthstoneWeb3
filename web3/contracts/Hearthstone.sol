@@ -49,6 +49,7 @@ constructor (address _address) {
         bool divineshield;
         bool stealth;
         bool poisonious;
+        bool asleep;
     }
 
     struct Board {
@@ -93,6 +94,11 @@ constructor (address _address) {
         emit endTurnEvent();
 
 
+        //unsleep your minions
+        for (uint i = 0; i < games[msg.sender].player[_player].minions.length -1; i++) {
+            games[msg.sender].player[_player].minions[i].asleep = false;
+        }
+
         if (games[msg.sender].player[_player].hand.length < 10){
         games[msg.sender].player[_player].hand.push( drawCard());
         }
@@ -136,8 +142,8 @@ constructor (address _address) {
 
 function drawCard() internal returns (Champs memory){
 
-    (uint a,uint b ,uint c,uint d,string memory e, string memory f, bool g,bool h, bool i,bool j,bool k) = charC.getCharacter(_createRandomNum());
-         Champs memory cp = Champs(a,b,c,d,e,f,g,h,i,j,k);
+    (uint a,uint b ,uint c,uint d,string memory e, string memory f, bool g,bool h, bool i,bool j,bool k, bool l) = charC.getCharacter(_createRandomNum());
+         Champs memory cp = Champs(a,b,c,d,e,f,g,h,i,j,k,l);
         return cp;
 }
 
@@ -156,7 +162,7 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
     uint256 randomNum = uint256(keccak256(abi.encodePacked(block.timestamp, msg.sender,nonce)));
 
     nonce++;
-    randomValue = randomNum % 5;
+    randomValue = randomNum % 16;
     if(randomValue == 0) {
       randomValue = 1;
     }
@@ -174,6 +180,7 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
         
 
         Game storage game = games[msg.sender];
+        //Player storage player =  games[msg.sender].player[_player];
 
 
         require(games[msg.sender].player[_player].unspendMana >= game.player[_player].hand[_handIndex].manaCost, "not enough mana");
@@ -198,7 +205,7 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
                      games[msg.sender].player[_player].hand[i] = games[msg.sender].player[_player].hand[i + 1];
                  }
                 games[msg.sender].player[_player].hand.pop();
-        emit playMinionEvent(game.player[_player].hand[_handIndex]);
+        emit playMinionEvent();
   
     }
 
@@ -216,8 +223,8 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
 
 
     function getMinionById(uint minionId) public returns (Champs memory) {
-         (uint a,uint b ,uint c,uint d,string memory e, string memory f, bool g,bool h, bool i,bool j,bool k) = charC.getCharacter(minionId);
-         Champs memory cp = Champs(a,b,c,d,e,f,g,h,i,j,k);
+         (uint a,uint b ,uint c,uint d,string memory e, string memory f, bool g,bool h, bool i,bool j,bool k,bool l) = charC.getCharacter(minionId);
+         Champs memory cp = Champs(a,b,c,d,e,f,g,h,i,j,k,l);
         return cp;
     }
 
@@ -238,8 +245,8 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
 
     function getAttack(uint id) external view returns (uint ) {
 
-        (uint a,uint b ,uint c,uint d,string memory e, string memory f, bool g,bool h, bool i, bool j,bool k) = charC.getCharacter(id);
-         Champs memory cp = Champs(a,b,c,d,e,f,g,h,i,j,k);
+        (uint a,uint b ,uint c,uint d,string memory e, string memory f, bool g,bool h, bool i, bool j,bool k,bool l) = charC.getCharacter(id);
+         Champs memory cp = Champs(a,b,c,d,e,f,g,h,i,j,k,l);
         return cp.attack;
     }
 
@@ -289,6 +296,8 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
 //if normal attack chosen is always 0
     function attack(uint minion, uint target, uint _player, uint _chosen) public{
         // require(target < games[msg.sender].player[_player].minions.length-1,"targe doesnt exist");
+        require(!games[msg.sender].player[_player].minions[minion].asleep,"You're minion is asleep, wait a turn");
+
         emit attackEvent();
 
         uint enemy;
@@ -519,7 +528,7 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
 
 
 event drawn(Champs str);
-event playMinionEvent(Champs str);
+event playMinionEvent();
 event endTurnEvent();
 event gameCreatedEvent();
 event deathRattleEvent(uint player, uint minion );
