@@ -16,15 +16,12 @@ contract Hearthstone {
 
 
     Characters public charC;
-
     uint nonce = 0;
-
     address owner;
 
 
 constructor (address _address) {
     owner = msg.sender;
-
     charC = Characters(_address);
 }
 
@@ -93,7 +90,12 @@ constructor (address _address) {
 
     function endTurn(uint _player) external {
         require(currentPlayerTurn ==  _player,"its not your turn");
+        emit endTurnEvent();
+
+
+        if (games[msg.sender].player[_player].hand.length < 10){
         games[msg.sender].player[_player].hand.push( drawCard());
+        }
 
 
         if (games[msg.sender].player[_player].mana < 10){
@@ -116,14 +118,17 @@ constructor (address _address) {
 
         player1.username = _username;
         player1.health = 30;
-        player1.mana = 1;
-        player1.unspendMana = 1;
+        player1.mana = 5;
+        player1.unspendMana = 5;
 
 
         player2.username = "Bot";
         player2.health = 30;
-        player2.mana = 1;
-        player2.unspendMana = 1;
+        player2.mana = 5;
+        player2.unspendMana = 5;
+
+
+        emit gameCreatedEvent();
         
     }
 
@@ -192,10 +197,6 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
                      games[msg.sender].player[_player].hand[i] = games[msg.sender].player[_player].hand[i + 1];
                  }
                 games[msg.sender].player[_player].hand.pop();
-
-
-
-
         emit playMinionEvent(game.player[_player].hand[_handIndex]);
   
     }
@@ -287,7 +288,7 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
 //if normal attack chosen is always 0
     function attack(uint minion, uint target, uint _player, uint _chosen) public{
         // require(target < games[msg.sender].player[_player].minions.length-1,"targe doesnt exist");
-
+        emit attackEvent();
 
         uint enemy;
         if (_player == 0 ){
@@ -298,15 +299,17 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
 
     
         uint _attack = games[msg.sender].player[_player].minions[minion].attack;
-        uint _attackEnemy = games[msg.sender].player[enemy].minions[target].attack;
+       // uint _attackEnemy = games[msg.sender].player[enemy].minions[target].attack;
 
         //hit enemy face/Hero
        if (target == 666) {
-           if (games[msg.sender].player[enemy].health - _attack <= 0){ gameStatus = false; victory = true; }
+            if (games[msg.sender].player[enemy].health - _attack <= 0){ gameStatus = false; victory = true; }
            else{    games[msg.sender].player[enemy].health = games[msg.sender].player[enemy].health - _attack;}
         }
         //else hit minion
        else {
+                   uint _attackEnemy = games[msg.sender].player[enemy].minions[target].attack;
+
            if ( games[msg.sender].player[enemy].minions[target].health <= _attack){
                  for (uint i = target; i < games[msg.sender].player[enemy].minions.length -1; i++) {
                      games[msg.sender].player[enemy].minions[i] = games[msg.sender].player[enemy].minions[i + 1];
@@ -396,6 +399,7 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
        function deathRattle(uint _player, uint _enemy, uint minion) internal {
          Champs storage champ = games[msg.sender].player[_player].minions[minion];
         //fletching 3 things shown and has to pick 1 every time he attacks;
+        emit deathRattleEvent(_player,minion);
 
         if (champ.id == 4) {
             //gain 2 armor
@@ -515,6 +519,10 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
 
 event drawn(Champs str);
 event playMinionEvent(Champs str);
+event endTurnEvent();
+event gameCreatedEvent();
+event deathRattleEvent(uint player, uint minion );
+event attackEvent();
     
 
 

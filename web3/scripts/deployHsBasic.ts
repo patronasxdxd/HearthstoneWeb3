@@ -25,7 +25,7 @@ async function main(){
   )) as Hearthstone;
 
 
-  // await contract.createGame("patronasxd")
+  await contract.createGame("patronasxd")
 
 // //   await contract.playMinion(1);
 // //   await contract.playMinion(2);
@@ -116,8 +116,9 @@ async function main(){
 
 // console.log("opponent health: "+  await contract.getHealthBot());
 
-// // await contract.attack(0,666,0);
-// // await contract.attack(0,666,0);
+// await contract.attack(0,666,0,0);
+// console.log("opponent health: "+  await contract.getHealthBot());
+
 
 // await contract.attack(0,0,0,2);
 
