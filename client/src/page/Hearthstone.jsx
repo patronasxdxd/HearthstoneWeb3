@@ -60,6 +60,8 @@ const Hearthstone = () => {
   
         const p2H = player02.health.toNumber();
 
+        console.log(player01.minions)
+
 
         const handsize = player01.hand.length;
 
