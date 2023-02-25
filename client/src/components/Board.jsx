@@ -28,6 +28,8 @@ const Board = ({ card, title, restStyles, cardRef, playerTwo,img1,index ,bot}) =
 
     const makeAMove = async (card) => {
      
+
+      console.log(index,"swag");
     
         localStorage.setItem('battleCard',index);
 
@@ -44,6 +46,7 @@ const Board = ({ card, title, restStyles, cardRef, playerTwo,img1,index ,bot}) =
 
         console.log("attacked");
       
+
         await contract.attack(localStorage.getItem("battleCard"),index,0,0)
 
         localStorage.removeItem('battleCard');

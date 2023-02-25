@@ -31,8 +31,6 @@ const Hearthstone = () => {
 
 
 
-  console.log("xd");
-
   useEffect(() => {
    
     
@@ -140,7 +138,9 @@ const Hearthstone = () => {
   const boardChoice = (choice) => {
     try{
 
-      console.log("123123213")
+      // console.log(index,"swag");
+
+      console.log(localStorage.getItem("currentCard"),"dwa")
       
       if (player01hand[localStorage.getItem("currentCard")].manaCost.toNumber() > player1.mana){
         console.log("ERROR")

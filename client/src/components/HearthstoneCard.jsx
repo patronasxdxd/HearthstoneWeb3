@@ -33,6 +33,9 @@ const HearthstoneCard = ({ card, title, key,restStyles, cardRef, playerTwo,img1,
     
         localStorage.setItem('currentCard',index);
 
+
+        console.log(index,"swag");
+
      
       
         setShowAlert({ status: true, type: 'info', message: `${card.name} selected` });
