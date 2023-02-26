@@ -43,6 +43,10 @@ const styles = {
   cardContainer: 'relative sm:w-[130px] w-[100px] sm:h-[165px] h-[140px] z-0 transition-all',
   cardImg: 'w-full h-full object-contain',
   cardPointContainer: 'absolute sm:w-[40px] w-[32px] sm:h-[40px] h-[32px] rounded-[25px] bottom-[31.4%]',
+  cardPointContainer2: 'absolute sm:w-[40px] w-[32px] sm:h-[40px] h-[32px] sm:right-[3.2%] right-[15%]  rounded-[25px] bottom-[11.4%]',
+  cardPointContainer3: 'absolute sm:w-[40px] w-[32px] sm:h-[40px] h-[32px] rounded-[25px] bottom-[11.4%]',
+
+  // sm:right-[20.2%] right-[15%]
   cardPoint: 'font-rajdhani text-[20px] font-bold',
   // cardTextContainer: 'absolute w-full bottom-[13.5%] left-3',
   cardText: 'font-runescape  sm:h-[335px] text-[26px] text-yellow-300',
