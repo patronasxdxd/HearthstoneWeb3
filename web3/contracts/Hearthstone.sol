@@ -79,7 +79,7 @@ constructor (address _address) {
           return games[msg.sender].player[_player];
     }
 
-     function getGame(uint _player) external view returns (Game memory) {
+     function getGame() external view returns (Game memory) {
           return games[msg.sender];
     }
 
@@ -121,7 +121,6 @@ constructor (address _address) {
 
         Player storage player1 = games[msg.sender].player[0];
         Player storage player2 = games[msg.sender].player[1];
-
 
         player1.username = _username;
         player1.health = 30;
@@ -177,47 +176,36 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
     }
 
     function playMinion( uint _player, uint _handIndex) external {
-        
-
         Game storage game = games[msg.sender];
-        //Player storage player =  games[msg.sender].player[_player];
-
-
-        require(games[msg.sender].player[_player].unspendMana >= game.player[_player].hand[_handIndex].manaCost, "not enough mana");
-
-        games[msg.sender].player[_player].unspendMana -= game.player[_player].hand[_handIndex].manaCost;
-
-
-    
-        if (game.player[_player].hand[_handIndex].id == 5) {    
-
-                     delete games[msg.sender].player[0].minions;
-                    delete games[msg.sender].player[1].minions;
-                 
+        Player storage player =  games[msg.sender].player[_player];
+        Champs storage hand = player.hand[_handIndex];
+        
+        require(player.unspendMana >= hand.manaCost, "not enough mana");
+        player.unspendMana -= hand.manaCost;
+        
+        if (hand.id == 5) {    
+            delete game.player[0].minions;
+            delete game.player[1].minions;      
         }
 
         //add minion from hand to board
-        game.player[_player].minions.push(game.player[_player].hand[_handIndex]);
-
+        player.minions.push(hand);
 
         //remove card from hand
-         for (uint i = 0; i <  games[msg.sender].player[_player].hand.length -1; i++) {
-                     games[msg.sender].player[_player].hand[i] = games[msg.sender].player[_player].hand[i + 1];
-                 }
-                games[msg.sender].player[_player].hand.pop();
+        for (uint i = 0; i <  player.hand.length -1; i++) {
+                player.hand[i] = player.hand[i + 1];
+            }   
+        player.hand.pop();
         emit playMinionEvent();
-  
     }
 
     function clear() external {
-           delete games[msg.sender].player[0].minions;
-            delete games[msg.sender].player[1].minions;
+       delete games[msg.sender].player[0].minions;
+       delete games[msg.sender].player[1].minions;
     }
 
     function playMinionById(uint minionId,uint _player) external {
         Game storage game = games[msg.sender];
-
-       
         game.player[_player].minions.push(getMinionById(minionId) ); 
     }
 
@@ -282,22 +270,11 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
        return games[msg.sender].player[0].health;
     }
 
-    // function deleteMinion(uint index, uint _player) internal {
 
-
-    //     for (uint i = index; i< data.length - 1; i++) {
-    //         data[i] = data[i + 1];
-    //     }
-    //     data.pop();
-
-    // }
-
-
-//if normal attack chosen is always 0
+//if it's a normal attack, chosen is always 0
     function attack(uint minion, uint target, uint _player, uint _chosen) public{
         // require(target < games[msg.sender].player[_player].minions.length-1,"targe doesnt exist");
         require(!games[msg.sender].player[_player].minions[minion].asleep,"You're minion is asleep, wait a turn");
-
         emit attackEvent();
 
         uint enemy;
@@ -306,10 +283,7 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
         } else{
              enemy = 0;
         }
-
-    
         uint _attack = games[msg.sender].player[_player].minions[minion].attack;
-       // uint _attackEnemy = games[msg.sender].player[enemy].minions[target].attack;
 
         //hit enemy face/Hero
        if (target == 666) {
@@ -319,15 +293,18 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
         //else hit minion
        else {
                    uint _attackEnemy = games[msg.sender].player[enemy].minions[target].attack;
+                   Champs storage enemyMinion = games[msg.sender].player[enemy].minions[target];
+                   Champs storage playerMinion = games[msg.sender].player[_player].minions[minion];
 
-           if ( games[msg.sender].player[enemy].minions[target].health <= _attack){
+
+           if ( enemyMinion.health <= _attack){
                  for (uint i = target; i < games[msg.sender].player[enemy].minions.length -1; i++) {
                      games[msg.sender].player[enemy].minions[i] = games[msg.sender].player[enemy].minions[i + 1];
                  }
                 games[msg.sender].player[enemy].minions.pop();
                 deathRattle(enemy,_player,target);
            }else{
-                games[msg.sender].player[enemy].minions[target].health = games[msg.sender].player[enemy].minions[target].health- _attack;
+                enemyMinion.health -= _attack;
            }
 
              if ( games[msg.sender].player[_player].minions[minion].health <= _attackEnemy )
@@ -340,40 +317,20 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
 
                 }
                 else{
-                     games[msg.sender].player[_player].minions[minion].health = games[msg.sender].player[_player].minions[minion].health - _attackEnemy;
+                     playerMinion.health -= _attackEnemy;
                     
-                    if (games[msg.sender].player[_player].minions[minion].id == 2) {
+                    if (playerMinion.id == 2) {
                      trigger(minion,_chosen,_player);}
                 }
-
-           
            }
-
-        //check fletchling
-
-        // if (games[msg.sender].player[1].minions[minion].id == 2) {
-        //     trigger(minion);
-
-        // }
-
     }
-
-
-   
-
-    function battleCryWithChooseOption(uint minion, uint target,uint chosen) external{
-
-    }
-
-
-    
 
 //chosen means what position
     function trigger(uint  minion, uint chosen, uint player ) public {
 
         Champs storage champ = games[msg.sender].player[player].minions[minion];
         //fletching 3 things shown and has to pick 1 every time he attacks;
-        if (games[msg.sender].player[player].minions[minion].id == 2) {
+        if (champ.id == 2) {
             if (chosen == 1) {
                 //gain +3 attack
                 champ.attack += 3;
@@ -485,45 +442,7 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
                 myBoard[_posistion+1].taunt = true;       
             }
             }
-            // if (minionOnBoard > 1 && _posistion < minionOnBoard && _posistion != 0) { 
-            //     myBoard[_posistion-1].attack += 1;
-            //     myBoard[_posistion-1].health += 1;
-            //     myBoard[_posistion-1].taunt = true;
-
-            //     myBoard[_posistion+1].attack += 1;
-            //     myBoard[_posistion+1].health += 1;
-            //     myBoard[_posistion+1].taunt = true;          
-            // }
-            //    if (minionOnBoard > 1 && _posistion < minionOnBoard) { 
-            //     myBoard[_posistion-1].attack += 1;
-            //     myBoard[_posistion-1].health += 1;
-            //     myBoard[_posistion-1].taunt = true;
-
-            //     myBoard[_posistion+1].attack += 1;
-            //     myBoard[_posistion+1].health += 1;
-            //     myBoard[_posistion+1].taunt = true;          
-            // }
-            
-            //  if (_posistion == minionOnBoard && _posistion > minionOnBoard) { 
-            //     myBoard[_posistion-1].attack += 1;
-            //     myBoard[_posistion-1].health += 1;
-            //     myBoard[_posistion-1].taunt = true;       
-            // }  
-            //  if (_posistion == minionOnBoard && _posistion < minionOnBoard) { 
-            //     myBoard[_posistion+1].attack += 1;
-            //     myBoard[_posistion+1].health += 1;
-            //     myBoard[_posistion+1].taunt = true;       
-            // }     
         }
-
-
-        
-
-
-       
-
-
-
     }
 
 
@@ -533,7 +452,5 @@ event endTurnEvent();
 event gameCreatedEvent();
 event deathRattleEvent(uint player, uint minion );
 event attackEvent();
-    
-
 
 }
