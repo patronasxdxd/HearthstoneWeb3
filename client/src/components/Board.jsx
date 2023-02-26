@@ -2,7 +2,7 @@ import React from 'react';
 import Tilt from 'react-parallax-tilt';
 
 // import styles from '../styles';
-import { allCards, hscard2,legendCardBack } from '../assets';
+import { allCards, hscard2,legendCardBack,sleeping } from '../assets';
 import { hscards } from '../assets';
 import { useGlobalContext } from '../context';
 import '../Board.css';
@@ -60,8 +60,13 @@ const Board = ({ card, title, restStyles, cardRef, playerTwo,img1,index ,bot}) =
         
       
     <div onClick={() => bot?Attacked(card):makeAMove(card)} className={'board'}>
-     
+  
+    
+
       <img src={playerTwo? hscard2[Number(card.id)-1] :legendCardBack} alt="ace_card"  />
+      <h2 className='text-xs'>HP:{Number(card.health)}  ATT:{Number(card.attack)} </h2>
+      <img className='w-6'  src=  {card.asleep.toString() === "true"  ? sleeping: ""}  />
+     
 
 
       {/* TODO Add these to the cards */}

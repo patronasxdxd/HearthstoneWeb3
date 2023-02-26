@@ -40,6 +40,8 @@ import DerangedDocter from './board/DerangedDoctor.png'
 import Mistress from './board/misstress.webp'
 import Grizzly from './board/grizzly.webp'
 
+import sleeping from'./board/sleeping.png'
+
 
 
 
@@ -112,7 +114,7 @@ export {
 
   fletchling,deathwing,invincible,
   blood,shrinkmeister,crazedWretch,crazedAlchemist,zombieChow,
-  gruul,spawnOfNzoth,leperGnome,DerangedDocter,Mistress,Grizzly,
+  gruul,spawnOfNzoth,leperGnome,DerangedDocter,Mistress,Grizzly,sleeping,
 
   Zero,
   Hit,
