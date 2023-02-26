@@ -102,7 +102,9 @@ const Hearthstone = () => {
         setPlayer2({ ...player02, health: p2H, mana: p2M  });
 
 
-        console.log(player1);
+        console.log("player");
+        console.log(player01);
+        console.log(player02);
 
       } catch (error) {
         setErrorMessage(error.message);
@@ -114,9 +116,9 @@ const Hearthstone = () => {
 
 
   useEffect(() => { 
-    console.log("dwadwa");
+    console.log("bigfdi");
 
-  }, [Current]);
+  }, [Minionsplayed]);
 
 
 
@@ -214,11 +216,11 @@ const Hearthstone = () => {
     try {
       // await contract.playMinion(1,0);
       console.log('xd2');
-      // await contract.playMinionById(2,1);
+      // await contract.playMinionById(7,1);
+      // await contract.playMinionById(1,1);
+      // await contract.playMinionById(8,1);
       // await contract.playMinionById(5,1);
-      // await contract.playMinionById(4,1);
-      // await contract.playMinionById(3,1);
-      // await contract.playMinionById(10,1);
+      // await contract.playMinionById(12,1);
       await contract.drawCards(0);
       // await contract.drawCards(1);
 

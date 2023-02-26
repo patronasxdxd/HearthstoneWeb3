@@ -30,6 +30,7 @@ export const createEventListeners = ({ navigate,Minionsplayed,setMinionsplayed, 
 
   const drawCard = contract.filters.drawn();
 AddNewEvent(drawCard, provider, ({ args }) => {
+  setMinionsplayed(Minionsplayed+=1);
   console.log('card drawm', args);
   // localStorage.setItem('player',0);
     setShowAlert({
@@ -37,30 +38,31 @@ AddNewEvent(drawCard, provider, ({ args }) => {
       type: 'success',
       message: 'succesfully drawn a card' + args,
     });
-
     console.log(args)
+    
+
   
 });
 
 
 const minonplayed = contract.filters.playMinionEvent();
-AddNewEvent(minonplayed, provider, ({ args }) => {
-  console.log('minion played', args);
+AddNewEvent(minonplayed, provider, () => {
+  setMinionsplayed(Minionsplayed+=1);
+  console.log('minion played');
     setShowAlert({
       status: true,
       type: 'success',
-      message: 'succesfully played ' + args[0].name,
+      message: 'succesfully played ',
     });
 
-    setMinionsplayed(Minionsplayed+1);
-
-    console.log(args)
+  
   
 });
 
 
 const endTurnEvent = contract.filters.endTurnEvent();
-AddNewEvent(endTurnEvent, provider, ({ args }) => {
+AddNewEvent(endTurnEvent, provider, () => {
+  setMinionsplayed(Minionsplayed+=1);
   console.log('ended turn');
     setShowAlert({
       status: true,
@@ -68,12 +70,13 @@ AddNewEvent(endTurnEvent, provider, ({ args }) => {
       message: 'ended turn',
     });
 
-    setMinionsplayed(Minionsplayed+1);
+    
 });
 
 
 const attackEvent = contract.filters.attackEvent();
-AddNewEvent(attackEvent, provider, ({ args }) => {
+AddNewEvent(attackEvent, provider, () => {
+  setMinionsplayed(Minionsplayed+=1);
   console.log('ended attack');
     setShowAlert({
       status: true,
@@ -81,7 +84,7 @@ AddNewEvent(attackEvent, provider, ({ args }) => {
       message: 'attacked',
     });
 
-    setMinionsplayed(Minionsplayed+1);
+  
 });
 
 
