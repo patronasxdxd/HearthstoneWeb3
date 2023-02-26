@@ -96,7 +96,7 @@ constructor (address _address) {
 
         //unsleep your minions
         if (games[msg.sender].player[_player].minions.length >0){
-        for (uint i = 0; i < games[msg.sender].player[_player].minions.length -1; i++) {
+        for (uint i = 0; i < games[msg.sender].player[_player].minions.length; i++) {
             games[msg.sender].player[_player].minions[i].asleep = false;
         }
         }
