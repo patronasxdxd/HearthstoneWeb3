@@ -65,12 +65,12 @@ const Board = ({ card, title, restStyles, cardRef, playerTwo,img1,index ,bot}) =
 
 
       <img src={playerTwo? hscard2[Number(card.id)-1] :legendCardBack} alt="ace_card"  />
-      <h2 className={`${styles.cardPointContainer2} text-xs  ${styles.flexCenter}`}>{Number(card.health)} </h2>
+      {/* <h2 className={`${styles.cardPointContainer2} text-xs  ${styles.flexCenter}`}>{Number(card.health)} </h2>
       {/* <img className= "bloodImage" src={blood} ></img> */}
-      <h2 className={`${styles.cardPointContainer3} text-xs  ${styles.flexCenter}`}>{Number(card.attack)} </h2>
+      {/* <h2 className={`${styles.cardPointContainer3} text-xs  ${styles.flexCenter}`}>{Number(card.attack)} </h2> */} 
       {/* <img className= "bloodImage" src={blood} ></img> */}
 
-      <img className='w-6 '  src=  {card.asleep.toString() === "true"  ? sleeping: ""}  />
+      {/* <img className='w-6 '  src=  {card.asleep.toString() === "true"  ? sleeping: ""}  /> */}
      
 
 
