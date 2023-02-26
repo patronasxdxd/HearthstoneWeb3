@@ -91,12 +91,14 @@ constructor (address _address) {
 
     function endTurn(uint _player) external {
         require(currentPlayerTurn ==  _player,"its not your turn");
-        emit endTurnEvent();
+       
 
 
         //unsleep your minions
+        if (games[msg.sender].player[_player].minions.length >0){
         for (uint i = 0; i < games[msg.sender].player[_player].minions.length -1; i++) {
             games[msg.sender].player[_player].minions[i].asleep = false;
+        }
         }
 
         if (games[msg.sender].player[_player].hand.length < 10){
@@ -112,7 +114,8 @@ constructor (address _address) {
         
         if (currentPlayerTurn == 0) {
             currentPlayerTurn = 1;
-        }else currentPlayerTurn = 0;
+        }else {currentPlayerTurn = 0;}
+         emit endTurnEvent();
     }
 
 
@@ -275,7 +278,7 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
     function attack(uint minion, uint target, uint _player, uint _chosen) public{
         // require(target < games[msg.sender].player[_player].minions.length-1,"targe doesnt exist");
         require(!games[msg.sender].player[_player].minions[minion].asleep,"You're minion is asleep, wait a turn");
-        emit attackEvent();
+      
 
         uint enemy;
         if (_player == 0 ){
@@ -287,7 +290,11 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
 
         //hit enemy face/Hero
        if (target == 666) {
-            if (games[msg.sender].player[enemy].health - _attack <= 0){ gameStatus = false; victory = true; }
+            if (games[msg.sender].player[enemy].health - _attack <= 0)
+            {
+                 gameStatus = false; victory = true;
+                 emit victoryEvent(_player);
+                 }
            else{    games[msg.sender].player[enemy].health = games[msg.sender].player[enemy].health - _attack;}
         }
         //else hit minion
@@ -295,6 +302,7 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
                    uint _attackEnemy = games[msg.sender].player[enemy].minions[target].attack;
                    Champs storage enemyMinion = games[msg.sender].player[enemy].minions[target];
                    Champs storage playerMinion = games[msg.sender].player[_player].minions[minion];
+                   playerMinion.asleep = true;
 
 
            if ( enemyMinion.health <= _attack){
@@ -323,6 +331,7 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
                      trigger(minion,_chosen,_player);}
                 }
            }
+             emit attackEvent();
     }
 
 //chosen means what position
@@ -452,5 +461,5 @@ event endTurnEvent();
 event gameCreatedEvent();
 event deathRattleEvent(uint player, uint minion );
 event attackEvent();
-
+event victoryEvent(uint player);
 }

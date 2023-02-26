@@ -55,17 +55,17 @@ contract Characters {
                    camps.push(Scrab);
                       camps.push(Deathwing);
                          camps.push(Invincible);
-                          camps.push(Brian);
-                          camps.push(Shrinkmeister);
-                           camps.push(CrazedWretch);
-                            camps.push(CrazedAlchemist);
-                                camps.push(ZombieChow);
-                             camps.push(Gruul);
-                              camps.push(SpawnOfNzoth);
-                               camps.push(LeperGnome);
-                               camps.push(DerangedDocter);
-                               camps.push(Mistress);
-                               camps.push(Grizzly);
+                            camps.push(Brian);
+                                 camps.push(Shrinkmeister);
+                                      camps.push(CrazedWretch);
+                                           camps.push(CrazedAlchemist);
+                                             camps.push(ZombieChow);
+                                                  camps.push(Gruul);
+                                                       camps.push(SpawnOfNzoth);
+                                                        //   camps.push(LeperGnome);
+                                                        //      camps.push(DerangedDocter);
+                                                        //        camps.push(Mistress);
+                                                        //             camps.push(Grizzly);
     }
 
     function getCharacter(uint id) external view returns (uint,uint,uint,uint,string memory,string memory, bool,bool,bool,bool,bool,bool){
