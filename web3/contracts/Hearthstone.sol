@@ -96,7 +96,7 @@ constructor (address _address) {
 
         //unsleep your minions
         if (games[msg.sender].player[_player].minions.length >0){
-        for (uint i = 0; i < games[msg.sender].player[_player].minions.length; i++) {
+        for (uint i = 0; i < games[msg.sender].player[_player].minions.length-1; i++) {
             games[msg.sender].player[_player].minions[i].asleep = false;
         }
         }
@@ -142,12 +142,28 @@ constructor (address _address) {
     }
 
 
-function drawCard() internal returns (Champs memory){
+function drawCard() internal returns (Champs memory) {
+    uint maxTries = 3; // maximum number of times to loop
+    uint tries = 0;
+    Champs memory cp;
+    
+    while (tries < maxTries) {
+        (uint a, uint b, uint c, uint d, string memory e, string memory f, bool g, bool h, bool i, bool j, bool k, bool l) = charC.getCharacter(_createRandomNum());
+        cp = Champs(a, b, c, d, e, f, g, h, i, j, k, l);
+        
+       if (cp.attack > 0 && cp.health > 0 && bytes(cp.name).length > 0 && bytes(cp.description).length > 0) {
+          // all fields are valid, return the object
+       return cp;
+      }
 
-    (uint a,uint b ,uint c,uint d,string memory e, string memory f, bool g,bool h, bool i,bool j,bool k, bool l) = charC.getCharacter(_createRandomNum());
-         Champs memory cp = Champs(a,b,c,d,e,f,g,h,i,j,k,l);
-        return cp;
+        
+        tries++;
+    }
+    
+    // maxTries reached, return default object
+    return Champs(0, 0, 0, 0, "", "", false, false, false, false, false, false);
 }
+
 
 
 function drawCards(uint _player) external {
@@ -160,17 +176,15 @@ function drawCards(uint _player) external {
      
 }
 
-function _createRandomNum( ) internal returns (uint256 randomValue) {
-    uint256 randomNum = uint256(keccak256(abi.encodePacked(block.timestamp, msg.sender,nonce)));
+function _createRandomNum() internal returns (uint256) {
+    uint256 blockNumber = block.number - 1;
+    bytes32 blockHash = blockhash(blockNumber);
+    uint256 randomNum = uint256(keccak256(abi.encodePacked(blockHash, msg.sender, nonce)));
 
     nonce++;
-    randomValue = randomNum % 13;
-    if(randomValue == 0) {
-      randomValue = 1;
-    }
+    return randomNum % 13 + 1;
+}
 
-    return randomValue;
-  }
 
     function playerDrawCard ( uint _player) external {
         games[msg.sender].player[_player].hand.push( drawCard());
@@ -276,16 +290,11 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
 
 //if it's a normal attack, chosen is always 0
     function attack(uint minion, uint target, uint _player, uint _chosen) public{
-        // require(target < games[msg.sender].player[_player].minions.length-1,"targe doesnt exist");
         require(!games[msg.sender].player[_player].minions[minion].asleep,"You're minion is asleep, wait a turn");
-      
+        emit MinionAsleepError("You're minion is asleep, wait a turn");
 
-        uint enemy;
-        if (_player == 0 ){
-              enemy = 1;
-        } else{
-             enemy = 0;
-        }
+
+        uint enemy = (_player == 0) ? 1 : 0;
         uint _attack = games[msg.sender].player[_player].minions[minion].attack;
 
         //hit enemy face/Hero
@@ -295,10 +304,16 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
                  gameStatus = false; victory = true;
                  emit victoryEvent(_player);
                  }
-           else{    games[msg.sender].player[enemy].health = games[msg.sender].player[enemy].health - _attack;}
+           else{   
+            games[msg.sender].player[enemy].health = games[msg.sender].player[enemy].health - _attack;
+            games[msg.sender].player[_player].minions[minion].asleep = true;}
         }
         //else hit minion
        else {
+                 require(games[msg.sender].player[enemy].minions.length > target, "Invalid target minion");
+                require(games[msg.sender].player[_player].minions.length > minion, "Invalid attacking minion");
+                   require(games[msg.sender].player[enemy].minions[target].health > 0, "Target minion is already dead");
+
                    uint _attackEnemy = games[msg.sender].player[enemy].minions[target].attack;
                    Champs storage enemyMinion = games[msg.sender].player[enemy].minions[target];
                    Champs storage playerMinion = games[msg.sender].player[_player].minions[minion];
@@ -456,4 +471,6 @@ event gameCreatedEvent();
 event deathRattleEvent(uint player, uint minion );
 event attackEvent();
 event victoryEvent(uint player);
+event MinionAsleepError(string errorMessage);
+
 }

@@ -27,19 +27,27 @@ async function main(){
 
   await contract.createGame("patronasxd")
 
+
+    await contract.endTurn(0);
+  await contract.endTurn(1);
+  await contract.endTurn(0);
+  await contract.endTurn(1);
+
+
+
 // //   await contract.playMinion(1);
 // //   await contract.playMinion(2);
 // //   await contract.playMinion(3);
 
 // // first parameter is the minionId second one is the player, "0" means the player and "1" for the bot
 
-//   await contract.playerDrawCard(0);
-//   await contract.playerDrawCard(0);
-//   await contract.playerDrawCard(0);
+  // await contract.playerDrawCard(0);
+  // await contract.playerDrawCard(0);
+  // await contract.playerDrawCard(0);
 
-//   await contract.playerDrawCard(1);
-//   await contract.playerDrawCard(1);
-//   await contract.playerDrawCard(1);
+  // await contract.playerDrawCard(1);
+  // await contract.playerDrawCard(1);
+  // await contract.playerDrawCard(1);
 
  
 
