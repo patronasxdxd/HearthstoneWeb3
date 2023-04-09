@@ -164,7 +164,7 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
     uint256 randomNum = uint256(keccak256(abi.encodePacked(block.timestamp, msg.sender,nonce)));
 
     nonce++;
-    randomValue = randomNum % 16;
+    randomValue = randomNum % 13;
     if(randomValue == 0) {
       randomValue = 1;
     }
@@ -270,7 +270,7 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
     }
 
     function getHealthPlayer() external view returns (uint) {
-       return games[msg.sender].player[0].health;
+        return games[msg.sender].player[0].health; 
     }
 
 
@@ -395,11 +395,9 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
 
          if (champ.id ==  13) {
             //give your minions +1/+1
-
               for (uint i = 0; i <  games[msg.sender].player[_player].minions.length -1; i++) {
                      games[msg.sender].player[_player].minions[i].health += 1;
                      games[msg.sender].player[_player].minions[i].attack += 1;
-
             }
         }
 
@@ -414,10 +412,6 @@ function _createRandomNum( ) internal returns (uint256 randomValue) {
                 games[msg.sender].player[_player].health += 4;
 
          }
-
-
-
-
 
        }
 

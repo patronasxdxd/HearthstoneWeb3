@@ -567,3 +567,7 @@ else if (p1.move == 3 && p2.move == 3) {
     super._beforeTokenTransfer(operator, from, to, ids, amounts, data);
   }
 }
+
+
+
+    

@@ -216,12 +216,12 @@ const Hearthstone = () => {
     try {
       // await contract.playMinion(1,0);
       console.log('xd2');
-      // await contract.playMinionById(7,1);
-      // await contract.playMinionById(1,1);
-      // await contract.playMinionById(8,1);
-      // await contract.playMinionById(5,1);
-      // await contract.playMinionById(12,1);
-      await contract.drawCards(0);
+      await contract.playMinionById(7,1);
+      await contract.playMinionById(1,1);
+      await contract.playMinionById(8,1);
+      await contract.playMinionById(5,1);
+      await contract.playMinionById(12,1);
+      // await contract.drawCards(0);
       // await contract.drawCards(1);
 
 

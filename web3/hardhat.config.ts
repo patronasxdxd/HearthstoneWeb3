@@ -29,6 +29,11 @@ export default {
       chainId: 43113,
       accounts: ['b8a8552abd4e6dd57f310168d6342095be862576fc0b23cb3ca0b38442705c4b'],
     },
+
+    localhost: {
+      chainId: 31337,
+      timeout: 8000000,
+    }
     // subnet: {
     //   url: process.env.NODE_URL,
     //   chainId: Number(process.env.CHAIN_ID),
