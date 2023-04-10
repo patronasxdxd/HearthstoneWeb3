@@ -96,7 +96,7 @@ constructor (address _address) {
 
         //unsleep your minions
         if (games[msg.sender].player[_player].minions.length >0){
-        for (uint i = 0; i < games[msg.sender].player[_player].minions.length-1; i++) {
+        for (uint i = 0; i < games[msg.sender].player[_player].minions.length; i++) {
             games[msg.sender].player[_player].minions[i].asleep = false;
         }
         }
@@ -321,22 +321,27 @@ function _createRandomNum() internal returns (uint256) {
 
 
            if ( enemyMinion.health <= _attack){
+               
+                // deathRattle(enemy,_player,target);
+
                  for (uint i = target; i < games[msg.sender].player[enemy].minions.length -1; i++) {
                      games[msg.sender].player[enemy].minions[i] = games[msg.sender].player[enemy].minions[i + 1];
                  }
+
                 games[msg.sender].player[enemy].minions.pop();
-                deathRattle(enemy,_player,target);
            }else{
                 enemyMinion.health -= _attack;
            }
 
              if ( games[msg.sender].player[_player].minions[minion].health <= _attackEnemy )
                {
+                    // deathRattle(_player,enemy,minion);
+
                     for (uint i = minion; i < games[msg.sender].player[_player].minions.length -1; i++) {
                      games[msg.sender].player[_player].minions[i] = games[msg.sender].player[_player].minions[i + 1];
                  }
+
                 games[msg.sender].player[_player].minions.pop();
-                deathRattle(_player,enemy,minion);
 
                 }
                 else{
@@ -388,8 +393,13 @@ function _createRandomNum() internal returns (uint256) {
  
 
        function deathRattle(uint _player, uint _enemy, uint minion) internal {
-         Champs storage champ = games[msg.sender].player[_player].minions[minion];
-        //fletching 3 things shown and has to pick 1 every time he attacks;
+            //   require(_player != _enemy, "Players cannot be the same.");
+            // require(games[msg.sender].player[_player].minions[minion].health > 0, "Minion is already dead");
+
+
+
+         Champs storage champ = games[msg.sender].player[_enemy].minions[minion];
+
         emit deathRattleEvent(_player,minion);
 
         if (champ.id == 4) {
@@ -408,13 +418,13 @@ function _createRandomNum() internal returns (uint256) {
             else{ games[msg.sender].player[_enemy].health -= 2;}
         }
 
-         if (champ.id ==  13) {
-            //give your minions +1/+1
-              for (uint i = 0; i <  games[msg.sender].player[_player].minions.length -1; i++) {
-                     games[msg.sender].player[_player].minions[i].health += 1;
-                     games[msg.sender].player[_player].minions[i].attack += 1;
-            }
+           if (champ.id == 13) {
+        //give your minions +1/+1
+        for (uint i = 0; i < games[msg.sender].player[_player].minions.length; i++) {
+            games[msg.sender].player[_player].minions[i].health += 1;
+            games[msg.sender].player[_player].minions[i].attack += 1;
         }
+    }
 
          if (champ.id == 15) {
              // Restore 8 health to your hero
@@ -427,6 +437,7 @@ function _createRandomNum() internal returns (uint256) {
                 games[msg.sender].player[_player].health += 4;
 
          }
+       
 
        }
 
