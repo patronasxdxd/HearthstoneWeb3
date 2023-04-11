@@ -1,11 +1,11 @@
 /* eslint-disable prefer-destructuring */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { allCards } from '../assets';
 
 import dummyData from "../utils/dummyData";
 import styles from '../styles';
-import { ActionButton, Alert, Card, GameInfo, PlayerInfo,HearthstoneCard,HiddenHearthstoneCard,Board} from '../components';
+import { ActionButton, Alert, Card, GameInfo, PlayerInfo,HearthstoneCard,HiddenHearthstoneCard,Board,} from '../components';
 import { rsattack,rsstrenght, attackSound, rsmagic,rsrange, defenseSound,main,adventure, player01 as player01Icon, player02 as player02Icon } from '../assets';
 import { playAudio } from '../utils/animation.js';
 import '../cards.css';
@@ -13,6 +13,12 @@ import '../hiddencards.css'
 import '../index.css'
 // import { outfits } from '../assets';
 import { useGlobalContext } from '../context';
+import { Model } from '../components/Model';
+import { Canvas,useThree } from "@react-three/fiber";
+
+
+
+import Controls from './Controls';
 
 
 const Hearthstone = () => {
@@ -75,26 +81,12 @@ const Hearthstone = () => {
           console.log("not null")
         
         }
-
-      
-
-        
-    
-
-        // localStorage.removeItem("currentCard")
-
-
         let player01handd = player01.hand;
-
-  
 
         setPlayer01Hand(player01handd);
         setPlayer02Hand(player02.hand);
         setPlayer01board(player01.minions);
         setPlayer02board(player02.minions);
-
-    
-
        
         setplayer02handsize(player02.hand.length)
   
@@ -120,8 +112,6 @@ const Hearthstone = () => {
     console.log("bigfdi");
 
   }, [Minionsplayed]);
-
-
 
   const handleBattleChoice = (ground) => {
 
@@ -159,15 +149,10 @@ const Hearthstone = () => {
   
     }catch (error) {
       setErrorMessage(error.message);
+
     }
 
   };
-
-
-
-  
-
-
 
   const endTurn = async () => {
   
@@ -240,200 +225,22 @@ const Hearthstone = () => {
 
   };
 
+  const cameraRef = useRef();
+
 
   return (
 
-    <div className={`${styles.flexBetween} ${styles.gameContainer} ${battleGround}`}>
-    {showAlert?.status && <Alert type={showAlert.type} message={showAlert.message} />}
+    <Canvas  style={{ width: '100%', height: '100vh' }} camera={{ position: [-3, 5, -4.5] }}>
+  <ambientLight />
+  <pointLight position={[10, 10, 10]} />
+  <Model  scale={1.6}/>   
+   <Controls />
 
-
-
-
-    <div className='hiddenHealthBar'>
-    <PlayerInfo player={player2} playerIcon={player02Icon} mt />
-   
-    </div>
-
-    <div className="cardshidden">
-          {[...player02hand].map((player02hand, i) => (
-            <HiddenHearthstoneCard card={player02hand} key={i} {...player02hand} />
-          ))}
-    </div>
-
-   
-    <div className={`${styles.flexCenter} flex-col my-10`}>
-
-    <div className="flex items-center flex-row">
-      <Card
-        card={player2}
-        title={player2?.playerName}
-        cardRef={player2Ref}
-        playerTwo 
-    
-      />
-     
-   
-        
-   <ActionButton
-   imgUrl={rsrange}
-   handleClick={() => makeAMove()}
-   restStyles="ml-6 hover:border-red-600"
- />
- </div>
-
-
-{/* Temporary */}
-<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-
-
-<div class='boardcards'>
-{[...player02board].map((player02board, i) => (
-       <Board card={player02board} key={i} {...player02board} playerTwo bot index={i} />
-     ))}
-
-   </div>
-      
-
-
-
-
-<div class='boardcardsTop'>
-<div onClick={() =>boardChoice(1)} className={`${localStorage.getItem("currentCard") === null?"":styles.glassEffect} w-20 h-28`}>
-      <div className=''></div>
-     {localStorage.getItem("currentCard") === null? <h2 ></h2> : <h2>Place Here</h2>
-
-     }
-    </div>
-{[...player01board].map((player01board, i) => (
-
-  
-       
-       <Board card={player01board} key={i} {...player01board} playerTwo index={i} />
-       
-
-
-     ))}
-     <div onClick={() =>boardChoice(2)} className={`${localStorage.getItem("currentCard") === null?"":styles.glassEffect} w-20 h-28`}>
-      <div className=''></div>
-     {localStorage.getItem("currentCard") === null? <h2 ></h2> : <h2>Place Here</h2>
-
-     }
-    </div>
-   </div>
-      
-
-
-
-
-      <div className="flex items-center flex-row">
+</Canvas>
 
      
-      
-
-
-      
-
-
-  
-        <Card
-          card={player1}
-          
-          // title={"Gilles"}
-          cardRef={player1Ref}
-          // restStyles="mt-3 " 
-          img1={allCards[localStorage.getItem('outfit')-1]}
-          
-        />
-
     
-
-        
-
-
-
-
-  <div className="flex items-center flex-col">
-
-    
-
-
-{played
-          ? <h2 className='font-runescape  text-[26px] text-yellow-300'> Wait for your opponent ...</h2>
-          : ""
-      
-          
-    }
-
-    <br></br>
-  
-  <div className="flex items-center flex-row">
-   
-  <ActionButton
-          imgUrl={rsrange}
-          handleClick={() => endTurn()}
-          restStyles="ml-6 hover:border-red-600"
-        />
-          <ActionButton
-          imgUrl={rsrange}
-          handleClick={() => endTurn2()}
-          restStyles="ml-6 hover:border-red-600"
-        />
-
-
-    <ActionButton
-          imgUrl={rsrange}
-          handleClick={() =>endTurn3(3)}
-          restStyles="ml-6 hover:border-red-600"
-        />
-         {/* <ActionButton
-          imgUrl={rsmagic}
-          handleClick={() => endTurn()}
-          restStyles="ml-6 hover:border-yellow-400"
-        />
-         <ActionButton
-          imgUrl={rsmagic}
-          handleClick={() => endTurn2()}
-          restStyles="ml-6 hover:border-yellow-400"
-        /> */}
-
-{/* <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" onClick={endTurn()}>
-  End Turn
-</button> */}
-
-      </div>
-      
-    </div>
-    
-    </div>
-    </div>
-
-    
-
-    <div class='cards' >
-       
-          {[...player01hand].map((player01hand, i) => (
-
-            
-           
-            <HearthstoneCard card={player01hand} key={i} {...player01hand} playerTwo index={i}/>
-          
-
-          ))}
-    
-    </div>
-
-
- 
-      <div className='healthbar' >
-
-       <PlayerInfo player={player1} playerIcon={player01Icon} />
-       </div>
-
-
-    <GameInfo />
-
-    
-  </div>
+  // </div>
 );
 
 };

@@ -55,18 +55,11 @@ const Board = ({ card, title, restStyles, cardRef, playerTwo,img1,index ,bot}) =
       } catch (error) {
         setShowAlert({ status: true, type: 'info', message: `Minion is still asleep` });
       }
-      
-
         localStorage.removeItem('battleCard');
-    
     }
     
       return (
 
-     
-
-        
-      
     <div onClick={() => bot?Attacked(card):makeAMove(card)} className={'board'}>
   {/* `${styles.cardPointContainer} sm:right-[20.2%] right-[15%] ${styles.flexCenter}` */}
     

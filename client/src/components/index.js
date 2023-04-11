@@ -11,9 +11,11 @@ import OnboardModal from './OnboardModal';
 import HearthstoneCard from './HearthstoneCard';
 import HiddenHearthstoneCard from './HiddenHearthstoneCard';
 import Board from './Board';
+import Model from './Model';
 
 
 export {
+  Model,
   Card,
   Alert,
   PageHOC,

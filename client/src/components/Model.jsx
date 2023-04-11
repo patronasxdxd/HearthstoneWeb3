@@ -1,0 +1,513 @@
+import React, { useRef } from "react";
+import { useGLTF } from "@react-three/drei";
+import * as THREE from 'three';
+
+
+export function Model(props) {
+  const { nodes, materials } = useGLTF("/xdxd.glb");
+  return (
+    <group {...props} dispose={null}>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.group938294867.geometry}
+        material={materials.mat2}
+        position={[0, 0.99, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.group346353283.geometry}
+        material={materials.mat0}
+        position={[0, 0.99, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.group685469970.geometry}
+        material={materials.mat0}
+        position={[0, 0.99, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.group699823051.geometry}
+        material={materials.mat0}
+        position={[0, 0.99, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.group412859720.geometry}
+        material={materials.mat19}
+        position={[0, 0.99, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.group1465425194.geometry}
+        material={materials.mat12}
+        position={[0, 0.99, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.group1120856797.geometry}
+        material={materials.mat12}
+        position={[0, 0.99, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.group2141108688.geometry}
+        material={materials.mat0}
+        position={[0, 0.99, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.group612392218.geometry}
+        material={materials.mat0}
+        position={[0, 0.99, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.group2008325670.geometry}
+        material={materials.mat12}
+        position={[0, 0.99, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.group122302619.geometry}
+        material={materials.mat0}
+        position={[0, 0.99, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.group1367773465.geometry}
+        material={materials.mat0}
+        position={[0, 0.99, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.group967451051.geometry}
+        material={materials.mat0}
+        position={[0, 0.99, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.group408322312.geometry}
+        material={materials.mat0}
+        position={[0, 0.99, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.group382973645.geometry}
+        material={materials.mat0}
+        position={[0, 0.99, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.group704623174.geometry}
+        material={materials.mat0}
+        position={[0, 0.99, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.group2014525625.geometry}
+        material={materials.mat0}
+        position={[0, 0.99, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.group810189517.geometry}
+        material={materials.mat0}
+        position={[0, 0.99, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.group2133328113.geometry}
+        material={materials.mat12}
+        position={[0, 0.99, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.group1172106769.geometry}
+        material={materials.mat0}
+        position={[0, 0.99, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.group1514744309.geometry}
+        material={materials.mat0}
+        position={[0, 0.99, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.group1450045553.geometry}
+        material={materials.mat0}
+        position={[0, 0.99, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.group520822650.geometry}
+        material={materials.mat0}
+        position={[0, 0.99, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.group97774442.geometry}
+        material={materials.mat0}
+        position={[0, 0.99, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.group795427728.geometry}
+        material={materials.mat0}
+        position={[0, 0.99, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.group1514700289.geometry}
+        material={materials.mat0}
+        position={[0, 0.99, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.group2006633998.geometry}
+        material={materials.mat0}
+        position={[0, 0.99, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.group1288940859.geometry}
+        material={materials.mat12}
+        position={[0, 0.99, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.group1859506793.geometry}
+        material={materials.mat0}
+        position={[0, 0.99, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.group29709457.geometry}
+        material={materials.mat12}
+        position={[0, 0.99, 0]}
+      />
+      <group position={[0, 0.99, 0]}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh1643588596.geometry}
+          material={materials.mat12}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh1643588596_1.geometry}
+          material={materials.mat21}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh1643588596_2.geometry}
+          material={materials.mat23}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh1643588596_3.geometry}
+          material={materials.mat13}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh1643588596_4.geometry}
+          material={materials.mat8}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh1643588596_5.geometry}
+          material={materials.mat14}
+        />
+      </group>
+      <group position={[0, 0.99, 0]}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh1441234532.geometry}
+          material={materials.mat2}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh1441234532_1.geometry}
+          material={materials.mat1}
+        />
+      </group>
+      <group position={[0, 0.99, 0]}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh2055988609.geometry}
+          material={materials.mat12}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh2055988609_1.geometry}
+          material={materials.mat7}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh2055988609_2.geometry}
+          material={materials.mat6}
+        />
+      </group>
+      <group position={[0, 0.99, 0]}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh109194806.geometry}
+          material={materials.mat20}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh109194806_1.geometry}
+          material={materials.mat12}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh109194806_2.geometry}
+          material={materials.mat16}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh109194806_3.geometry}
+          material={materials.mat19}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh109194806_4.geometry}
+          material={materials.mat14}
+        />
+      </group>
+      <group position={[0, 0.99, 0]}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh1745932790.geometry}
+          material={materials.mat14}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh1745932790_1.geometry}
+          material={materials.mat15}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh1745932790_2.geometry}
+          material={materials.mat2}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh1745932790_3.geometry}
+          material={materials.mat23}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh1745932790_4.geometry}
+          material={materials.mat24}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh1745932790_5.geometry}
+          material={materials.mat16}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh1745932790_6.geometry}
+          material={materials.mat17}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh1745932790_7.geometry}
+          material={materials.mat18}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh1745932790_8.geometry}
+          material={materials.mat12}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh1745932790_9.geometry}
+          material={materials.mat21}
+        />
+      </group>
+      <group position={[0, 0.99, 0]}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh2097284332.geometry}
+          material={materials.mat2}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh2097284332_1.geometry}
+          material={materials.mat1}
+        />
+      </group>
+      <group position={[0, 0.99, 0]}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh166787349.geometry}
+          material={materials.mat21}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh166787349_1.geometry}
+          material={materials.mat5}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh166787349_2.geometry}
+          material={materials.mat3}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh166787349_3.geometry}
+          material={materials.mat15}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh166787349_4.geometry}
+          material={materials.mat7}
+        />
+      </group>
+      <group position={[0, 0.99, 0]}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh1661820606.geometry}
+          material={materials.mat16}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh1661820606_1.geometry}
+          material={materials.mat17}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh1661820606_2.geometry}
+          material={materials.mat14}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh1661820606_3.geometry}
+          material={materials.mat23}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh1661820606_4.geometry}
+          material={materials.mat4}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh1661820606_5.geometry}
+          material={materials.mat21}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh1661820606_6.geometry}
+          material={materials.mat3}
+        />
+      </group>
+      <group position={[0, 0.99, 0]}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh2064401624.geometry}
+          material={materials.mat8}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh2064401624_1.geometry}
+          material={materials.mat21}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh2064401624_2.geometry}
+          material={materials.mat14}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh2064401624_3.geometry}
+          material={materials.mat12}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh2064401624_4.geometry}
+          material={materials.mat23}
+        />
+      </group>
+    </group>
+  );
+}
+
+useGLTF.preload("/xdxd.glb");
+export default Model;
