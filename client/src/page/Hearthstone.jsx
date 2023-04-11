@@ -124,10 +124,10 @@ const Hearthstone = () => {
 
 
   const handleBattleChoice = (ground) => {
-    // setBattleGround(ground.id);
+
     setOutfit(ground.id);
 
-    // localStorage.setItem('battleground', ground.id);
+
     localStorage.setItem('outfit', ground.id);
 
     setShowAlert({ status: true, type: 'info', message: `${ground.name} is battle ready!` });

@@ -46,10 +46,18 @@ const Board = ({ card, title, restStyles, cardRef, playerTwo,img1,index ,bot}) =
         console.log("attacked");
       
 
-        await contract.attack(localStorage.getItem("battleCard"),index,0,0)
+        try {
+          await contract.attack(localStorage.getItem("battleCard"), index, 0, 0);
+          setShowAlert({ status: true, type: 'info', message: `${card.name} got attacked` });
+
+          localStorage.removeItem('battleCard');
+
+      } catch (error) {
+        setShowAlert({ status: true, type: 'info', message: `Minion is still asleep` });
+      }
+      
 
         localStorage.removeItem('battleCard');
-        setShowAlert({ status: true, type: 'info', message: `${card.name} got attacked` });
     
     }
     

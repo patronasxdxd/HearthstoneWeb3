@@ -87,13 +87,19 @@ AddNewEvent(attackEvent, provider, () => {
 
 
 // const AsleepEvent = contract.filters.MinionAsleepError();
-// AddNewEvent(AsleepEvent, provider, () => {
-//   console.log('Still asleep');
-//     setShowAlert({
-//       status: true,
-//       type: 'success',
-//       message: 'Minion is still asleep',
-//     });
+// AddNewEvent(AsleepEvent, provider, (error, event) => {
+//   if (error) {
+//     console.error(error);
+//     return;
+//   }
+
+//   const errorMessage = event.args.errorMessage;
+//   console.log(errorMessage);
+//   setShowAlert({
+//     status: true,
+//     type: 'error',
+//     message: errorMessage,
+//   });
 // });
 
 
