@@ -405,7 +405,10 @@ const Hearthstone = () => {
 
  
 
-<div className={`${styles.flexBetween} ${styles.gameContainer} ${battleGround}`}>
+<div className={`${styles.flexBetween} ${styles.gameContainer} `} style={{ backgroundColor: "gray" }}>
+
+
+
 {showAlert?.status && <Alert type={showAlert.type} message={showAlert.message} />}
 <div className='hiddenHealthBar'>
 <PlayerInfo player={player2} playerIcon={player02Icon} mt />
@@ -435,6 +438,20 @@ const Hearthstone = () => {
     restStyles="ml-6 hover:border-red-600"
  />
   </div> */}
+    
+    <div className='relative'>
+
+  <Canvas style={{ width: '2000px', height: '800px' }} camera={{ position: [-5, 2, -1.5] }}>
+    <ambientLight />
+    <pointLight position={[10, 10, 10]} />
+    <Model scale={1.6} />
+    <Controls />
+  </Canvas>
+  <div className='hiddenHealthBar'>
+  <PlayerInfo player={player1} playerIcon={player01Icon} />
+  </div>
+  </div>
+
  
  
   <div class='boardcards'>
@@ -470,32 +487,17 @@ const Hearthstone = () => {
    </div>
       
 
-  
-<div className='healthbar' >
 
-       <PlayerInfo player={player1} playerIcon={player01Icon} />
-       </div>
-    <GameInfo />
+    {/* <GameInfo /> */}
 
 
-<Canvas  style={{ width: '100%', height: '100vh' }} camera={{ position: [-3, 5, -4.5] }}>
-  <ambientLight />
-  <pointLight position={[10, 10, 10]} />
-  <Model  scale={1.6}/>   
-   <Controls />
 
-</Canvas>
 
 
      <div class='cards' >
        
            {[...player01hand].map((player01hand, i) => (
-       
-                   
-                  
                  <HearthstoneCard card={player01hand} key={i} {...player01hand} playerTwo index={i}/>
-                 
-       
              ))}
            
        </div>
