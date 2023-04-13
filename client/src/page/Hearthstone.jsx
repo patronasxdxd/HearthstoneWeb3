@@ -33,14 +33,31 @@ const Hearthstone = () => {
   const [player02board, setPlayer02board] = useState([]);
   const Current = localStorage.getItem("currentCard");
 
+
+  const [showMesh1, setShowMesh1] = useState(false);
+  const [showMesh2, setShowMesh2] = useState(false);
+  const [showMesh3, setShowMesh3] = useState(false);
+  const [showMesh4, setShowMesh4] = useState(false);
+  const [showMesh5, setShowMesh5] = useState(false);
+  const [showMesh6, setShowMesh6] = useState(false);
+  const [showMesh7, setShowMesh7] = useState(false);
+  const [showMesh8, setShowMesh8] = useState(false);
+  const [showMesh9, setShowMesh9] = useState(false);
+  const [showMesh10, setShowMesh10] = useState(false);
+  const [showMesh11, setShowMesh11] = useState(false);
+  const [showMesh12, setShowMesh12] = useState(false);
+  const [showMesh13, setShowMesh13] = useState(false);
+  const [showMesh14, setShowMesh14] = useState(false);
   const [player02handsize,setplayer02handsize] = useState();
+
+
 
 
 
   useEffect(() => {
    
     
-
+ 
 
 
     const getPlayerInfo = async () => {
@@ -227,180 +244,21 @@ const Hearthstone = () => {
 
   const cameraRef = useRef();
 
+  function handleMeshClick(meshNum) {
+    console.log(`Mesh ${meshNum} clicked!`);
+    alert(meshNum);
+  }
+
+  function getShowMeshFunction(meshNum) {
+    if (meshNum === 12) {
+      return showMesh12;
+    } else if (meshNum === 11) {
+      return showMesh11;
+    }
+  }
+  
 
   return (
-
-
-
-  
-//     <div className={`${styles.flexBetween} ${styles.gameContainer} ${battleGround}`}>
-//     {showAlert?.status && <Alert type={showAlert.type} message={showAlert.message} />}
-
-
-
-
-//     <div className='hiddenHealthBar'>
-//     <PlayerInfo player={player2} playerIcon={player02Icon} mt />
-   
-//     </div>
-
-//     <div className="cardshidden">
-//           {[...player02hand].map((player02hand, i) => (
-//             <HiddenHearthstoneCard card={player02hand} key={i} {...player02hand} />
-//           ))}
-//     </div>
-
-   
-//     <div className={`${styles.flexCenter} flex-col my-10`}>
-
-//     <div className="flex items-center flex-row">
-//       <Card
-//         card={player2}
-//         title={player2?.playerName}
-//         cardRef={player2Ref}
-//         playerTwo 
-    
-//       />
-     
-   
-        
-//    <ActionButton
-//    imgUrl={rsrange}
-//    handleClick={() => makeAMove()}
-//    restStyles="ml-6 hover:border-red-600"
-//  />
-//  </div>
-
-
-// {/* Temporary */}
-// <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-
-
-// <div class='boardcards'>
-// {[...player02board].map((player02board, i) => (
-//        <Board card={player02board} key={i} {...player02board} playerTwo bot index={i} />
-//      ))}
-
-//    </div>
-      
-
-
-
-
-// <div class='boardcardsTop'>
-// <div onClick={() =>boardChoice(1)} className={`${localStorage.getItem("currentCard") === null?"":styles.glassEffect} w-20 h-28`}>
-//       <div className=''></div>
-//      {localStorage.getItem("currentCard") === null? <h2 ></h2> : <h2>Place Here</h2>
-
-//      }
-//     </div>
-// {[...player01board].map((player01board, i) => (
-
-  
-       
-//        <Board card={player01board} key={i} {...player01board} playerTwo index={i} />
-       
-
-
-//      ))}
-//      <div onClick={() =>boardChoice(2)} className={`${localStorage.getItem("currentCard") === null?"":styles.glassEffect} w-20 h-28`}>
-//       <div className=''></div>
-//      {localStorage.getItem("currentCard") === null? <h2 ></h2> : <h2>Place Here</h2>
-
-//      }
-//     </div>
-//    </div>
-      
-
-
-
-
-//       <div className="flex items-center flex-row">
-
-     
-      
-
-
-      
-
-
-  
-//         <Card
-//           card={player1}
-          
-//           // title={"Gilles"}
-//           cardRef={player1Ref}
-//           // restStyles="mt-3 " 
-//           img1={allCards[localStorage.getItem('outfit')-1]}
-          
-//         />
-
-    
-
-        
-
-
-
-
-//   <div className="flex items-center flex-col">
-
-    
-
-
-// {played
-//           ? <h2 className='font-runescape  text-[26px] text-yellow-300'> Wait for your opponent ...</h2>
-//           : ""
-      
-          
-//     }
-
-//     <br></br>
-  
-//   <div className="flex items-center flex-row">
-   
-//   <ActionButton
-//           imgUrl={rsrange}
-//           handleClick={() => endTurn()}
-//           restStyles="ml-6 hover:border-red-600"
-//         />
-//           <ActionButton
-//           imgUrl={rsrange}
-//           handleClick={() => endTurn2()}
-//           restStyles="ml-6 hover:border-red-600"
-//         />
-
-
-//     <ActionButton
-//           imgUrl={rsrange}
-//           handleClick={() =>endTurn3(3)}
-//           restStyles="ml-6 hover:border-red-600"
-//         />
-//          {/* <ActionButton
-//           imgUrl={rsmagic}
-//           handleClick={() => endTurn()}
-//           restStyles="ml-6 hover:border-yellow-400"
-//         />
-//          <ActionButton
-//           imgUrl={rsmagic}
-//           handleClick={() => endTurn2()}
-//           restStyles="ml-6 hover:border-yellow-400"
-//         /> */}
-
-// {/* <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" onClick={endTurn()}>
-//   End Turn
-// </button> */}
-
-//       </div>
-      
-//     </div>
-    
-//     </div>
-//     </div>
-
-
-    
-
-
 
 
  
@@ -443,8 +301,17 @@ const Hearthstone = () => {
 
   <Canvas style={{ width: '2000px', height: '800px' }} camera={{ position: [-5, 2, -1.5] }}>
     <ambientLight />
-    <pointLight position={[10, 10, 10]} />
-    <Model scale={1.6} />
+    <pointLight position={[10, 40, 10]} />
+    <Model scale={1.6} handleMeshClick={(meshNum) => handleMeshClick(meshNum)} 
+    showMesh1={showMesh1} showMesh2={showMesh2}
+    showMesh3={showMesh3} showMesh4={showMesh4} 
+    showMesh5={showMesh5} showMesh6={showMesh6} 
+    showMesh7={showMesh7} showMesh8={showMesh8} 
+    showMesh9={showMesh9} showMesh10={showMesh10} 
+    showMesh11={showMesh11} showMesh12={showMesh12}
+    showMesh13={showMesh13} showMesh14={showMesh14} 
+ 
+     />
     <Controls />
   </Canvas>
   <div className='hiddenHealthBar'>
@@ -453,13 +320,6 @@ const Hearthstone = () => {
   </div>
 
  
- 
-  <div class='boardcards'>
- {[...player02board].map((player02board, i) => (
-        <Board card={player02board} key={i} {...player02board} playerTwo bot index={i} />
-     ))}
-
-   </div>
 
 
     <div class='boardcardsTop'>
@@ -489,6 +349,13 @@ const Hearthstone = () => {
 
 
     {/* <GameInfo /> */}
+ 
+    <div class='boardcards'>
+ {[...player02board].map((player02board, i) => (
+        <Board card={player02board} key={i} {...player02board} playerTwo bot index={i} />
+     ))}
+
+   </div>
 
 
 
