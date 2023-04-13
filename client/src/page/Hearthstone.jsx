@@ -15,9 +15,9 @@ import '../index.css'
 import { useGlobalContext } from '../context';
 import { Model } from '../components/Model';
 import { Canvas,useThree } from "@react-three/fiber";
-
-
-
+import { invincible } from "../assets";
+import { TextureLoader } from 'three';
+import * as THREE from 'three';
 import Controls from './Controls';
 
 
@@ -34,27 +34,45 @@ const Hearthstone = () => {
   const Current = localStorage.getItem("currentCard");
 
 
-  const [showMesh1, setShowMesh1] = useState(false);
-  const [showMesh2, setShowMesh2] = useState(false);
-  const [showMesh3, setShowMesh3] = useState(false);
-  const [showMesh4, setShowMesh4] = useState(false);
-  const [showMesh5, setShowMesh5] = useState(false);
-  const [showMesh6, setShowMesh6] = useState(false);
-  const [showMesh7, setShowMesh7] = useState(false);
-  const [showMesh8, setShowMesh8] = useState(false);
-  const [showMesh9, setShowMesh9] = useState(false);
-  const [showMesh10, setShowMesh10] = useState(false);
-  const [showMesh11, setShowMesh11] = useState(false);
-  const [showMesh12, setShowMesh12] = useState(false);
-  const [showMesh13, setShowMesh13] = useState(false);
-  const [showMesh14, setShowMesh14] = useState(false);
+  const [showMesh1, setShowMesh1] = useState(true);
+  const [showMesh2, setShowMesh2] = useState(true);
+  const [showMesh3, setShowMesh3] = useState(true);
+  const [showMesh4, setShowMesh4] = useState(true);
+  const [showMesh5, setShowMesh5] = useState(true);
+  const [showMesh6, setShowMesh6] = useState(true);
+  const [showMesh7, setShowMesh7] = useState(true);
+  const [showMesh8, setShowMesh8] = useState(true);
+  const [showMesh9, setShowMesh9] = useState(true);
+  const [showMesh10, setShowMesh10] = useState(true);
+  const [showMesh11, setShowMesh11] = useState(true);
+  const [showMesh12, setShowMesh12] = useState(true);
+  const [showMesh13, setShowMesh13] = useState(true);
+  const [showMesh14, setShowMesh14] = useState(true);
   const [player02handsize,setplayer02handsize] = useState();
 
 
+  const textureLoader = new THREE.TextureLoader();
+  const texture = textureLoader.load(invincible);
+  
+  const material1 = new THREE.MeshStandardMaterial({
 
+    side: THREE.DoubleSide,
+    transparent: true,
+
+    map: texture,
+    color: 0xffffff, // base color of the material
+    metalness: 0.8, // adjust the metalness of the material
+   
+  });
+  
+
+  
 
 
   useEffect(() => {
+   
+
+
    
     
  
@@ -309,7 +327,8 @@ const Hearthstone = () => {
     showMesh7={showMesh7} showMesh8={showMesh8} 
     showMesh9={showMesh9} showMesh10={showMesh10} 
     showMesh11={showMesh11} showMesh12={showMesh12}
-    showMesh13={showMesh13} showMesh14={showMesh14} 
+    showMesh13={showMesh13} showMesh14={showMesh14}
+    material1={material1} 
  
      />
     <Controls />

@@ -1,13 +1,30 @@
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import * as THREE from 'three';
+import { TextureLoader } from 'three';
+import { deathwing } from "../assets";
 
 
 export function Model(props) {
   const { nodes, materials } = useGLTF("/xdxd4.glb");
+
+  
+  // Inside the component where the mesh is being rendered:
+  const meshRef = useRef();
+
+  const textureLoader = new THREE.TextureLoader();
+const texture = textureLoader.load(deathwing);
+
+const material1= new THREE.MeshStandardMaterial({
+  map: texture,
+  color: 0xffffff, 
+});
+
+
   return (
     <group {...props} dispose={null}>
     <group position={[-1.2, 0, -1.99]} scale={0.18}>
+
       <mesh
         castShadow
         receiveShadow
@@ -3087,6 +3104,7 @@ export function Model(props) {
       scale={0.36}
     />
     <mesh
+    
       castShadow
       receiveShadow
       onClick={() => props.handleMeshClick("HeroPower")}
@@ -3217,11 +3235,13 @@ export function Model(props) {
     <mesh
       castShadow
       receiveShadow
+  
       onClick={() => props.handleMeshClick(1)}
       geometry={nodes.card1.geometry}
-      material={materials.leer}
+      material={props.material1}
       position={[-0.19, 0.12, -0.96]}
-      rotation={[0, -Math.PI / 2, 0]}
+      rotation={[ Math.PI, Math.PI / 2, 0]}
+
       scale={0.44}
       visible={props.showMesh1}
     />
@@ -3488,7 +3508,12 @@ export function Model(props) {
     />
   </group>
   );
+  
+
+
 }
+
+
 
 useGLTF.preload("/xdxd4.glb");
 export default Model;
