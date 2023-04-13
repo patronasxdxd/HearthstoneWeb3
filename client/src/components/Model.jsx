@@ -2910,6 +2910,7 @@ const material1= new THREE.MeshStandardMaterial({
       material={materials["Material.003"]}
       position={[-0.21, 0.09, -0.95]}
       scale={[0.18, 0.18, 0.12]}
+      visible={props.showMesh1}
     />
     <mesh
       castShadow
@@ -2918,6 +2919,7 @@ const material1= new THREE.MeshStandardMaterial({
       material={materials["Material.007"]}
       position={[-0.21, 0.09, -0.61]}
       scale={[0.18, 0.18, 0.12]}
+      visible={props.showMesh2}
     />
     <mesh
       castShadow
@@ -2926,6 +2928,7 @@ const material1= new THREE.MeshStandardMaterial({
       material={materials["Material.008"]}
       position={[-0.21, 0.09, -0.28]}
       scale={[0.18, 0.18, 0.12]}
+      visible={props.showMesh3}
     />
     <mesh
       castShadow
@@ -2934,6 +2937,7 @@ const material1= new THREE.MeshStandardMaterial({
       material={materials["Material.010"]}
       position={[-0.21, 0.09, 0.04]}
       scale={[0.18, 0.18, 0.12]}
+      visible={props.showMesh4}
     />
     <mesh
       castShadow
@@ -2942,6 +2946,7 @@ const material1= new THREE.MeshStandardMaterial({
       material={materials["Material.011"]}
       position={[-0.21, 0.09, 0.36]}
       scale={[0.18, 0.18, 0.12]}
+      visible={props.showMesh5}
     />
     <mesh
       castShadow
@@ -2950,6 +2955,7 @@ const material1= new THREE.MeshStandardMaterial({
       material={materials["Material.015"]}
       position={[-0.21, 0.09, 0.68]}
       scale={[0.18, 0.18, 0.12]}
+      visible={props.showMesh6}
     />
     <mesh
       castShadow
@@ -2958,6 +2964,7 @@ const material1= new THREE.MeshStandardMaterial({
       material={materials["Material.024"]}
       position={[-0.21, 0.09, 0.98]}
       scale={[0.18, 0.18, 0.12]}
+      visible={props.showMesh7}
     />
     <mesh
       castShadow
@@ -2967,6 +2974,7 @@ const material1= new THREE.MeshStandardMaterial({
       position={[0.23, 0.09, -0.92]}
       rotation={[Math.PI, 0, Math.PI]}
       scale={[0.18, 0.18, 0.12]}
+      visible={props.showMesh8}
     />
     <mesh
       castShadow
@@ -2976,6 +2984,7 @@ const material1= new THREE.MeshStandardMaterial({
       position={[0.24, 0.09, -0.62]}
       rotation={[Math.PI, 0, Math.PI]}
       scale={[0.18, 0.18, 0.12]}
+      visible={props.showMesh9}
     />
     <mesh
       castShadow
@@ -2985,6 +2994,7 @@ const material1= new THREE.MeshStandardMaterial({
       position={[0.24, 0.09, -0.3]}
       rotation={[Math.PI, 0, Math.PI]}
       scale={[0.18, 0.18, 0.12]}
+      visible={props.showMesh10}
     />
     <mesh
       castShadow
@@ -2994,6 +3004,7 @@ const material1= new THREE.MeshStandardMaterial({
       position={[0.24, 0.09, 0.02]}
       rotation={[Math.PI, 0, Math.PI]}
       scale={[0.18, 0.18, 0.12]}
+      visible={props.showMesh11}
     />
     <mesh
       castShadow
@@ -3003,6 +3014,7 @@ const material1= new THREE.MeshStandardMaterial({
       position={[0.24, 0.09, 0.34]}
       rotation={[Math.PI, 0, Math.PI]}
       scale={[0.18, 0.18, 0.12]}
+      visible={props.showMesh12}
     />
     <mesh
       castShadow
@@ -3012,6 +3024,7 @@ const material1= new THREE.MeshStandardMaterial({
       position={[0.24, 0.09, 0.67]}
       rotation={[Math.PI, 0, Math.PI]}
       scale={[0.18, 0.18, 0.12]}
+      visible={props.showMesh13}
     />
     <mesh
       castShadow
@@ -3021,6 +3034,7 @@ const material1= new THREE.MeshStandardMaterial({
       position={[0.24, 0.09, 1]}
       rotation={[Math.PI, 0, Math.PI]}
       scale={[0.18, 0.18, 0.12]}
+      visible={props.showMesh14}
     />
     <mesh
       castShadow
@@ -3241,7 +3255,6 @@ const material1= new THREE.MeshStandardMaterial({
       material={props.material1}
       position={[-0.19, 0.12, -0.96]}
       rotation={[ Math.PI, Math.PI / 2, 0]}
-
       scale={0.44}
       visible={props.showMesh1}
     />
@@ -3250,9 +3263,10 @@ const material1= new THREE.MeshStandardMaterial({
       receiveShadow
       onClick={() => props.handleMeshClick(2)}    
       geometry={nodes.card2.geometry}
-      material={materials["leer.002"]}
+      material={props.material2}
+      rotation={[ Math.PI, Math.PI / 2, 0]}
       position={[-0.19, 0.12, -0.62]}
-      rotation={[0, -Math.PI / 2, 0]}
+   
       scale={0.44}
       visible={props.showMesh2}
     />
@@ -3262,9 +3276,10 @@ const material1= new THREE.MeshStandardMaterial({
       onClick={() => props.handleMeshClick(3)}    
 
       geometry={nodes.card3.geometry}
-      material={materials["leer.003"]}
+      material={props.material3}
+      rotation={[ Math.PI, Math.PI / 2, 0]}
       position={[-0.19, 0.12, -0.29]}
-      rotation={[0, -Math.PI / 2, 0]}
+ 
       scale={0.44}
       visible={props.showMesh3}
     />
@@ -3274,9 +3289,10 @@ const material1= new THREE.MeshStandardMaterial({
       onClick={() => props.handleMeshClick(4)}    
       visible={props.showMesh4}
       geometry={nodes.card4.geometry}
-      material={materials["leer.004"]}
+      material={props.material4}
+      rotation={[ Math.PI, Math.PI / 2, 0]}
       position={[-0.19, 0.12, 0.03]}
-      rotation={[0, -Math.PI / 2, 0]}
+
       scale={0.44}
     />
     <mesh
@@ -3285,9 +3301,10 @@ const material1= new THREE.MeshStandardMaterial({
       onClick={() => props.handleMeshClick(5)}    
       visible={props.showMesh5}
       geometry={nodes.card5.geometry}
-      material={materials["leer.005"]}
+      material={props.material5}
+      rotation={[ Math.PI, Math.PI / 2, 0]}
       position={[-0.19, 0.12, 0.35]}
-      rotation={[0, -Math.PI / 2, 0]}
+    
       scale={0.44}
     />
     <mesh
@@ -3296,9 +3313,10 @@ const material1= new THREE.MeshStandardMaterial({
       onClick={() => props.handleMeshClick(6)}    
       visible={props.showMesh6}
       geometry={nodes.card6.geometry}
-      material={materials["leer.006"]}
+      material={props.material6}
+      rotation={[ Math.PI, Math.PI / 2, 0]}
       position={[-0.19, 0.12, 0.67]}
-      rotation={[0, -Math.PI / 2, 0]}
+ 
       scale={0.44}
     />
     <mesh
@@ -3307,9 +3325,10 @@ const material1= new THREE.MeshStandardMaterial({
       onClick={() => props.handleMeshClick(7)}    
       visible={props.showMesh7}
       geometry={nodes.card7.geometry}
-      material={materials["leer.007"]}
+      material={props.material7}
+      rotation={[ Math.PI, Math.PI / 2, 0]}
       position={[-0.19, 0.12, 0.97]}
-      rotation={[0, -Math.PI / 2, 0]}
+   
       scale={0.44}
     />
     <mesh
@@ -3318,9 +3337,10 @@ const material1= new THREE.MeshStandardMaterial({
       onClick={() => props.handleMeshClick(8)}    
       visible={props.showMesh8}
       geometry={nodes.cardb1.geometry}
-      material={materials["leer.008"]}
+      material={props.material8}
+      rotation={[ Math.PI, Math.PI / 2, 0]}
       position={[0.21, 0.12, -0.91]}
-      rotation={[3.14, 1.57, -3.14]}
+    
       scale={0.44}
     />
     <mesh
@@ -3329,9 +3349,10 @@ const material1= new THREE.MeshStandardMaterial({
       onClick={() => props.handleMeshClick(9)}    
 
       geometry={nodes.cardb2.geometry}
-      material={materials["leer.009"]}
+      material={props.material9}
+      rotation={[ Math.PI, Math.PI / 2, 0]}
       position={[0.21, 0.12, -0.62]}
-      rotation={[3.14, 1.57, -3.14]}
+   
       scale={0.44}
       visible={props.showMesh9}
     />
@@ -3341,9 +3362,10 @@ const material1= new THREE.MeshStandardMaterial({
       onClick={() => props.handleMeshClick(10)}    
       visible={props.showMesh10}
       geometry={nodes.cardb3.geometry}
-      material={materials["leer.010"]}
+      material={props.material9}
+      rotation={[ Math.PI, Math.PI / 2, 0]}
       position={[0.21, 0.12, -0.3]}
-      rotation={[3.14, 1.57, -3.14]}
+    
       scale={0.44}
     />
 
@@ -3354,9 +3376,10 @@ const material1= new THREE.MeshStandardMaterial({
       onClick={() => props.handleMeshClick(11)}    
       visible={props.showMesh11}
       geometry={nodes.cardb4.geometry}
-      material={materials["leer.011"]}
+      material={props.material11}
+      rotation={[ Math.PI, Math.PI / 2, 0]}
       position={[0.21, 0.12, 0.02]}
-      rotation={[3.14, 1.57, -3.14]}
+ 
       scale={0.44}
     
     />
@@ -3367,9 +3390,10 @@ const material1= new THREE.MeshStandardMaterial({
     receiveShadow
     onClick={() => props.handleMeshClick(12)}
     geometry={nodes.cardb5.geometry}
-    material={materials["leer.012"]}
+    material={props.material12}
+      rotation={[ Math.PI, Math.PI / 2, 0]}
     position={[0.22, 0.12, 0.34]}
-    rotation={[3.14, 1.57, -3.14]}
+ 
     scale={0.44}
     visible={props.showMesh12}
   />
@@ -3380,9 +3404,10 @@ const material1= new THREE.MeshStandardMaterial({
       receiveShadow
       onClick={() => props.handleMeshClick(13)}    
       geometry={nodes.cardb6.geometry}
-      material={materials["leer.013"]}
+      material={props.material13}
+      rotation={[ Math.PI, Math.PI / 2, 0]}
       position={[0.22, 0.12, 0.67]}
-      rotation={[3.14, 1.57, -3.14]}
+      
       scale={0.44}
       visible={props.showMesh13}
     />
@@ -3392,9 +3417,10 @@ const material1= new THREE.MeshStandardMaterial({
       onClick={() => props.handleMeshClick(14)}    
 
       geometry={nodes.cardb7.geometry}
-      material={materials["leer.014"]}
+      material={props.material14}
+      rotation={[ Math.PI, Math.PI / 2, 0]}
       position={[0.22, 0.12, 1.01]}
-      rotation={[3.14, 1.57, -3.14]}
+     
       scale={0.44}
       visible={props.showMesh14}
     />

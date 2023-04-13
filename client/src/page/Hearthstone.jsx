@@ -8,6 +8,7 @@ import styles from '../styles';
 import { ActionButton, Alert, Card, GameInfo, PlayerInfo,HearthstoneCard,HiddenHearthstoneCard,Board,} from '../components';
 import { rsattack,rsstrenght, attackSound, rsmagic,rsrange, defenseSound,main,adventure, player01 as player01Icon, player02 as player02Icon } from '../assets';
 import { playAudio } from '../utils/animation.js';
+
 import '../cards.css';
 import '../hiddencards.css'
 import '../index.css'
@@ -34,39 +35,54 @@ const Hearthstone = () => {
   const Current = localStorage.getItem("currentCard");
 
 
-  const [showMesh1, setShowMesh1] = useState(true);
-  const [showMesh2, setShowMesh2] = useState(true);
-  const [showMesh3, setShowMesh3] = useState(true);
-  const [showMesh4, setShowMesh4] = useState(true);
-  const [showMesh5, setShowMesh5] = useState(true);
-  const [showMesh6, setShowMesh6] = useState(true);
-  const [showMesh7, setShowMesh7] = useState(true);
-  const [showMesh8, setShowMesh8] = useState(true);
-  const [showMesh9, setShowMesh9] = useState(true);
-  const [showMesh10, setShowMesh10] = useState(true);
-  const [showMesh11, setShowMesh11] = useState(true);
-  const [showMesh12, setShowMesh12] = useState(true);
-  const [showMesh13, setShowMesh13] = useState(true);
-  const [showMesh14, setShowMesh14] = useState(true);
+  const [showMesh1, setShowMesh1] = useState(false);
+  const [showMesh2, setShowMesh2] = useState(false);
+  const [showMesh3, setShowMesh3] = useState(false);
+  const [showMesh4, setShowMesh4] = useState(false);
+  const [showMesh5, setShowMesh5] = useState(false);
+  const [showMesh6, setShowMesh6] = useState(false);
+  const [showMesh7, setShowMesh7] = useState(false);
+  const [showMesh8, setShowMesh8] = useState(false);
+  const [showMesh9, setShowMesh9] = useState(false);
+  const [showMesh10, setShowMesh10] = useState(false);
+  const [showMesh11, setShowMesh11] = useState(false);
+  const [showMesh12, setShowMesh12] = useState(false);
+  const [showMesh13, setShowMesh13] = useState(false);
+  const [showMesh14, setShowMesh14] = useState(false);
   const [player02handsize,setplayer02handsize] = useState();
 
 
   const textureLoader = new THREE.TextureLoader();
   const texture = textureLoader.load(invincible);
   
-  const material1 = new THREE.MeshStandardMaterial({
+  function createMaterial(map, color, metalness) {
+    return new THREE.MeshStandardMaterial({
+      side: THREE.DoubleSide,
+      transparent: true,
+      map: map,
+      color: color,
+      metalness: metalness,
+    });
+  }
 
-    side: THREE.DoubleSide,
-    transparent: true,
+  const material1 = createMaterial(texture, 0xffffff, 0.8);
 
-    map: texture,
-    color: 0xffffff, // base color of the material
-    metalness: 0.8, // adjust the metalness of the material
-   
-  });
-  
+  const material2 = createMaterial(texture, 0xffffff, 0.8);
+  const material3 = createMaterial(texture, 0xffffff, 0.8);
+  const material4 = createMaterial(texture, 0xffffff, 0.8);
+  const material5 = createMaterial(texture, 0xffffff, 0.8);
+  const material6 = createMaterial(texture, 0xffffff, 0.8);
+  const material7 = createMaterial(texture, 0xffffff, 0.8);
+  const material8 = createMaterial(texture, 0xffffff, 0.8);
+  const material9 = createMaterial(texture, 0xffffff, 0.8);
+  const material10 = createMaterial(texture, 0xffffff, 0.8);
+  const material11 = createMaterial(texture, 0xffffff, 0.8);
+  const material12 = createMaterial(texture, 0xffffff, 0.8);
+  const material13 = createMaterial(texture, 0xffffff, 0.8);
+  const material14 = createMaterial(texture, 0xffffff, 0.8);
 
-  
+
+
 
 
   useEffect(() => {
@@ -264,7 +280,9 @@ const Hearthstone = () => {
 
   function handleMeshClick(meshNum) {
     console.log(`Mesh ${meshNum} clicked!`);
-    alert(meshNum);
+    localStorage.setItem('battleCard',meshNum);
+    setShowAlert({ status: true, type: 'info', message: `card number ${meshNum} selected for battle` });
+
   }
 
   function getShowMeshFunction(meshNum) {
@@ -328,7 +346,13 @@ const Hearthstone = () => {
     showMesh9={showMesh9} showMesh10={showMesh10} 
     showMesh11={showMesh11} showMesh12={showMesh12}
     showMesh13={showMesh13} showMesh14={showMesh14}
-    material1={material1} 
+    material1={material1} material2={material2} 
+    material3={material3} material4={material4} 
+    material5={material5} material6={material6} 
+    material7={material7} material8={material8} 
+    material9={material9} material10={material10} 
+    material11={material11} material12={material12} 
+    material13={material13} material14={material14} 
  
      />
     <Controls />
