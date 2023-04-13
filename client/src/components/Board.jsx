@@ -45,9 +45,11 @@ const Board = ({ card, title, restStyles, cardRef, playerTwo,img1,index ,bot}) =
 
         console.log("attacked");
       
+        alert(localStorage.getItem("battleCard"));
+        alert(index)
 
         try {
-          await contract.attack(localStorage.getItem("battleCard"), index, 0, 0);
+          await contract.attack(localStorage.getItem("battleCard")-1, index-1, 0, 0);
           setShowAlert({ status: true, type: 'info', message: `${card.name} got attacked` });
 
           localStorage.removeItem('battleCard');

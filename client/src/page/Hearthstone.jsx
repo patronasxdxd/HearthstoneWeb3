@@ -380,21 +380,25 @@ const Hearthstone = () => {
   const Attacked = async (card) => {
 
     console.log("attacked");
-  
+    console.log(card-7)
+    console.log(localStorage.getItem("battleCard"))
 
     try {
-      await contract.attack(localStorage.getItem("battleCard"), index, 0, 0);
-      setShowAlert({ status: true, type: 'info', message: `${card.name} got attacked` });
+      await contract.attack(localStorage.getItem("battleCard"), card-7, 0, 0);
 
       localStorage.removeItem('battleCard');
 
   } catch (error) {
+    console.log(error);
     setShowAlert({ status: true, type: 'info', message: `Minion is still asleep` });
   }
     localStorage.removeItem('battleCard');
 }
 
   const cameraRef = useRef();
+
+  let turnTimeoutId;
+
 
   function handleMeshClick(meshNum) {
     console.log(`Mesh ${meshNum} clicked!`);
@@ -407,25 +411,53 @@ const Hearthstone = () => {
       if (meshNum == "HeroPower"){
         alert(meshNum);
       }
-      else if (meshNum == "EndTurn"){
-        endTurn();
+      else if (meshNum === "EndTurn"){
+       
+        if (turnTimeoutId) {
+          clearTimeout(turnTimeoutId);
+          turnTimeoutId = null;
+        }
+
+
+        turnTimeoutId = setTimeout(() => {
+          alert(1);
+          endTurn();
+        }, 100);
+        
+
+       
+      
+        
       }
-      else if (meshNum == "EndTurnBot"){
-        endTurn2();
+      else if (meshNum === "EndTurnBot"){
+        if (turnTimeoutId) {
+          clearTimeout(turnTimeoutId);
+          turnTimeoutId = null;
+        }
+
+
+        turnTimeoutId = setTimeout(() => {
+          alert(1);
+          endTurn2();
+        }, 100);
+        
+
+       
       }
       else if (meshNum == "FaceEnemy"){
         endTurn3();
-        alert(meshNum);
+        
       }
       else {
         console.log("adwawdwa")
-        Attacked();
+        Attacked(meshNum);
       }
 
     
      
     }
-
+    
+   
   }
 
   function getShowMeshFunction(meshNum) {
