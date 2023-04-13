@@ -29,6 +29,9 @@ body {
     position: fixed;
     left: 0;
     right: 0;
+    margin-top: 200px;
+    transform: scaleY(-0.5);
+
 }
 
 .cardhidden {
@@ -36,7 +39,7 @@ body {
   margin: 0 -25px;
   position: relative;
   width: 100px;
-  transform: scaleX(-1);
+ 
 
 }
 

@@ -32,12 +32,6 @@ const HearthstoneCard = ({ card, title, key,restStyles, cardRef, playerTwo,img1,
     const makeAMove = async (card) => {
     
         localStorage.setItem('currentCard',index);
-
-
-        console.log(index,"swag");
-
-     
-      
         setShowAlert({ status: true, type: 'info', message: `${card.name} selected` });
     
     }

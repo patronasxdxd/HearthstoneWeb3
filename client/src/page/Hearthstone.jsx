@@ -502,11 +502,13 @@ const Hearthstone = () => {
 <PlayerInfo player={player2} playerIcon={player02Icon} mt />
    
 </div>
-   <div className="cardshidden">
-          {[...player02hand].map((player02hand, i) => (
-            <HiddenHearthstoneCard card={player02hand} key={i} {...player02hand} />
-          ))}
-     </div>
+<div className="cardshidden">
+  {[...player02hand].map((player02hand, i) => (
+    <HiddenHearthstoneCard card={player02hand} key={i} {...player02hand} />
+  ))}
+</div>
+
+
 
 {/* 
          <div className="flex items-center flex-row">
@@ -529,7 +531,7 @@ const Hearthstone = () => {
     
     <div className='relative'>
 
-  <Canvas style={{ width: '2000px', height: '800px' }} camera={{ position: [-5, 2, -1.5] }}>
+  <Canvas style={{ width: '2000px', height: '800px' }} camera={{ position: [-5, 2, 0] }}>
     <ambientLight />
     <pointLight position={[10, 40, 10]} />
     <Model scale={1.6} handleMeshClick={(meshNum) => handleMeshClick(meshNum)} 
@@ -558,15 +560,14 @@ const Hearthstone = () => {
 
  
 
+  <div class='boardcardsTop'>
+  <div onClick={() => boardChoice(1)} className={`${localStorage.getItem("currentCard") === null?"":styles.glassEffect} w-20 h-20`} style={{marginTop: "400px"}}>
+    <div className=''></div>
+    {localStorage.getItem("currentCard") === null? <h2 style={{color: "white", textAlign: "center"}}></h2> : <h2 style={{color: "white", textAlign: "center"}}>Place Here</h2>}
+  </div>
 
-    <div class='boardcardsTop'>
-<div onClick={() =>boardChoice(1)} className={`${localStorage.getItem("currentCard") === null?"":styles.glassEffect} w-20 h-28`}>
-       <div className=''></div>
-      {localStorage.getItem("currentCard") === null? <h2 ></h2> : <h2>Place Here</h2>
 
-      }
-     </div>
- {[...player01board].map((player01board, i) => (
+ {/* {[...player01board].map((player01board, i) => (
 
   
        
@@ -574,19 +575,19 @@ const Hearthstone = () => {
        
 
 
-     ))}
-     <div onClick={() =>boardChoice(2)} className={`${localStorage.getItem("currentCard") === null?"":styles.glassEffect} w-20 h-28`}>
+     ))} */}
+     {/* <div onClick={() =>boardChoice(2)} className={`${localStorage.getItem("currentCard") === null?"":styles.glassEffect} w-20 h-28`}>
       <div className=''></div>
       {localStorage.getItem("currentCard") === null? <h2 ></h2> : <h2>Place Here</h2>
 
      }
-     </div>
+     </div> */}
    </div>
       
 
 
     {/* <GameInfo /> */}
- 
+{/*  
     <div class='boardcards'>
  {[...player02board].map((player02board, i) => (
         <Board card={player02board} key={i} {...player02board} playerTwo bot index={i} />
@@ -594,7 +595,7 @@ const Hearthstone = () => {
 
    </div> 
 
-
+ */}
 
 
 
