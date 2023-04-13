@@ -1,12 +1,12 @@
 /* eslint-disable prefer-destructuring */
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { allCards } from '../assets';
+import { hscard2,allCards } from '../assets';
 
 import dummyData from "../utils/dummyData";
 import styles from '../styles';
 import { ActionButton, Alert, Card, GameInfo, PlayerInfo,HearthstoneCard,HiddenHearthstoneCard,Board,} from '../components';
-import { rsattack,rsstrenght, attackSound, rsmagic,rsrange, defenseSound,main,adventure, player01 as player01Icon, player02 as player02Icon } from '../assets';
+import {  player01 as player01Icon, player02 as player02Icon } from '../assets';
 import { playAudio } from '../utils/animation.js';
 
 import '../cards.css';
@@ -20,6 +20,7 @@ import { invincible } from "../assets";
 import { TextureLoader } from 'three';
 import * as THREE from 'three';
 import Controls from './Controls';
+
 
 
 const Hearthstone = () => {
@@ -53,9 +54,10 @@ const Hearthstone = () => {
 
 
   const textureLoader = new THREE.TextureLoader();
-  const texture = textureLoader.load(invincible);
+ 
   
-  function createMaterial(map, color, metalness) {
+  function createMaterial(cardId, color, metalness) {
+    const map = textureLoader.load(hscard2[cardId]);
     return new THREE.MeshStandardMaterial({
       side: THREE.DoubleSide,
       transparent: true,
@@ -65,21 +67,27 @@ const Hearthstone = () => {
     });
   }
 
-  const material1 = createMaterial(texture, 0xffffff, 0.8);
 
-  const material2 = createMaterial(texture, 0xffffff, 0.8);
-  const material3 = createMaterial(texture, 0xffffff, 0.8);
-  const material4 = createMaterial(texture, 0xffffff, 0.8);
-  const material5 = createMaterial(texture, 0xffffff, 0.8);
-  const material6 = createMaterial(texture, 0xffffff, 0.8);
-  const material7 = createMaterial(texture, 0xffffff, 0.8);
-  const material8 = createMaterial(texture, 0xffffff, 0.8);
-  const material9 = createMaterial(texture, 0xffffff, 0.8);
-  const material10 = createMaterial(texture, 0xffffff, 0.8);
-  const material11 = createMaterial(texture, 0xffffff, 0.8);
-  const material12 = createMaterial(texture, 0xffffff, 0.8);
-  const material13 = createMaterial(texture, 0xffffff, 0.8);
-  const material14 = createMaterial(texture, 0xffffff, 0.8);
+
+
+  
+
+  const [material1, setMaterial1] = useState(createMaterial(1, 0xffffff, 0.8));
+  const [material2, setMaterial2] = useState(createMaterial(1, 0xffffff, 0.8));
+  const [material3, setMaterial3] = useState(createMaterial(1, 0xffffff, 0.8));
+  const [material4, setMaterial4] = useState(createMaterial(1, 0xffffff, 0.8));
+  const [material5, setMaterial5] = useState(createMaterial(1, 0xffffff, 0.8));
+  const [material6, setMaterial6] = useState(createMaterial(1, 0xffffff, 0.8));
+  const [material7, setMaterial7] = useState(createMaterial(1, 0xffffff, 0.8));
+  const [material8, setMaterial8] = useState(createMaterial(1, 0xffffff, 0.8));
+  const [material9, setMaterial9] = useState(createMaterial(1, 0xffffff, 0.8));
+  const [material10, setMaterial10] = useState(createMaterial(1, 0xffffff, 0.8));
+  const [material11, setMaterial11] = useState(createMaterial(1, 0xffffff, 0.8));
+  const [material12, setMaterial12] = useState(createMaterial(1, 0xffffff, 0.8));
+  const [material13, setMaterial13] = useState(createMaterial(1, 0xffffff, 0.8));
+  const [material14, setMaterial14] = useState(createMaterial(1, 0xffffff, 0.8));
+  
+
 
 
 
@@ -144,6 +152,98 @@ const Hearthstone = () => {
 
         setPlayer1({ ...player01, health: p1H, mana: p1M });
         setPlayer2({ ...player02, health: p2H, mana: p2M  });
+
+
+       
+        //player 1 board
+        for (let index = 0; index < player01.minions.length; index++) {
+            switch (index) {
+              case 0:
+                setShowMesh1(true);
+                setMaterial1(createMaterial(player01.minions[index].id-1, 0xffffff, 0.8));
+
+                break;
+              case 1:
+                setShowMesh2(true);
+                setMaterial2(createMaterial(player01.minions[index].id-1, 0xffffff, 0.8));
+
+                break;
+              case 2:
+                setShowMesh3(true);
+                setMaterial3(createMaterial(player01.minions[index].id-1, 0xffffff, 0.8));
+
+                break;
+              case 3:
+                setShowMesh4(true);
+                setMaterial4(createMaterial(player01.minions[index].id-1, 0xffffff, 0.8));
+
+                break;
+              case 4:
+                setShowMesh5(true);
+                setMaterial5(createMaterial(player01.minions[index].id-1, 0xffffff, 0.8));
+
+                break;
+              case 5:
+                setShowMesh6(true);
+                setMaterial6(createMaterial(player01.minions[index].id-1, 0xffffff, 0.8));
+
+                break;
+              case 6:
+                setShowMesh7(true);
+                setMaterial7(createMaterial(player01.minions[index].id-1, 0xffffff, 0.8));
+
+                break;
+              default:
+                break;
+            }
+        }
+
+
+        console.log(player02.minions.length);
+
+           
+        //player 2 board
+        for (let index = 0; index < player02.minions.length; index++) {
+          switch (index) {
+            case 0:
+              setShowMesh8(true);
+              setMaterial8(createMaterial(player02.minions[index].id-1, 0xffffff, 0.8));
+
+              break;
+            case 1:
+              setShowMesh9(true);
+              setMaterial9(createMaterial(player02.minions[index].id-1, 0xffffff, 0.8));
+
+              break;
+            case 2:
+              setShowMesh10(true);
+              setMaterial10(createMaterial(player02.minions[index].id-1, 0xffffff, 0.8));
+
+              break;
+            case 3:
+              setShowMesh11(true);
+              setMaterial11(createMaterial(player02.minions[index].id-1, 0xffffff, 0.8));
+
+              break;
+            case 4:
+              setShowMesh12(true);
+              setMaterial12(createMaterial(player02.minions[index].id-1, 0xffffff, 0.8));
+
+              break;
+            case 5:
+              setShowMesh13(true);
+              setMaterial13(createMaterial(player02.minions[index].id-1, 0xffffff, 0.8));
+
+              break;
+            case 6:
+              setShowMesh14(true);
+              setMaterial14(createMaterial(player02.minions[index].id-1, 0xffffff, 0.8));
+
+              break;
+            default:
+              break;
+          }
+      }
 
 
         console.log("player");
@@ -292,6 +392,7 @@ const Hearthstone = () => {
       return showMesh11;
     }
   }
+
   
 
   return (
