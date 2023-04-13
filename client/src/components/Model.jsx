@@ -2881,17 +2881,38 @@ const material1= new THREE.MeshStandardMaterial({
     <mesh
       castShadow
       receiveShadow
+      onClick={() => props.handleMeshClick("EndTurn")}
       geometry={nodes.Plane007.geometry}
       material={materials["Material.022"]}
-      position={[0.05, 0.05, 1.61]}
+      position={[0.05, 0.04, 1.61]}
       scale={[0.19, 0.19, 0.06]}
     />
     <mesh
       castShadow
       receiveShadow
+      onClick={() => props.handleMeshClick("EndTurn")}
       geometry={nodes.endTurn.geometry}
       material={materials["Material.021"]}
-      position={[0.06, 0.07, 1.61]}
+      position={[0.06, 0.067, 1.61]}
+      scale={[-0.13, -0.13, -0.04]}
+    />
+
+<mesh
+      castShadow
+      receiveShadow
+      onClick={() => props.handleMeshClick("EndTurnBot")}
+      geometry={nodes.Plane007.geometry}
+      material={materials["Material.022"]}
+      position={[0.05, 0.04, -1.61]}
+      scale={[0.19, 0.19, 0.06]}
+    />
+    <mesh
+      castShadow
+      receiveShadow
+      onClick={() => props.handleMeshClick("EndTurnBot")}
+      geometry={nodes.endTurn.geometry}
+      material={materials["Material.021"]}
+      position={[0.06, 0.067, -1.61]}
       scale={[-0.13, -0.13, -0.04]}
     />
     <mesh
@@ -2901,6 +2922,15 @@ const material1= new THREE.MeshStandardMaterial({
       material={materials["Material.023"]}
       position={[0.17, 0.07, 1.59]}
       rotation={[-Math.PI, 0, -Math.PI]}
+      scale={0.06}
+    />
+        <mesh
+      castShadow
+      receiveShadow
+      geometry={nodes.Text001.geometry}
+      material={materials["Material.023"]}
+      position={[-0.05, 0.07, -1.59]}
+     
       scale={0.06}
     />
     <mesh

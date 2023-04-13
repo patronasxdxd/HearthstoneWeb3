@@ -1,7 +1,7 @@
 /* eslint-disable prefer-destructuring */
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { hscard2,allCards } from '../assets';
+import { hscard2,allCards, attack } from '../assets';
 
 import dummyData from "../utils/dummyData";
 import styles from '../styles';
@@ -376,12 +376,55 @@ const Hearthstone = () => {
 
   };
 
+
+  const Attacked = async (card) => {
+
+    console.log("attacked");
+  
+
+    try {
+      await contract.attack(localStorage.getItem("battleCard"), index, 0, 0);
+      setShowAlert({ status: true, type: 'info', message: `${card.name} got attacked` });
+
+      localStorage.removeItem('battleCard');
+
+  } catch (error) {
+    setShowAlert({ status: true, type: 'info', message: `Minion is still asleep` });
+  }
+    localStorage.removeItem('battleCard');
+}
+
   const cameraRef = useRef();
 
   function handleMeshClick(meshNum) {
     console.log(`Mesh ${meshNum} clicked!`);
+
+    if ( meshNum <= 7){
     localStorage.setItem('battleCard',meshNum);
     setShowAlert({ status: true, type: 'info', message: `card number ${meshNum} selected for battle` });
+    }
+    else {
+      if (meshNum == "HeroPower"){
+        alert(meshNum);
+      }
+      else if (meshNum == "EndTurn"){
+        endTurn();
+      }
+      else if (meshNum == "EndTurnBot"){
+        endTurn2();
+      }
+      else if (meshNum == "FaceEnemy"){
+        endTurn3();
+        alert(meshNum);
+      }
+      else {
+        console.log("adwawdwa")
+        Attacked();
+      }
+
+    
+     
+    }
 
   }
 
