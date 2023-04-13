@@ -45,8 +45,7 @@ const Board = ({ card, title, restStyles, cardRef, playerTwo,img1,index ,bot}) =
 
         console.log("attacked");
       
-        alert(localStorage.getItem("battleCard"));
-        alert(index)
+
 
         try {
           await contract.attack(localStorage.getItem("battleCard")-1, index-1, 0, 0);

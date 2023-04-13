@@ -35,6 +35,7 @@ const Hearthstone = () => {
   const [player02board, setPlayer02board] = useState([]);
   const Current = localStorage.getItem("currentCard");
 
+  let count;
 
   const [showMesh1, setShowMesh1] = useState(false);
   const [showMesh2, setShowMesh2] = useState(false);
@@ -92,6 +93,176 @@ const Hearthstone = () => {
 
 
 
+  const getPlayerInfo = async () => {
+    try {
+
+      console.log("xdd");
+      
+      let player01Address = null;
+      let player02Address = null;
+      
+      const player01 = await contract.getPlayer(0);
+      const player02 = await contract.getPlayer(1);
+
+
+      const p1H = player01.health.toNumber();
+      const p1M = player01.unspendMana.toNumber();
+      const p1Ma = player01.unspendMana.toNumber();
+      const p2M = player02.mana.toNumber();
+      const p2Ma = player02.unspendMana.toNumber();
+
+
+      const p2H = player02.health.toNumber();
+
+      console.log(player01.minions)
+      console.log(player02.minions)
+
+
+      const handsize = player01.hand.length;
+
+ 
+      console.log("isytrue;")
+
+      if ( localStorage.getItem("currentCard") === null) {
+        console.log("nulleriono")
+
+      }
+      else{
+        console.log("not null")
+      
+      }
+      let player01handd = player01.hand;
+
+      setPlayer01Hand(player01handd);
+      setPlayer02Hand(player02.hand);
+      setPlayer01board(player01.minions);
+      setPlayer02board(player02.minions);
+     
+      setplayer02handsize(player02.hand.length)
+
+
+      setPlayer1({ ...player01, health: p1H, mana: p1M });
+      setPlayer2({ ...player02, health: p2H, mana: p2M  });
+
+
+
+      setShowMesh1(false);
+      setShowMesh2(false);
+      setShowMesh3(false);
+      setShowMesh4(false);
+      setShowMesh5(false);
+      setShowMesh6(false);
+      setShowMesh7(false);
+      setShowMesh8(false);
+      setShowMesh9(false);
+      setShowMesh10(false);
+      setShowMesh11(false);
+      setShowMesh12(false);
+      setShowMesh13(false);
+
+      setShowMesh14(false);
+
+     
+      //player 1 board
+      for (let index = 0; index < player01.minions.length; index++) {
+          switch (index) {
+            case 0:
+              setShowMesh1(true);
+              setMaterial1(createMaterial(player01.minions[index].id-1, 0xffffff, 0.8));
+
+              break;
+            case 1:
+              setShowMesh2(true);
+              setMaterial2(createMaterial(player01.minions[index].id-1, 0xffffff, 0.8));
+
+              break;
+            case 2:
+              setShowMesh3(true);
+              setMaterial3(createMaterial(player01.minions[index].id-1, 0xffffff, 0.8));
+
+              break;
+            case 3:
+              setShowMesh4(true);
+              setMaterial4(createMaterial(player01.minions[index].id-1, 0xffffff, 0.8));
+
+              break;
+            case 4:
+              setShowMesh5(true);
+              setMaterial5(createMaterial(player01.minions[index].id-1, 0xffffff, 0.8));
+
+              break;
+            case 5:
+              setShowMesh6(true);
+              setMaterial6(createMaterial(player01.minions[index].id-1, 0xffffff, 0.8));
+
+              break;
+            case 6:
+              setShowMesh7(true);
+              setMaterial7(createMaterial(player01.minions[index].id-1, 0xffffff, 0.8));
+
+              break;
+            default:
+              break;
+          }
+      }
+
+
+      console.log(player02.minions.length);
+
+         
+      //player 2 board
+      for (let index = 0; index < player02.minions.length; index++) {
+        switch (index) {
+          case 0:
+            setShowMesh8(true);
+            setMaterial8(createMaterial(player02.minions[index].id-1, 0xffffff, 0.8));
+
+            break;
+          case 1:
+            setShowMesh9(true);
+            setMaterial9(createMaterial(player02.minions[index].id-1, 0xffffff, 0.8));
+
+            break;
+          case 2:
+            setShowMesh10(true);
+            setMaterial10(createMaterial(player02.minions[index].id-1, 0xffffff, 0.8));
+
+            break;
+          case 3:
+            setShowMesh11(true);
+            setMaterial11(createMaterial(player02.minions[index].id-1, 0xffffff, 0.8));
+
+            break;
+          case 4:
+            setShowMesh12(true);
+            setMaterial12(createMaterial(player02.minions[index].id-1, 0xffffff, 0.8));
+
+            break;
+          case 5:
+            setShowMesh13(true);
+            setMaterial13(createMaterial(player02.minions[index].id-1, 0xffffff, 0.8));
+
+            break;
+          case 6:
+            setShowMesh14(true);
+            setMaterial14(createMaterial(player02.minions[index].id-1, 0xffffff, 0.8));
+
+            break;
+          default:
+            break;
+        }
+    }
+
+
+      console.log("player");
+      console.log(player01);
+      console.log(player02);
+
+    } catch (error) {
+      setErrorMessage(error.message);
+    }
+  };
+
 
   useEffect(() => {
    
@@ -101,159 +272,6 @@ const Hearthstone = () => {
     
  
 
-
-    const getPlayerInfo = async () => {
-      try {
-
-        console.log("xdd");
-        
-        let player01Address = null;
-        let player02Address = null;
-        
-        const player01 = await contract.getPlayer(0);
-        const player02 = await contract.getPlayer(1);
-
- 
-        const p1H = player01.health.toNumber();
-        const p1M = player01.unspendMana.toNumber();
-        const p1Ma = player01.unspendMana.toNumber();
-        const p2M = player02.mana.toNumber();
-        const p2Ma = player02.unspendMana.toNumber();
-
-  
-        const p2H = player02.health.toNumber();
-
-        console.log(player01.minions)
-        console.log(player02.minions)
-
-
-        const handsize = player01.hand.length;
-
-   
-        console.log("isytrue;")
-
-        if ( localStorage.getItem("currentCard") === null) {
-          console.log("nulleriono")
-
-        }
-        else{
-          console.log("not null")
-        
-        }
-        let player01handd = player01.hand;
-
-        setPlayer01Hand(player01handd);
-        setPlayer02Hand(player02.hand);
-        setPlayer01board(player01.minions);
-        setPlayer02board(player02.minions);
-       
-        setplayer02handsize(player02.hand.length)
-  
-
-        setPlayer1({ ...player01, health: p1H, mana: p1M });
-        setPlayer2({ ...player02, health: p2H, mana: p2M  });
-
-
-       
-        //player 1 board
-        for (let index = 0; index < player01.minions.length; index++) {
-            switch (index) {
-              case 0:
-                setShowMesh1(true);
-                setMaterial1(createMaterial(player01.minions[index].id-1, 0xffffff, 0.8));
-
-                break;
-              case 1:
-                setShowMesh2(true);
-                setMaterial2(createMaterial(player01.minions[index].id-1, 0xffffff, 0.8));
-
-                break;
-              case 2:
-                setShowMesh3(true);
-                setMaterial3(createMaterial(player01.minions[index].id-1, 0xffffff, 0.8));
-
-                break;
-              case 3:
-                setShowMesh4(true);
-                setMaterial4(createMaterial(player01.minions[index].id-1, 0xffffff, 0.8));
-
-                break;
-              case 4:
-                setShowMesh5(true);
-                setMaterial5(createMaterial(player01.minions[index].id-1, 0xffffff, 0.8));
-
-                break;
-              case 5:
-                setShowMesh6(true);
-                setMaterial6(createMaterial(player01.minions[index].id-1, 0xffffff, 0.8));
-
-                break;
-              case 6:
-                setShowMesh7(true);
-                setMaterial7(createMaterial(player01.minions[index].id-1, 0xffffff, 0.8));
-
-                break;
-              default:
-                break;
-            }
-        }
-
-
-        console.log(player02.minions.length);
-
-           
-        //player 2 board
-        for (let index = 0; index < player02.minions.length; index++) {
-          switch (index) {
-            case 0:
-              setShowMesh8(true);
-              setMaterial8(createMaterial(player02.minions[index].id-1, 0xffffff, 0.8));
-
-              break;
-            case 1:
-              setShowMesh9(true);
-              setMaterial9(createMaterial(player02.minions[index].id-1, 0xffffff, 0.8));
-
-              break;
-            case 2:
-              setShowMesh10(true);
-              setMaterial10(createMaterial(player02.minions[index].id-1, 0xffffff, 0.8));
-
-              break;
-            case 3:
-              setShowMesh11(true);
-              setMaterial11(createMaterial(player02.minions[index].id-1, 0xffffff, 0.8));
-
-              break;
-            case 4:
-              setShowMesh12(true);
-              setMaterial12(createMaterial(player02.minions[index].id-1, 0xffffff, 0.8));
-
-              break;
-            case 5:
-              setShowMesh13(true);
-              setMaterial13(createMaterial(player02.minions[index].id-1, 0xffffff, 0.8));
-
-              break;
-            case 6:
-              setShowMesh14(true);
-              setMaterial14(createMaterial(player02.minions[index].id-1, 0xffffff, 0.8));
-
-              break;
-            default:
-              break;
-          }
-      }
-
-
-        console.log("player");
-        console.log(player01);
-        console.log(player02);
-
-      } catch (error) {
-        setErrorMessage(error.message);
-      }
-    };
 
     if (contract ) getPlayerInfo();
   }, [contract, gameData, battleName,Current,Minionsplayed]);
@@ -384,7 +402,8 @@ const Hearthstone = () => {
     console.log(localStorage.getItem("battleCard"))
 
     try {
-      await contract.attack(localStorage.getItem("battleCard"), card-7, 0, 0);
+      await contract.attack(localStorage.getItem("battleCard")-1, card-8, 0, 0);
+      
 
       localStorage.removeItem('battleCard');
 
@@ -420,7 +439,6 @@ const Hearthstone = () => {
 
 
         turnTimeoutId = setTimeout(() => {
-          alert(1);
           endTurn();
         }, 100);
         
@@ -437,7 +455,6 @@ const Hearthstone = () => {
 
 
         turnTimeoutId = setTimeout(() => {
-          alert(1);
           endTurn2();
         }, 100);
         
@@ -451,6 +468,7 @@ const Hearthstone = () => {
       else {
         console.log("adwawdwa")
         Attacked(meshNum);
+        getPlayerInfo()
       }
 
     
@@ -574,7 +592,7 @@ const Hearthstone = () => {
         <Board card={player02board} key={i} {...player02board} playerTwo bot index={i} />
      ))}
 
-   </div>
+   </div> 
 
 
 
