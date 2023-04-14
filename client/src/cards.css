@@ -54,6 +54,7 @@ body {
   right: -60px;
   top: 0px;
   z-index: 10;
+  margin-top: -80px;
 }
 
 .card-face {
@@ -78,6 +79,7 @@ body {
   position: absolute;
   right: 0;
   top: 0;
+ 
 }
 
 .card-label {
