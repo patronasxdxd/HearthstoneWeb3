@@ -41,6 +41,7 @@ import Mistress from './board/misstress.webp'
 import Grizzly from './board/grizzly.webp'
 
 import sleeping from'./board/sleeping.png'
+import undead from './background/undead.png'
 
 
 
@@ -109,7 +110,7 @@ export const hscard2 = [
 
 export {
   rsattack,rsmagic,rsstrenght,rsrange,
-
+  undead,
   Druid1,Druid2,Druid3,Druid4,
 
   fletchling,deathwing,invincible,

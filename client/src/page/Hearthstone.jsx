@@ -6,7 +6,7 @@ import { hscard2,allCards, attack } from '../assets';
 import dummyData from "../utils/dummyData";
 import styles from '../styles';
 import { ActionButton, Alert, Card, GameInfo, PlayerInfo,HearthstoneCard,HiddenHearthstoneCard,Board,} from '../components';
-import {  player01 as player01Icon, player02 as player02Icon } from '../assets';
+import {  player01 as player01Icon, player02 as player02Icon ,undead} from '../assets';
 import { playAudio } from '../utils/animation.js';
 
 import '../cards.css';
@@ -507,6 +507,7 @@ const Hearthstone = () => {
     <HiddenHearthstoneCard card={player02hand} key={i} {...player02hand} />
   ))}
 </div>
+<img src={undead} width='200' height='200' style={{ marginTop: '3%' }}></img>
 
 
 
@@ -530,8 +531,9 @@ const Hearthstone = () => {
   </div> */}
     
     <div className='relative'>
+      
 
-  <Canvas style={{ width: '2000px', height: '800px' }} camera={{ position: [-5, 2, 0] }}>
+  <Canvas style={{ width: '2000px', height: '800px' }} camera={{ position: [-4, 2, 0] }}>
     <ambientLight />
     <pointLight position={[10, 40, 10]} />
     <Model scale={1.6} handleMeshClick={(meshNum) => handleMeshClick(meshNum)} 
