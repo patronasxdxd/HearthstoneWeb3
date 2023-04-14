@@ -2824,7 +2824,7 @@ const material1= new THREE.MeshStandardMaterial({
       receiveShadow
       geometry={nodes.Text.geometry}
       material={materials.Material}
-      position={[-1.09, 0.05, 1.55]}
+      position={[-1.09, 0.05, 1.50]}
       rotation={[0, -Math.PI / 2, 0]}
       scale={0.04}
     />
