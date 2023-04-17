@@ -17,6 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         {/* <Route path="/battleground" element={<Battleground />} /> */}
         <Route path="/hearthstone" element={<Hearthstone />} />
         <Route path="/battleground" element={<Battleground />} />
+        
 
         {/* <Route path="/battle/:battleName" element={<Battle />} /> */}
         {/* <Route path="/create-battle" element={<CreateBattle />} /> */}
