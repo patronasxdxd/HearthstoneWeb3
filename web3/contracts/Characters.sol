@@ -6,10 +6,10 @@ pragma solidity >=0.7.0 <0.9.0;
 contract Characters {
 
     struct Champs {
-        uint health;
-        uint attack;
-        uint manaCost;
-        uint id;
+        uint8 health;
+        uint8 attack;
+        uint8 manaCost;
+        uint8 id;
         string name;
         string description;
         bool taunt;
@@ -68,11 +68,13 @@ contract Characters {
                                                         //             camps.push(Grizzly);
     }
 
-    function getCharacter(uint id) external view returns (uint,uint,uint,uint,string memory,string memory, bool,bool,bool,bool,bool,bool){
+    function getCharacter(uint256 id) external view returns (uint8,uint8,uint8,uint8,string memory,string memory, bool,bool,bool,bool,bool,bool){
         return seperateValues(id);
     }
 
-    function seperateValues(uint _x) internal view  returns (uint,uint,uint,uint,string memory,string memory,bool,bool,bool,bool,bool,bool) {
+
+
+    function seperateValues(uint _x) internal view  returns (uint8,uint8,uint8,uint8,string memory,string memory,bool,bool,bool,bool,bool,bool) {
         Champs memory x = camps[_x];
         return (x.health,x.attack,x.manaCost,x.id,x.name,x.description,x.taunt,x.windfury,x.divineshield,x.stealth,x.poisonious,x.asleep);
     }

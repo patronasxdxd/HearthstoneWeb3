@@ -507,8 +507,8 @@ const Hearthstone = () => {
     <HiddenHearthstoneCard card={player02hand} key={i} {...player02hand} />
   ))}
 </div>
-<img src={undead} width='200' height='200' style={{ marginTop: '3%' }}></img>
-
+{/* <img src={undead} width='200' height='200' style={{ marginTop: '3%' }}></img> */}
+{/* { position: 'absolute'} */}
 
 
 {/* 
