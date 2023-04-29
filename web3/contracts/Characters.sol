@@ -68,7 +68,9 @@ contract Characters {
                                                         //             camps.push(Grizzly);
     }
 
-    function getCharacter(uint256 id) external view returns (uint8,uint8,uint8,uint8,string memory,string memory, bool,bool,bool,bool,bool,bool){
+ 
+
+ function getCharacter(uint256 id) external view returns (uint8,uint8,uint8,uint8,string memory,string memory, bool,bool,bool,bool,bool,bool){
         return seperateValues(id);
     }
 

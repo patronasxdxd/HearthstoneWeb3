@@ -28,14 +28,7 @@ constructor (address _address) {
 
 //   enum gameStatus{ PENDING, STARTED, ENDED }
 
-    struct Player {
-        string username;
-        uint health;
-        uint mana;
-        uint unspendMana;
-        Champs[] minions;
-        Champs[] hand;
-    }
+  
 
     struct Champs {
         uint8 health;
@@ -64,6 +57,15 @@ constructor (address _address) {
         // gameStatus gamestatus;
     }   
 
+      struct Player {
+        string username;
+        uint health;
+        uint mana;
+        uint unspendMana;
+        Champs[] minions;
+        uint8[] hand;
+    }
+
     mapping (address => Game) public games;
     mapping (address => string ) public usernames;
     uint private gameCount = 0;
@@ -89,6 +91,9 @@ constructor (address _address) {
         return currentPlayerTurn;
     }
 
+
+
+
     function endTurn(uint _player) external {
         require(currentPlayerTurn ==  _player,"its not your turn");
        
@@ -104,7 +109,9 @@ constructor (address _address) {
 
 
         if (games[msg.sender].player[_player].hand.length < 10){
-        games[msg.sender].player[_player].hand.push( drawCard());
+            
+            games[msg.sender].player[_player].hand.push( _createRandomNum());
+
         }
 
 
@@ -146,62 +153,42 @@ constructor (address _address) {
 
 
 
-function drawCard() internal returns (Champs memory) {
-    uint maxTries = 3; // maximum number of times to loop
-    uint tries = 0;
-    Champs memory cp;
-    
-    while (tries < maxTries) {
-        (uint8 a, uint8 b, uint8 c, uint8 d, string memory e, string memory f, bool g, bool h, bool i, bool j, bool k, bool l) = charC.getCharacter(_createRandomNum());
-        cp = Champs(a, b, c, d, e, f, g, h, i, j, k, l);
-        
-       if (cp.attack > 0 && cp.health > 0 && bytes(cp.name).length > 0 && bytes(cp.description).length > 0) {
-          // all fields are valid, return the object
-       return cp;
-      }
 
-
-        
-        tries++;
-    }
-    
-    // maxTries reached, return default object
-    return Champs(0, 0, 0, 0, "", "", false, false, false, false, false, false);
-  
-}
 
 
 
 function drawCards(uint _player) public {
 
      for (uint j = 0; j < 6; j++) { 
-             games[msg.sender].player[_player].hand.push( drawCard());
+             games[msg.sender].player[_player].hand.push( _createRandomNum());
       }
 
   
      
 }
 
-function _createRandomNum() internal returns (uint256) {
+function _createRandomNum() internal returns (uint8) {
     uint256 blockNumber = block.number - 1;
     bytes32 blockHash = blockhash(blockNumber);
     uint256 randomNum = uint256(keccak256(abi.encodePacked(blockHash, msg.sender, nonce)));
 
     nonce++;
-    return randomNum % 13 + 1;
+    return uint8(randomNum % 13 + 1);
 }
 
 
-    function playerDrawCard ( uint _player) external {
-        games[msg.sender].player[_player].hand.push( drawCard());
-        emit drawn(drawCard());
 
-    }
 
     function playMinion( uint _player, uint _handIndex) external {
         Game storage game = games[msg.sender];
         Player storage player =  games[msg.sender].player[_player];
-        Champs storage hand = player.hand[_handIndex];
+
+
+        (uint8 a, uint8 b, uint8 c, uint8 d, string memory e, string memory f, bool g, bool h, bool i, bool j, bool k, bool l) = charC.getCharacter(player.hand[_handIndex]);
+        Champs memory hand = Champs(a, b, c, d, e, f, g, h, i, j, k, l);
+
+       
+        
         
         require(player.unspendMana >= hand.manaCost, "not enough mana");
         player.unspendMana -= hand.manaCost;
@@ -247,10 +234,10 @@ function _createRandomNum() internal returns (uint256) {
     }
 
 
-    function getHand(uint _player) external view returns (Champs[] memory)  {
+    // function getHand(uint _player) external view returns (Champs[] memory)  {
 
-        return games[msg.sender].player[_player].hand;
-    }
+    //     return games[msg.sender].player[_player].hand;
+    // }
 
 
 
@@ -262,10 +249,10 @@ function _createRandomNum() internal returns (uint256) {
     }
 
 
-    function showcard(uint id) external view returns (uint8[4] memory,string memory) {
-        Champs memory minion = games[msg.sender].player[0].hand[id];
-        return ([minion.health,minion.attack,minion.manaCost,minion.id],minion.name );
-    }
+    // function showcard(uint id) external view returns (uint8[4] memory,string memory) {
+    //     Champs memory minion = games[msg.sender].player[0].hand[id];
+    //     return ([minion.health,minion.attack,minion.manaCost,minion.id],minion.name );
+    // }
 
     
 
@@ -277,8 +264,11 @@ function _createRandomNum() internal returns (uint256) {
 
     
     
-    function handSize() external view returns (uint) {
+    function handSize1() external view returns (uint) {
        return games[msg.sender].player[0].hand.length;
+    }
+     function handSize2() external view returns (uint) {
+       return games[msg.sender].player[1].hand.length;
     }
 
      function boardSize(uint _player) external view returns (uint) {
@@ -293,6 +283,18 @@ function _createRandomNum() internal returns (uint256) {
         return games[msg.sender].player[0].health; 
     }
 
+
+
+
+ function getXdd() external view returns (Champs memory) {
+      Player storage player =  games[msg.sender].player[0];
+
+        Champs memory hand;
+        (uint8 a, uint8 b, uint8 c, uint8 d, string memory e, string memory f, bool g, bool h, bool i, bool j, bool k, bool l) = charC.getCharacter(player.hand[0]);
+        hand = Champs(a, b, c, d, e, f, g, h, i, j, k, l);
+        return hand;
+
+    }
 
 //if it's a normal attack, chosen is always 0
     function attack(uint minion, uint target, uint _player, uint _chosen) public{
@@ -448,37 +450,37 @@ function _createRandomNum() internal returns (uint256) {
        }
 
 
-    //call this method when you play a minion
-    function ability(uint _handCardChosen, uint _posistion, uint _player ) external {
+    // //call this method when you play a minion
+    // function ability(uint _handCardChosen, uint _posistion, uint _player ) external {
 
-        uint minionOnBoard = games[msg.sender].player[_player].minions.length;
-        Champs storage currentChar = games[msg.sender].player[_player].hand[_handCardChosen];
-        Champs[] storage myBoard = games[msg.sender].player[_player].minions;
-        //Champs[] memory enemyBoard = games[msg.sender].player[1].minions;
+    //     uint minionOnBoard = games[msg.sender].player[_player].minions.length;
+    //     Champs storage currentChar = games[msg.sender].player[_player].hand[_handCardChosen];
+    //     Champs[] storage myBoard = games[msg.sender].player[_player].minions;
+    //     //Champs[] memory enemyBoard = games[msg.sender].player[1].minions;
 
 
-    //position 0 == left
-    // position 1 == right
+    // //position 0 == left
+    // // position 1 == right
     
-    //Defender
-        if (currentChar.id == 1) {
-            if ( minionOnBoard == 0) {
-                //nothing
-            } 
-            else{
-                 if ( _posistion == 1) { 
-                myBoard[_posistion-1].attack += 1;
-                myBoard[_posistion-1].health += 1;
-                myBoard[_posistion-1].taunt = true;       
-            }
-            if ( _posistion == 0) { 
-                myBoard[_posistion+1].attack += 1;
-                myBoard[_posistion+1].health += 1;
-                myBoard[_posistion+1].taunt = true;       
-            }
-            }
-        }
-    }
+    // //Defender
+    //     if (currentChar.id == 1) {
+    //         if ( minionOnBoard == 0) {
+    //             //nothing
+    //         } 
+    //         else{
+    //              if ( _posistion == 1) { 
+    //             myBoard[_posistion-1].attack += 1;
+    //             myBoard[_posistion-1].health += 1;
+    //             myBoard[_posistion-1].taunt = true;       
+    //         }
+    //         if ( _posistion == 0) { 
+    //             myBoard[_posistion+1].attack += 1;
+    //             myBoard[_posistion+1].health += 1;
+    //             myBoard[_posistion+1].taunt = true;       
+    //         }
+    //         }
+    //     }
+    // }
 
 
 event drawn(Champs str);
