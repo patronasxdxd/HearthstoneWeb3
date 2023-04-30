@@ -45,14 +45,14 @@ constructor (address _address) {
         bool asleep;
     }
 
-    struct Board {
-        Champs[7] player1Row;
-        Champs[7] player2Row;
-    }
+    // struct Board {
+        // Champs[7] player1Row;
+        // Champs[7] player2Row;
+    // }
 
     struct Game {
         uint gameId;
-        Board board;
+        // Board board;
         Player[2] player;
         // gameStatus gamestatus;
     }   

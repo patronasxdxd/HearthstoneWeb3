@@ -32,11 +32,9 @@ async function main(){
   await contract.endTurn(1);
   await contract.endTurn(0);
   await contract.endTurn(1);
-  console.log("card in hand 1: "  + await contract.handSize1());
-  console.log("card in hand 1: "  + await contract.handSize2());
+  // console.log("card in hand 1: "  + await contract.handSize1());
+  // console.log("card in hand 1: "  + await contract.handSize2());
 
-
-  await contract.getXdd();
   // await contract.playMinion(1);
   // await contract.playMinion(2);
   // await contract.playMinion(3);
@@ -57,7 +55,7 @@ async function main(){
 
 //   // console.log(await contract.getMinionById(1))
 
-  // await contract.playMinionById(3,0);
+  await contract.playMinion(0,0);
   // await contract.playMinionById(11,0);
   // await contract.playMinionById(4,0);
 
