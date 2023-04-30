@@ -146,7 +146,6 @@ constructor (address _address) {
         player2.mana = 5;
         player2.unspendMana = 5;
 
-
         emit gameCreatedEvent();
         
     }
@@ -159,7 +158,7 @@ constructor (address _address) {
 
 function drawCards(uint _player) public {
 
-     for (uint j = 0; j < 6; j++) { 
+     for (uint j = 0; j < 3; j++) { 
              games[msg.sender].player[_player].hand.push( _createRandomNum());
       }
 

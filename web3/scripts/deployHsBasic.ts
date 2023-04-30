@@ -55,7 +55,7 @@ async function main(){
 
 //   // console.log(await contract.getMinionById(1))
 
-  await contract.playMinion(0,0);
+  // await contract.playMinion(0,0);
   // await contract.playMinionById(11,0);
   // await contract.playMinionById(4,0);
 
