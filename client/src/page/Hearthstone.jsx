@@ -133,6 +133,12 @@ const Hearthstone = () => {
       }
       let player01handd = player01.hand;
 
+
+      console.log(911);
+      // console.log(await contract.getMinionById(player01hand[localStorage.getItem("currentCard")]))
+      
+      console.log(player01hand)
+
       setPlayer01Hand(player01handd);
       setPlayer02Hand(player02.hand);
       setPlayer01board(player01.minions);
@@ -258,6 +264,8 @@ const Hearthstone = () => {
       console.log(player01);
       console.log(player02);
 
+    
+
     } catch (error) {
       setErrorMessage(error.message);
     }
@@ -270,7 +278,9 @@ const Hearthstone = () => {
 
    
     
- 
+    console.log("swag");
+    
+  
 
 
     if (contract ) getPlayerInfo();
@@ -300,23 +310,38 @@ const Hearthstone = () => {
   const boardChoice = (choice) => {
     try{
 
+
+      console.log('here2')
       // console.log(index,"swag");
 
       console.log(localStorage.getItem("currentCard"),"dwa  ")
+
+
+      // console.log(await contract.getMinionById(player01hand[localStorage.getItem("currentCard")]))
       
-      if (player01hand[localStorage.getItem("currentCard")].manaCost.toNumber() > player1.mana){
-        console.log("ERROR")
-        setShowAlert({ status: true, type: 'info', message: `not enough mana` });
-      }else{
+      // if (player01hand[localStorage.getItem("currentCard")].manaCost.toNumber() > player1.mana){
+        // console.log("ERROR")
+        // setShowAlert({ status: true, type: 'info', message: `not enough mana` });
+      // }else{
     
-      contract.playMinion(0,localStorage.getItem("currentCard"));
-        setShowAlert({ status: true, type: 'info', message: `minion played` }); 
-       }
+        try{
+
+            contract.playMinion(0,localStorage.getItem("currentCard"));
+            setShowAlert({ status: true, type: 'info', message: `minion played` }); 
+
+        }
+        catch{
+          console.log('dwa')
+          setShowAlert({ status: true, type: 'info', message: `not enough mana` });
+        }
+        // setShowAlert({ status: true, type: 'info', message: `minion played` }); 
+      //  }
 
        localStorage.removeItem("currentCard")
 
   
     }catch (error) {
+      // setShowAlert({ status: true, type: 'info', message: `not enough mana` });
       setErrorMessage(error.message);
 
     }

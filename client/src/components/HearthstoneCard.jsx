@@ -27,6 +27,10 @@ const img2 = generateRandomCardImage();
 
 const HearthstoneCard = ({ card, title, key,restStyles, cardRef, playerTwo,img1,index }) => {
 
+
+  console.log('swagfggy');
+  console.log(card)
+
     const { setBattleGround, setShowAlert } = useGlobalContext();
 
     const makeAMove = async (card) => {
@@ -42,7 +46,7 @@ const HearthstoneCard = ({ card, title, key,restStyles, cardRef, playerTwo,img1,
         
       
     <div className={`card-face`}>
-      <img src={playerTwo? hscard2[Number(card.id)-1] :legendCardBack} alt="ace_card" />
+      <img src={playerTwo? hscard2[Number(card)-1] :legendCardBack} alt="acee_card" />
 
 
       {/* TODO Add these to the cards */}

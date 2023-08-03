@@ -27,7 +27,7 @@ const hiddenHearthstoneCard = ({ card, title, restStyles, cardRef, playerTwo,img
     <div className={'cardhidden'}>
       
     <div className={`card-face`}>
-      <img src={playerTwo? hscard2[Number(card.id)-1] :legendCardBack} alt="ace_card"  />
+      <img src={playerTwo? hscard2[Number(card)-1] :legendCardBack} alt="ace_card"  />
 
       <div className={``}>
         <p className={` text-yellow-400`}>{playerTwo? Number(card.attack) : ""}</p>

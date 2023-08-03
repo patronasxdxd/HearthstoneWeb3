@@ -28,7 +28,7 @@ async function main(){
   await contract.createGame("patronasxd")
 
 
-    await contract.endTurn(0);
+  await contract.endTurn(0);
   await contract.endTurn(1);
   await contract.endTurn(0);
   await contract.endTurn(1);
