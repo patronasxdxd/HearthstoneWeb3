@@ -4,7 +4,7 @@ import Web3Modal from 'web3modal';
 import { useNavigate } from 'react-router-dom';
 
 
-import { ABI, ADDRESS } from '../contract';
+import { ABI, ABICHAR, ADDRESS,CHARSADDRESS } from '../contract';
 import { createEventListeners } from './createEventListeners';
 // import { count } from 'console';
 
@@ -14,6 +14,7 @@ export const GlobalContextProvider = ({ children }) => {
   const [walletAddress, setWalletAddress] = useState('');
   const [battleGround, setBattleGround] = useState('bg-astral');
   const [contract, setContract] = useState(null);
+  const [contractChar, setContractChar] = useState(null); 
   const [xdxd, setContracter] = useState(null);
 
   const [provider, setProvider] = useState(null);
@@ -98,6 +99,10 @@ export const GlobalContextProvider = ({ children }) => {
       setProvider(newProvider);
       setContract(newContract);
       setContracter(newContract);
+
+
+      const newContractChar = new ethers.Contract(CHARSADDRESS, ABICHAR, signer);
+      setContractChar(newContractChar);
       console.log('here');
       console.log(xdxd);
 
@@ -116,6 +121,7 @@ export const GlobalContextProvider = ({ children }) => {
       createEventListeners({
         navigate,
         contract,
+        contractChar,
         provider,
         walletAddress,
         setShowAlert,
@@ -183,6 +189,7 @@ export const GlobalContextProvider = ({ children }) => {
         battleGround,
         setBattleGround,
         contract,
+        contractChar,
         gameData,
         walletAddress,
         updateCurrentWalletAddress,

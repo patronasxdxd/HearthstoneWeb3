@@ -25,7 +25,7 @@ import Controls from './Controls';
 
 const Hearthstone = () => {
   const navigate = useNavigate();
-  const { contract, played,gameData,setPlayed,Minionsplayed,setMinionsplayed,battleGround, walletAddress, setErrorMessage, showAlert, setShowAlert, player1Ref, player2Ref,outfit, } = useGlobalContext();
+  const { contract,contractChar, played,gameData,setPlayed,Minionsplayed,setMinionsplayed,battleGround, walletAddress, setErrorMessage, showAlert, setShowAlert, player1Ref, player2Ref,outfit } = useGlobalContext();
   const [player2, setPlayer2] = useState({});
   const [player1, setPlayer1] = useState({});
   const { battleName } = useParams();
@@ -134,7 +134,13 @@ const Hearthstone = () => {
       let player01handd = player01.hand;
 
 
-      console.log(911);
+      console.log(9111);
+      // try {
+      //   console.log(await contractChar.getCharacter(1));
+      // } catch (error) {
+      //   console.log(error);  
+      // }
+     
       // console.log(await contract.getMinionById(player01hand[localStorage.getItem("currentCard")]))
       
       console.log(player01hand)
@@ -307,22 +313,32 @@ const Hearthstone = () => {
   };
 
 
-  const boardChoice = (choice) => {
+  const boardChoice = async (choice) => {
     try{
 
 
       console.log('here2')
+      console.log('here2')
+      console.log('here2')
+      console.log('here2')
+      console.log('here2')
       // console.log(index,"swag");
 
-      console.log(localStorage.getItem("currentCard"),"dwa  ")
-
+      // console.log(localStorage.getItem("currentCard"),"dwa  ")
+      // const char = await contractChar.getCharacter(1);
+      // console.log('here2222')
+      // console.log(char[2]);
 
       // console.log(await contract.getMinionById(player01hand[localStorage.getItem("currentCard")]))
+
+
+      console.log(11111111);
+      const char = await contractChar.getCharacter(player01hand[localStorage.getItem("currentCard")]);
       
-      // if (player01hand[localStorage.getItem("currentCard")].manaCost.toNumber() > player1.mana){
-        // console.log("ERROR")
-        // setShowAlert({ status: true, type: 'info', message: `not enough mana` });
-      // }else{
+      if (char[2] > player1.mana){
+        console.log("ERROR")
+        setShowAlert({ status: true, type: 'info', message: `not enough mana` });
+      }else{
     
         try{
 
@@ -335,7 +351,7 @@ const Hearthstone = () => {
           setShowAlert({ status: true, type: 'info', message: `not enough mana` });
         }
         // setShowAlert({ status: true, type: 'info', message: `minion played` }); 
-      //  }
+       }
 
        localStorage.removeItem("currentCard")
 

@@ -1,4 +1,5 @@
 import contract from './Hearthstone.json';
+import contractChar from './Characters.json';
 
 
 
@@ -13,3 +14,4 @@ export const ADDRESS = '0x0B306BF915C4d645ff596e518fAf3F9669b97016';
 
 
 export const { abi: ABI } = contract;
+export const {abi: ABICHAR} = contractChar;
