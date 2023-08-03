@@ -96,8 +96,6 @@ const Hearthstone = () => {
   const getPlayerInfo = async () => {
     try {
 
-      console.log("xdd");
-      
       let player01Address = null;
       let player02Address = null;
       
@@ -113,46 +111,15 @@ const Hearthstone = () => {
 
 
       const p2H = player02.health.toNumber();
-
-      console.log(player01.minions)
-      console.log(player02.minions)
-
-
-      console.log(p1H);
-      console.log(p1H);
-      console.log(p1H);
-      console.log(p1H);
-      console.log(p1H);
-
-
       const handsize = player01.hand.length;
 
 
- 
-      console.log("isytrue;")
-      console.log(player01.hand)
-
       if ( localStorage.getItem("currentCard") === null) {
-        console.log("nulleriono")
-
       }
       else{
         console.log("not null")
-      
       }
       let player01handd = player01.hand;
-
-
-      console.log(9111);
-      // try {
-      //   console.log(await contractChar.getCharacter(1));
-      // } catch (error) {
-      //   console.log(error);  
-      // }
-     
-      // console.log(await contract.getMinionById(player01hand[localStorage.getItem("currentCard")]))
-      
-      console.log(player01hand)
 
       setPlayer01Hand(player01handd);
       setPlayer02Hand(player02.hand);
@@ -228,8 +195,6 @@ const Hearthstone = () => {
       }
 
 
-      console.log(player02.minions.length);
-
          
       //player 2 board
       for (let index = 0; index < player02.minions.length; index++) {
@@ -274,11 +239,6 @@ const Hearthstone = () => {
         }
     }
 
-
-      console.log("player");
-      console.log(player01);
-      console.log(player02);
-
     
 
     } catch (error) {
@@ -288,24 +248,9 @@ const Hearthstone = () => {
 
 
   useEffect(() => {
-   
-
-
-   
-    
-    console.log("swag");
-    
-  
-
-
     if (contract ) getPlayerInfo();
   }, [contract, gameData, battleName,Current,Minionsplayed]);
 
-
-  useEffect(() => { 
-    console.log("bigfdi");
-
-  }, [Minionsplayed]);
 
   const handleBattleChoice = (ground) => {
 
@@ -324,26 +269,8 @@ const Hearthstone = () => {
 
   const boardChoice = async (choice) => {
     try{
-
-
-      console.log('here2')
-      console.log('here2')
-      console.log('here2')
-      console.log('here2')
-      console.log('here2')
-      // console.log(index,"swag");
-
-      // console.log(localStorage.getItem("currentCard"),"dwa  ")
-      // const char = await contractChar.getCharacter(1);
-      // console.log('here2222')
-      // console.log(char[2]);
-
-      // console.log(await contract.getMinionById(player01hand[localStorage.getItem("currentCard")]))
-
-
-      console.log(11111111);
       const char = await contractChar.getCharacter(player01hand[localStorage.getItem("currentCard")]);
-      
+    
       if (char[2] > player1.mana){
         console.log("ERROR")
         setShowAlert({ status: true, type: 'info', message: `not enough mana` });
@@ -356,21 +283,16 @@ const Hearthstone = () => {
 
         }
         catch{
-          console.log('dwa')
           setShowAlert({ status: true, type: 'info', message: `not enough mana` });
         }
-        // setShowAlert({ status: true, type: 'info', message: `minion played` }); 
        }
 
        localStorage.removeItem("currentCard")
 
   
     }catch (error) {
-      // setShowAlert({ status: true, type: 'info', message: `not enough mana` });
       setErrorMessage(error.message);
-
     }
-
   };
 
   const endTurn = async () => {
@@ -419,8 +341,7 @@ const Hearthstone = () => {
   const endTurn3 = async (chouice) => {
   
     try {
-      // await contract.playMinion(1,0);
-      console.log('xd2');
+
       // await contract.playMinionById(7,1);
       // await contract.playMinionById(1,1);
       // await contract.playMinionById(8,1);
@@ -446,17 +367,9 @@ const Hearthstone = () => {
 
 
   const Attacked = async (card) => {
-
-    console.log("attacked");
-    
-    console.log(localStorage.getItem("battleCard"))
-
     try {
       await contract.attack(localStorage.getItem("battleCard")-1, card-8, 0, 0);
-      
-
       localStorage.removeItem('battleCard');
-
   } catch (error) {
     console.log(error);
     setShowAlert({ status: true, type: 'info', message: `Minion is still asleep` });
@@ -510,6 +423,13 @@ const Hearthstone = () => {
 
       // function attack(uint minion, uint target, uint _player, uint _chosen) public{
       else if (meshNum == "FaceEnemy"){
+
+
+      //         await contract.playMinionById(7,1);
+      // await contract.playMinionById(1,1);
+      // await contract.playMinionById(8,1);
+      // await contract.playMinionById(5,1);
+      // await contract.playMinionById(12,1);
 
         console.log("attacking face rn")
         console.log(localStorage.getItem("battleCard"));
@@ -584,10 +504,10 @@ const Hearthstone = () => {
     <div className='relative'>
       
 
-  <Canvas style={{ width: '2000px', height: '800px' }} camera={{ position: [-4, 2, 0] }}>
+  <Canvas style={{ width: '150vh', height: '90vh' }} camera={{ position: [-4, 2, 0] }}>
     <ambientLight />
     <pointLight position={[10, 40, 10]} />
-    <Model scale={1.6} handleMeshClick={(meshNum) => handleMeshClick(meshNum)} 
+    <Model scale={1.4} handleMeshClick={(meshNum) => handleMeshClick(meshNum)} 
     showMesh1={showMesh1} showMesh2={showMesh2}
     showMesh3={showMesh3} showMesh4={showMesh4} 
     showMesh5={showMesh5} showMesh6={showMesh6} 
@@ -614,7 +534,7 @@ const Hearthstone = () => {
  
 
   <div class='boardcardsTop'>
-  <div onClick={() => boardChoice(1)} className={`${localStorage.getItem("currentCard") === null?"":styles.glassEffect} w-20 h-20`} style={{marginTop: "400px"}}>
+  <div onClick={() => boardChoice(1)} className={`${localStorage.getItem("currentCard") === null?"":styles.glassEffect} w-20 h-20`} style={{marginTop: "600px"}}>
     <div className=''></div>
     {localStorage.getItem("currentCard") === null? <h2 style={{color: "white", textAlign: "center"}}></h2> : <h2 style={{color: "white", textAlign: "center"}}>Place Here</h2>}
   </div>
