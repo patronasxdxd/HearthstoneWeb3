@@ -118,6 +118,13 @@ const Hearthstone = () => {
       console.log(player02.minions)
 
 
+      console.log(p1H);
+      console.log(p1H);
+      console.log(p1H);
+      console.log(p1H);
+      console.log(p1H);
+
+
       const handsize = player01.hand.length;
 
 
@@ -414,11 +421,11 @@ const Hearthstone = () => {
     try {
       // await contract.playMinion(1,0);
       console.log('xd2');
-      await contract.playMinionById(7,1);
-      await contract.playMinionById(1,1);
-      await contract.playMinionById(8,1);
-      await contract.playMinionById(5,1);
-      await contract.playMinionById(12,1);
+      // await contract.playMinionById(7,1);
+      // await contract.playMinionById(1,1);
+      // await contract.playMinionById(8,1);
+      // await contract.playMinionById(5,1);
+      // await contract.playMinionById(12,1);
       // await contract.drawCards(0);
       // await contract.drawCards(1);
 
@@ -441,7 +448,7 @@ const Hearthstone = () => {
   const Attacked = async (card) => {
 
     console.log("attacked");
-    console.log(card-7)
+    
     console.log(localStorage.getItem("battleCard"))
 
     try {
@@ -462,7 +469,7 @@ const Hearthstone = () => {
   let turnTimeoutId;
 
 
-  function handleMeshClick(meshNum) {
+  async function handleMeshClick(meshNum) {
     console.log(`Mesh ${meshNum} clicked!`);
 
     if ( meshNum <= 7){
@@ -484,11 +491,7 @@ const Hearthstone = () => {
         turnTimeoutId = setTimeout(() => {
           endTurn();
         }, 100);
-        
-
-       
       
-        
       }
       else if (meshNum === "EndTurnBot"){
         if (turnTimeoutId) {
@@ -504,8 +507,13 @@ const Hearthstone = () => {
 
        
       }
+
+      // function attack(uint minion, uint target, uint _player, uint _chosen) public{
       else if (meshNum == "FaceEnemy"){
-        endTurn3();
+
+        console.log("attacking face rn")
+        console.log(localStorage.getItem("battleCard"));
+        await contract.attack(localStorage.getItem("battleCard")-1,666,0,0)
         
       }
       else {
