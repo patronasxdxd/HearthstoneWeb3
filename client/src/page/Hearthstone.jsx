@@ -120,8 +120,10 @@ const Hearthstone = () => {
 
       const handsize = player01.hand.length;
 
+
  
       console.log("isytrue;")
+      console.log(player01.hand)
 
       if ( localStorage.getItem("currentCard") === null) {
         console.log("nulleriono")

@@ -46,7 +46,7 @@ const HearthstoneCard = ({ card, title, key,restStyles, cardRef, playerTwo,img1,
         
       
     <div className={`card-face`}>
-      <img src={playerTwo? hscard2[Number(card)-1] :legendCardBack} alt="acee_card" />
+      <img src={playerTwo? hscard2[Number(card)] :legendCardBack} alt="acee_card" />
 
 
       {/* TODO Add these to the cards */}
