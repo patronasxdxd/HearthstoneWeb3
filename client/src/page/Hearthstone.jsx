@@ -478,7 +478,7 @@ const Hearthstone = () => {
     }
     else {
       if (meshNum == "HeroPower"){
-        alert(meshNum);
+        alert("Coming soon");
       }
       else if (meshNum === "EndTurn"){
        

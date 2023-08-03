@@ -11,8 +11,8 @@ const PlayerInfo = ({ player, playerIcon, mt }) => (
     <img data-for={`Player-${mt ? '1' : '2'}`} data-tip src={playerIcon} alt="player02" className="w-0 h-0 object-contain rounded-full" />
 
     <div
-      data-for={`Mana-${mt ? '1' : '2'}`}
-      data-tip={`Mana: ${player.mana}`}
+      data-for={`Health-${mt ? '1' : '2'}`}
+      data-tip={`Health: ${player.health}`}
       className={styles.playerHealth}
     >
       {[...Array(player.health).keys()].map((item, index) => (
@@ -26,17 +26,17 @@ const PlayerInfo = ({ player, playerIcon, mt }) => (
     <div
       data-for={`Mana-${mt ? '1' : '2'}`}
       data-tip="Mana"
-      className={`${styles.flexCenter} ${styles.glassEffect} ${styles.playerMana}`}
+      className={`${styles.flexCenter} ${styles.glassEffect} ${styles.playerMana} `}style={{ backgroundColor: '#60A5fA',marginLeft: '20px' }}
     >
       {player.mana || 0}
     </div> 
-    <div
+    {/* <div
       data-for={`Health-${mt ? '1' : '2'}`}
       data-tip="Health"
     className={`${styles.flexCenter} ${styles.glassEffect} ${styles.playerMana}`} style={{ backgroundColor: '#8a0303',marginLeft: '20px' }}>
     
       {player.health || 0}
-    </div>
+    </div> */}
 
     <ReactTooltip id={`Player-${mt ? '1' : '2'}`} effect="solid" backgroundColor="#7f46f0">
       <p className={styles.playerInfo}>
