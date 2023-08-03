@@ -27,7 +27,7 @@ export default {
       url: 'https://api.avax-test.network/ext/bc/C/rpc',
       gasPrice: 225000000000,
       chainId: 43113,
-      accounts: ['27c1107d514785f7541e0209251114edfc2c18f583ef3ac3f538622bf58a4f2b'],
+      accounts: ['SECRET'],
     },
 
     localhost: {
