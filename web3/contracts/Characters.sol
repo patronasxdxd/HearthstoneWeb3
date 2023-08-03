@@ -20,7 +20,6 @@ contract Characters {
         bool asleep;
     }
 
-  
     mapping(uint => Champs) public champsMap;
 
    constructor() public {
@@ -45,25 +44,14 @@ contract Characters {
         return seperateValues(id);
     }
 
-
-
  function getNewChampId(uint8 _id) external view returns (uint8, uint8){
       Champs memory x = champsMap[_id];
         return (x.id,x.manaCost);
     }
 
-
-
-
-
     function seperateValues(uint _x) internal view  returns (uint8,uint8,uint8,uint8,string memory,string memory,bool,bool,bool,bool,bool,bool) {
         Champs memory x = champsMap[_x];
         return (x.health,x.attack,x.manaCost,x.id,x.name,x.description,x.taunt,x.windfury,x.divineshield,x.stealth,x.poisonious,x.asleep);
     }
-
-    
-
-
-    
 
 }
