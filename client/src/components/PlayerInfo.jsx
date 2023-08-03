@@ -29,6 +29,13 @@ const PlayerInfo = ({ player, playerIcon, mt }) => (
       className={`${styles.flexCenter} ${styles.glassEffect} ${styles.playerMana}`}
     >
       {player.mana || 0}
+    </div> 
+    <div
+      data-for={`Health-${mt ? '1' : '2'}`}
+      data-tip="Health"
+    className={`${styles.flexCenter} ${styles.glassEffect} ${styles.playerMana}`} style={{ backgroundColor: '#8a0303',marginLeft: '20px' }}>
+    
+      {player.health || 0}
     </div>
 
     <ReactTooltip id={`Player-${mt ? '1' : '2'}`} effect="solid" backgroundColor="#7f46f0">
