@@ -28,7 +28,7 @@ contract Characters {
     champsMap[1] = Champs(3, 3, 3, 2, "Fletchling", "After this minion attacks a hero, Adapt", false, false, false, false, false, true);
     champsMap[2] = Champs(5, 3, 4, 3, "Yeti", "", false, false, false, false, false, true);
     champsMap[3] = Champs(3, 2, 2, 4, "Scrab", "Deathrattle: gain 2 armor", false, false, false, false, false, true);
-    champsMap[4] = Champs(12, 12, 5, 5, "Deathwing", "Battlecry: Destroy all other minions and discard your hand", false, false, false, false, false, true);
+    champsMap[4] = Champs(12, 12, 10, 5, "Deathwing", "Battlecry: Destroy all other minions and discard your hand", false, false, false, false, false, true);
     champsMap[5] = Champs(4, 5, 7, 6, "Invincible", "Reborn, Battlecry and Deathrattle: Give a random friendly minion +5/+5 and Taunt", false, false, false, false, false, true);
     champsMap[6] = Champs(4, 2, 3, 7, "Brian BronzeBeard", "Your battlecry trigger twice", false, false, false, false, false, true);
     champsMap[7] = Champs(2, 3, 2, 8, "Shrinkmeister", "Give a minion -2 Attack", false, false, false, false, false, true);
